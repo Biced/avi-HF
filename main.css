@@ -1,118 +1,40 @@
 body {
 	margin: 0;
-	background-color: #000;
 	color: #fff;
 	font-family: Monospace;
-	font-size: 13px;
 	line-height: 24px;
 	overscroll-behavior: none;
+	overflow: hidden;
 }
 
-a {
-	color: #ff0;
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
-}
-
-button {
-	cursor: pointer;
-	text-transform: uppercase;
-}
 
 canvas {
 	display: block;
 }
 
-#info {
-	position: absolute;
-	top: 0px;
-	width: 100%;
-	padding: 10px;
-	box-sizing: border-box;
-	text-align: center;
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	pointer-events: none;
-	z-index: 1; /* TODO Solve this in HTML */
-}
 
-a, button, input, select {
-	pointer-events: auto;
-}
 
-.dg.ac {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	z-index: 2 !important; /* TODO Solve this in HTML */
-}
-
-#overlay {
-	position: absolute;
-	z-index: 2;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background: rgba(0,0,0,0.7);
-}
-
-	#overlay button {
-		background: #ffffff;
-		border: 0;
-		color: #000000;
-		padding: 16px 20px;
-		text-transform: uppercase;
-		cursor: pointer;
-	}
-
-#notSupported {
-	width: 50%;
-	margin: auto;
-	background-color: #f00;
-	margin-top: 20px;
-	padding: 10px;
-}
 
 .inner-info {
 	position: absolute;
-	/* left: -100%; */
-	/* top: 50%; */
 	width: 100vw;
 	height: 100vh;
-	/* transform: translateY(100%); */
-	/* display: flex; */
 	background: transparent;
-	/* padding: 2rem; */
 	transition: all 0.5s ease-out;
-
 	clip-path: circle(25px at -5% 100%);
+
   }
 
   .inner-info .inner-info-txt {
 
   }
 
-  .inner-info iframe {
-	/* flex: 1; */
-  }
+
 
   .inner-info-hover {
-	/* transform: translateX(0%); */
-	/* transform: translateY(0%); */
 	clip-path: circle(75%);
 	background: rgba(0, 0, 0, 0.8);
-	/* border-top: 4px solid rgba(0, 0, 0, 0.8);
-	border-bottom: 4px solid rgba(0, 0, 0, 0.8); */
+
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
   }
@@ -120,8 +42,6 @@ a, button, input, select {
   .inner-info i {
 	color: white;
 	position: absolute;
-	/* left: 27px; */
-	/* top: 20px; */
 	font-weight: bold;
   }
 
@@ -130,34 +50,14 @@ a, button, input, select {
   }
 
 .info2 {
-    /* display: none; */
-  }
-
-
-
-  .transform{
-	/* transform: translateY(0%); */
-	/* top: 20%; */
-
-  }
-.info2 {
 	position: absolute;
-
-/* transform: translateY(100%); */
-/* top: 100%; */
-/* transform: translatey(100%); */
 	transition: all 0.5s ease-out;
   }
 
-  .info2 .inner-info:hover {
-	/* transform: translateY(-95%); */
-  }
-
   .fas{
-	position: absolute;
-	bottom: 75px;
-	left: 75px;
-	width: 250px;
+	 position: absolute;
+	bottom: 0;
+left: 0;
 	z-index: 9999;
   }
 
@@ -167,14 +67,19 @@ a, button, input, select {
 
   .content-wrapper > h2{
 	  font-size: 50px;
-	  /* margin-bottom: 75px; */
-	  /* height: 100%;
-	  width: 100%; */
-
+	  margin: 0;
+	  line-height: 50px;
+	  margin-bottom: 75px;
   }
 
   .content-wrapper{
-	  width: 100%;
-	  height: 100%;;
-	  margin: 145px 375px;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+
+	  margin: 145px 0 145px 375px;
+	  /* width: calc(100vw - 750px); */
+	/* height: calc(100vh - 290px); */
+	width: 1170px;
   }

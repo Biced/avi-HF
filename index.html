@@ -20,34 +20,14 @@
           position: absolute;
           bottom: 0;
           right:0;
-          margin: 0 30px 30px 0;
+
           }
 		  .logo{
-			position: absolute;
-			top :75px;
-			left: 75px;
 			width :29%;
 			height:auto;
 		  }
 
-		  .link{
-			  position: absolute;
-			  top :0;
-			right: 0;
-			width :250px;
-			height:250px
-		  }
-		  .clients{
-			position: absolute;
-			  left :0;
-			bottom: 0;
-			width :100%;
-			height:100%;
-		  }
-		  .clients img{
-			  width: 100%;
-			  height: 100%;
-		  }
+
 .fas{
 	color: white;
 	font-size: 20px;
@@ -55,24 +35,57 @@
 .row-1{
 	display: flex;
 	flex-direction: row;
-}
-.row-1{
-	flex:1;
-}
-.row-1 img{
-height: 60px;
+	margin-bottom: 80px;
 }
 
+.row-1 .img{
+height: 60px;
+width: 20%;
+text-align: center;
+}
+.row-1:last-child .img{
+/* height: 60px; */
+width: 25%;
+/* text-align: center; */
+}
+.img img{
+height: 100%;
+width: auto;
+margin: auto;
+}
+.overlaywrapper{
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 75px;
+	width: calc(100% - 150px);
+	height: calc(100% - 150px);
+	/* width: 100%;
+	height: 100%; */
+}
+.link{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
     </style>
     <!-- <div id="container"></div> -->
     <div class="overlayui">
-		<img src="logo.svg" alt="" class="logo">
+		<div class="overlaywrapper">
+			<img src="logo.svg" alt="" class="logo">
 		<span class="link">
 			<a href="">abc</a>
 		</span>
 
 
 		<a class="fas">Our Clients</a>
+		<div class="btn-wraper">
+			<button class="btn left"> < </button>
+			<button class="btn middle"> + </button>
+			<button class="btn right"> > </button>
+		</div>
+		</div>
+
 		<div class="info2">
 
 			<div class="inner-info">
@@ -83,49 +96,70 @@ height: 60px;
 
 
 <div class="row-1">
-	<img src="./logos/logo-chempion.svg" alt="">
-	<img src="./logos/logo-amex.svg" alt="">
-	<img src="./logos/logo-discount.svg" alt="">
-	<img src="./logos/logo-delek.svg" alt="">
-	<img src="./logos/logo-electra.svg" alt="">
+	<div class="img"><img src="./logos/logo-chempion.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-amex.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-discount.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-delek.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-electra.svg" alt=""></div>
+
+
+
+
+
 </div>
 <div class="row-1">
-	<img src="./logos/logo-eldan.svg" alt="">
-	<img src="./logos/logo-isracard.svg" alt="">
-	<img src="./logos/logo-aig.svg" alt="">
-	<img src="./logos/logo-jewish-agency.svg" alt="">
-	<img src="./logos/logo-migdal.svg" alt="">
+	<div class="img">	<img src="./logos/logo-eldan.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-isracard.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-aig.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-jewish-agency.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-migdal.svg" alt=""></div>
+
+
+
+
+
 </div>
 <div class="row-1">
-	<img src="./logos/logo-libra.svg" alt="">
-	<img src="./logos/logo-passportcard.png" alt="">
-	<img src="./logos/logo-jacada.svg" alt="">
-	<img src="./logos/logo-volkswagen.svg" alt="">
-	<img src="./logos/logo-mediwho.svg" alt="">
+	<div class="img">	<img src="./logos/logo-libra.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-passportcard.png" alt=""></div>
+	<div class="img">	<img src="./logos/logo-jacada.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-volkswagen.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-mediwho.svg" alt=""></div>
+
+
+
+
+
 </div>
 <div class="row-1">
-	<img src="./logos/logo-microsoft.png" alt="">
-	<img src="./logos/logo-paamonim.png" alt="">
-	<img src="./logos/logo-priority.svg" alt="">
-	<img src="./logos/logo-sears.svg" alt="">
-	<img src="./logos/logo-refael.svg" alt="">
+	<div class="img">	<img src="./logos/logo-paamonim.png" alt=""></div>
+	<div class="img"><img src="./logos/logo-microsoft.png" alt=""></div>
+	<div class="img"><img src="./logos/logo-priority.svg" alt=""></div>
+	<div class="img">	<img src="./logos/logo-sears.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-refael.svg" alt=""></div>
+
+
+
+
+
 </div>
 <div class="row-1">
-	<img src="./logos/logo-purina.svg" alt="">
-	<img src="./logos/logo-sodastream.svg" alt="">
-	<img src="./logos/logo-super-pharm.svg" alt="">
-	<img src="./logos/logo-vesttoo.svg" alt="">
+	<div class="img">	<img src="./logos/logo-purina.svg" alt="">
+	</div>
+	<div class="img"><img src="./logos/logo-sodastream.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-super-pharm.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-vesttoo.svg" alt=""></div>
+
+
+
+
 
 </div>
 			</div>
 
 			</div>
 		  </div>
-			<div class="btn-wraper">
-				<button class="btn left"> < </button>
-				<button class="btn middle"> + </button>
-				<button class="btn right"> > </button>
-			</div>
+
 
 		</div>
 		<video id="video" src="./models/main-page-first-fold.MP4" style="display:none" autoplay loop playsinline type="video/mp4" ></video>
@@ -245,12 +279,10 @@ height: 60px;
 		{
 			if(fas.innerHTML !== "Close"){
 				inner_info.classList.add("inner-info-hover")
-				info2.classList.add("transform")
 				fas.innerHTML = "Close";
 			}else{
 				inner_info.classList.remove("inner-info-hover")
 				fas.innerHTML = "Our Clients";
-				info2.classList.remove("transform")
 			}
 
 	})
