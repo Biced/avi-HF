@@ -21,7 +21,7 @@ canvas {
 	height: 100vh;
 	background: transparent;
 	transition: all 0.5s ease-out;
-	clip-path: circle(25px at -5% 100%);
+	clip-path: circle(0 at -5% 105%);
 
   }
 
