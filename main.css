@@ -19,6 +19,8 @@ canvas {
 
 .inner-info {
 	position: absolute;
+	top: 0;
+	left:0;
 	width: 100vw;
 	height: 100vh;
 	/* background: transparent; */
@@ -28,6 +30,8 @@ canvas {
   }
 .inner-info2 {
 	position: absolute;
+	top: 0;
+	left:0;
 	width: 100vw;
 	height: 100vh;
 	/* background: transparent; */
@@ -40,9 +44,6 @@ canvas {
 
   }
 
-  .inner-info .inner-info-txt {
-
-  }
 
 
 
@@ -54,31 +55,79 @@ canvas {
 	backdrop-filter: blur(10px);
   }
 
-  .inner-info i {
-	color: white;
+  .overlayui{
 	position: absolute;
-	font-weight: bold;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	overflow: hidden;
   }
+  .btn-wraper{
+		position: absolute;
+		bottom: 75px;
+		right:75px;
 
-  .inner-info:hover i {
-	opacity: 0;
-  }
+		}
+		.logo{
+			position: absolute;
+		  /* width :50px; */
+		  /* height:50px; */
+		  top: 75px;
+		  left: 75px;
+		  z-index: 9;
+		}
 
-.info2 {
-	position: absolute;
-	transition: all 0.5s ease-out;
-  }
+
+
+.row-1{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 80px;
+}
+
+.row-1 .img{
+height: 60px;
+width: 20%;
+text-align: center;
+}
+.row-1:last-child .img{
+width: 25%;
+}
+.img img{
+height: 100%;
+width: auto;
+margin: auto;
+}
+.overlaywrapper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 75px;
+  width: calc(100% - 150px);
+  height: calc(100% - 150px);
+}
+.link{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
   .fas{
+	color: white;
+	font-size: 20px;
 	 position: absolute;
-	bottom: 0;
-left: 0;
-	z-index: 9999;
+	bottom: 75px;
+left: 75px;
+	z-index: 9;
+	cursor: pointer;
+	text-decoration: none;
   }
 
-  .close{
-
-  }
+.text-decoration, .fas:hover{
+	text-decoration: underline;
+}
 
   .content-wrapper > h2{
 	  font-size: 50px;
@@ -108,7 +157,7 @@ left: 0;
 
 	 background-size: 960px 1300px;
 	background-attachment:fixed;
-   -webkit-background-clip: content-box;
+   	/* -webkit-background-clip: content-box; */
 	text-align:center;
 	border-radius:180px;
 	/* transition: top 0.12s ease; */

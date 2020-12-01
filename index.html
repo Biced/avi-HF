@@ -7,67 +7,7 @@
 </head>
 <body>
   <style>
-    .overlayui{
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-	  z-index: 999;
-	  overflow: hidden;
-    }
-    .btn-wraper{
-          position: absolute;
-          bottom: 0;
-          right:0;
 
-          }
-		  .logo{
-			width :29%;
-			height:auto;
-		  }
-
-
-.fas{
-	color: white;
-	font-size: 20px;
-}
-.row-1{
-	display: flex;
-	flex-direction: row;
-	margin-bottom: 80px;
-}
-
-.row-1 .img{
-height: 60px;
-width: 20%;
-text-align: center;
-}
-.row-1:last-child .img{
-/* height: 60px; */
-width: 25%;
-/* text-align: center; */
-}
-.img img{
-height: 100%;
-width: auto;
-margin: auto;
-}
-.overlaywrapper{
-	position: absolute;
-	top: 0;
-	left: 0;
-	margin: 75px;
-	width: calc(100% - 150px);
-	height: calc(100% - 150px);
-	/* width: 100%;
-	height: 100%; */
-}
-.link{
-	position: absolute;
-	top: 0;
-	right: 0;
-}
     </style>
     <!-- <div id="container"></div> -->
     <div class="overlayui">
@@ -75,8 +15,8 @@ margin: auto;
 
 		</div> -->
 
-		<div class="overlaywrapper">
-			<img src="logo.svg" alt="" class="logo">
+		<!-- <div class="overlaywrapper"> -->
+			<img src="./logos/nav.svg" alt="" class="logo">
 		<span class="link">
 			<a href="">abc</a>
 		</span>
@@ -88,9 +28,9 @@ margin: auto;
 			<button class="btn middle"> + </button>
 			<button class="btn right"> > </button>
 		</div>
-		</div>
+		<!-- </div> -->
 
-		<div class="info2">
+		<!-- <div class="info2"> -->
 
 			<div class="inner-info">
 
@@ -232,7 +172,7 @@ margin: auto;
 			</div>
 
 			</div>
-		  </div>
+		  <!-- </div> -->
 
 
 		</div>
@@ -354,9 +294,11 @@ margin: auto;
 			if(fas.innerHTML !== "Close"){
 				inner_info.classList.add("inner-info-hover")
 				fas.innerHTML = "Close";
+				fas.classList.toggle("text-decoration")
 			}else{
 				inner_info.classList.remove("inner-info-hover")
 				fas.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+				fas.classList.toggle("text-decoration")
 			}
 
 	})
