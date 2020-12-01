@@ -2062,7 +2062,7 @@ THREE.ShaderChunk.shadowmap_pars_fragment = shader;
 			// metalness:0,
 
                     } ),
-                    1, 1
+                    0.5, 0.5
                 );
                 var ground = new Physijs.BoxMesh( new THREE.BoxGeometry( 14, 0.5, 14 ), ground_material, 0 );
                 ground.position.set(-0.61,-1.2,-2.9);
@@ -2200,7 +2200,7 @@ emissiveIntensity: 0.15
     /* Create spheres */
     var sphere = new Physijs.SphereMesh(
         new THREE.SphereBufferGeometry( object.translation.r, 20, 20 ),
-		material,1, 1,
+		material,0.5, 0.5
 
     );
 
@@ -2250,23 +2250,23 @@ emissiveIntensity: 0.15
 
 function test(){
 
-	// setTimeout(() => {
+	setTimeout(() => {
 		// TEST();
 		// TEST1();
 		// TEST3();
 
 		// reversegravity()
 
-		setInterval(() => {
+		// setInterval(() => {
 			// TEST();
 			reversegravity()
 
-		}, 1000);
-	// },1000);
+		// }, 3000);
+	},3000);
 }
 test();
 // reverse gravity
-let gforce = 200;
+let gforce = 20;
 function reversegravity(){
 	gforce = gforce*-1
 	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
@@ -2365,13 +2365,13 @@ let X = 0;
 
 
 
-// function testingmore(){
-// 	if(c !== 1){
-// 		scene.simulate( undefined, 1 )
+function testingmore(){
+	// if(c !== 1){
+		scene.simulate( undefined, 1 )
 
-// 	};
+	// };
 
-// }
+}
 const bg = document.querySelector(".bg");
 const info2 = document.querySelector(".inner-info2");
 let bgleft,
@@ -2463,7 +2463,7 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				requestAnimationFrame( animate );
 				// render()
 				TWEEN.update();
-				// testingmore()
+				testingmore()
 			renderer.clear();
 			composer.render();
 			// requestAnimationFrame( animate );
