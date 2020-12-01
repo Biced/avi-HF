@@ -2371,13 +2371,22 @@ let X = 0;
 // 	};
 
 // }
-
-
+const bg = document.querySelector(".bg");
+let bgleft,
+bgtop;
 
 window.addEventListener( 'resize', onWindowResize, false );
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			function onDocumentMouseMove( event ) {
+
+				bgleft = event.clientX - 75;
+				bgtop = event.clientY- 75;
+				console.log(bgtop)
+				bg.style.top = bgtop + "px"
+				bg.style.left = bgleft + "px"
+
+
 				camera.position.y= 1.2;
 				mouseX = ( event.clientX - windowHalfX )*0.002;
 				mouseY = ( event.clientY - windowHalfY ) * 0.005;

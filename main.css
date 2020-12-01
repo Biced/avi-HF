@@ -83,3 +83,19 @@ left: 0;
 	/* height: calc(100vh - 290px); */
 	width: 1170px;
   }
+
+  .bg{
+
+	position: absolute;;
+	width:150px;
+	height:150px;
+	background:url("https://images.unsplash.com/photo-1512505965932-0dbfa7e7b8c8?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ") ;
+
+	 background-size: 960px 1300px;
+	background-attachment:fixed;
+   -webkit-background-clip: content-box;
+	text-align:center;
+	border-radius:180px;
+	transition: top 0.12s ease;
+	z-index: 99999999999999;
+  }
