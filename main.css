@@ -34,9 +34,8 @@ canvas {
 	left:0;
 	width: 100vw;
 	height: 100vh;
-	/* background: transparent; */
-	/* transition: all 0.5s ease-out; */
-	/* z-index: 9999999999; */
+
+
 	clip-path: circle(5%  at 50% 50%);
 	background: rgba(0, 0, 0, 0.8);
 	-webkit-backdrop-filter: blur(10px);
@@ -72,8 +71,6 @@ canvas {
 		}
 		.logo{
 			position: absolute;
-		  /* width :50px; */
-		  /* height:50px; */
 		  top: 75px;
 		  left: 75px;
 		  z-index: 9;
@@ -145,18 +142,3 @@ left: 75px;
 	height: 70%;
   }
 
-  .bg{
-
-	position: absolute;;
-	width:150px;
-	height:150px;
-	background:url("https://images.unsplash.com/photo-1512505965932-0dbfa7e7b8c8?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ") ;
-
-	 background-size: 960px 1300px;
-	background-attachment:fixed;
-   	/* -webkit-background-clip: content-box; */
-	text-align:center;
-	border-radius:180px;
-	/* transition: top 0.12s ease; */
-	z-index: 999999;
-  }

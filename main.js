@@ -1977,7 +1977,7 @@ loader.crossOrigin = "";
 
    /* Init the scene */
    scene = new Physijs.Scene();
-   scene.setGravity( new THREE.Vector3( 0, -20, 0));
+   scene.setGravity( new THREE.Vector3( 0, 0, 0));
 
    scene.background = new THREE.Color( 0xae1901 )
 
@@ -2194,7 +2194,7 @@ emissive:0x991503,
 emissiveIntensity: 0.15
 
         } ),
-        0.5,0.5
+        1,1
     );
 
     /* Create spheres */
@@ -2250,22 +2250,23 @@ emissiveIntensity: 0.15
 
 function test(){
 
-	setTimeout(() => {
+	// setTimeout(() => {
 		// TEST();
 		// TEST1();
 		// TEST3();
 
-		reversegravity()
+		// reversegravity()
 
-		// setInterval(() => {
+		setInterval(() => {
 			// TEST();
-			// reversegravity()
-		// }, 3000);
-	},1000);
+			reversegravity()
+
+		}, 1000);
+	// },1000);
 }
 test();
 // reverse gravity
-let gforce = -20;
+let gforce = 200;
 function reversegravity(){
 	gforce = gforce*-1
 	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
@@ -2374,18 +2375,55 @@ let X = 0;
 const bg = document.querySelector(".bg");
 const info2 = document.querySelector(".inner-info2");
 let bgleft,
-bgtop;
+bgtop,
+bgleftold,
+bgtopold,
+circlesize;
+circlesize = 8;
 console.log(info2.style.clipPath)
 
 window.addEventListener( 'resize', onWindowResize, false );
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-			function onDocumentMouseMove( event ) {
 
-				bgleft = event.clientX;
-				bgtop = event.clientY;
-				console.log(info2.style.clipPath)
-				info2.style.clipPath = `circle(8%  at ${bgleft}px ${bgtop}px)`;
+// function tweentest(){
+// setInterval(() => {
+
+// 	var tween = new TWEEN.Tween(circlesize).to(circlesize = 16 ,500)
+// 	tween.start();
+
+// }, 1000);
+
+// }
+// tweentest()
+
+
+			function onDocumentMouseMove( event ) {
+			// 	if(bgtopold){
+			// 		info2.style.clipPath = `circle(60%  at ${bgleft}px ${bgtop}px)`;
+
+			// 			bgleft = bgleftold = event.clientX;
+			// 			bgtop = bgtopold = event.clientY;
+			// 			info2.style.clipPath = `circle(8%  at ${bgleft}px ${bgtop}px)`;
+
+
+			// 	}
+			// else{
+				// circlesize = circleResize(0, circlesize, 60, 1)
+
+
+					bgleft= event.clientX;
+				bgtop  = event.clientY;
+				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
+
+				// bgleft= event.clientX;
+				// bgtop  = event.clientY;
+				// info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
+			// }
+			// bgleft = bgleftold = event.clientX;
+			// bgtop = bgtopold = event.clientY;
+
+
 				// bg.style.top = bgtop + "px"
 				// bg.style.left = bgleft + "px"
 
@@ -2424,6 +2462,7 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 			// TWEEN.update();
 				requestAnimationFrame( animate );
 				// render()
+				TWEEN.update();
 				// testingmore()
 			renderer.clear();
 			composer.render();
