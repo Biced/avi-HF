@@ -2123,17 +2123,17 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 
 } );
 
-function cylinderHelper(x,y,z){
-	var ground2 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 2, y+100,80 ), ground_material2, 0 );
-	ground2.position.set( x-25, 100, z );
+function cylinderHelper(x,y,z,r){
+	var ground2 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( r/2, y+4,0.8 ), ground_material2, 0 );
+	ground2.position.set( x-(r) -0.1, 0, z );
 
 	ground2.receiveShadow = false;
 	ground2.castShadow = false;
 
 
 	scene.add( ground2 );
-	var ground1 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 2, y+100,80 ), ground_material2, 0 );
-	ground1.position.set( x+25, 100, z );
+	var ground1 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( r/2, y+4,0.8 ), ground_material2, 0 );
+	ground1.position.set( x+(r)+0.1, 0, z );
 
 	ground1.receiveShadow = false;
 	ground1.castShadow = false;
@@ -2142,16 +2142,16 @@ function cylinderHelper(x,y,z){
 	scene.add( ground1 );
 
 
-	var ground3 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 2, y+100,80 ), ground_material2, 0 );
-	ground3.position.set( x, 100, z+40 );
+	var ground3 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( r/2, y+4,0.8 ), ground_material2, 0 );
+	ground3.position.set( x, 0, z+(r)+0.1 );
 	ground3.rotation.y = Math.PI/2;
 	ground3.receiveShadow = false;
 	ground3.castShadow = false;
 
 
 	scene.add( ground3 );
-	var ground4 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 2, y+100,80 ), ground_material2, 0 );
-	ground4.position.set( x, 100, z-40 );
+	var ground4 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( r/2, y+4,0.8 ), ground_material2, 0 );
+	ground4.position.set( x, 0, z-(r)-0.1 );
 	ground4.rotation.y = Math.PI/2;
 	ground4.receiveShadow = false;
 	ground4.castShadow = false;
@@ -2160,8 +2160,8 @@ function cylinderHelper(x,y,z){
 	scene.add( ground4 );
 
 
-	var ground5 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 80,1,80), ground_material2, 0 );
-	ground5.position.set( x, y+18, z );
+	var ground5 = new Physijs.BoxMesh( new THREE.BoxBufferGeometry( 0.8,0.01,0.8), ground_material2, 0 );
+	ground5.position.set( x, y+r+0.05, z );
 
 	ground5.receiveShadow = false;
 	ground5.castShadow = false;
@@ -2177,7 +2177,7 @@ function cylinderHelper(x,y,z){
 objects.forEach(object => {
     // console.log(object.translation)
 	scene.add(createDrop(object));
-	// cylinderHelper(object.translation.x,object.translation.y, object.translation.z);
+	cylinderHelper(object.translation.x,object.translation.y, object.translation.z , object.translation.r);
 
 });
 
@@ -2257,11 +2257,11 @@ function test(){
 
 		// reversegravity()
 
-		// setInterval(() => {
+		setInterval(() => {
 			// TEST();
 			reversegravity()
 
-		// }, 3000);
+		}, 3000);
 	},3000);
 }
 test();
