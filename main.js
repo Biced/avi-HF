@@ -2380,8 +2380,8 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			function onDocumentMouseMove( event ) {
 
-				bgleft = event.clientX - 75;
-				bgtop = event.clientY- 75;
+				bgleft = event.clientX+10;
+				bgtop = event.clientY-75;
 				console.log(bgtop)
 				bg.style.top = bgtop + "px"
 				bg.style.left = bgleft + "px"
