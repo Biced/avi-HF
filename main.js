@@ -1,5 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
 import {FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
+// import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 
 import { EffectComposer } from './jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from './jsm/postprocessing/RenderPass.js';
@@ -1940,7 +1941,7 @@ let container;
 					var c;
 					var objectstest = [];
 					let group,phone,
-					fxaaPass,
+					fxaaPass,shader,light7,light_4,loader, gwaaad
 					// windowHalfX = window.innerWidth / 2
 // ,windowHalfY = window.innerHeight / 2
 // ,mouseX = windowHalfX
@@ -1984,7 +1985,7 @@ loader.crossOrigin = "";
 // lights
 scene.add( new THREE.AmbientLight( 0xF2f2f2, 1.2 ) );
 
-const light7 = new THREE.DirectionalLight( 0xffffff, 0.8 );
+light7 = new THREE.DirectionalLight( 0xffffff, 0.8 );
 light7.position.set( 1.2, 4, 4 );
 light7.castShadow = true;
 light7.shadow.mapSize.width = 1920;
@@ -1993,7 +1994,7 @@ light7.shadow.camera.far = 16;
 scene.add( light7 );
 
 // light_4
-let  light_4 = new THREE.DirectionalLight(0xFfffff, 1.5);
+light_4 = new THREE.DirectionalLight(0xFfffff, 1.5);
 
 light_4.position.set(-1.6, 4, 4);
 light_4.castShadow = true;
@@ -2005,8 +2006,8 @@ light_4.shadow.camera.far = 16;
 scene.add( light_4 );
 
 
-
-let shader = THREE.ShaderChunk.shadowmap_pars_fragment;
+gwaaad = light7.intensity
+shader = THREE.ShaderChunk.shadowmap_pars_fragment;
 
 shader = shader.replace(
 '#ifdef USE_SHADOWMAP',
@@ -2248,9 +2249,14 @@ emissiveIntensity: 0.15
 
 			// }
 
+
+
+
+			let btn_wraper = document.querySelector(".btn-wraper")
+			btn_wraper.addEventListener("click",()=>colorchange());
 function test(){
 
-	setTimeout(() => {
+	// setTimeout(() => {
 		// TEST();
 		// TEST1();
 		// TEST3();
@@ -2258,11 +2264,19 @@ function test(){
 		// reversegravity()
 
 		setInterval(() => {
-			// TEST();
 			reversegravity()
+			TEST();
 
-		}, 4000);
-	},5000);
+
+			setTimeout(() => {
+				TEST8();
+				reversegravity()
+			}, 4000);
+	},8000);
+
+
+
+	// }, 4000);
 }
 test();
 // reverse gravity
@@ -2274,94 +2288,84 @@ function reversegravity(){
 }
 // comment
 
-//  function TEST(){
 
-	// var color = objectstest[0].material.color;
-	// var tween = new TWEEN.Tween(color).to({r: 1, g: 9, b: 1} ,3000)
-	// tween.easing(TWEEN.Easing.Back.EaseInOut)
+// color:0xe42304,
+// roughness:0.9,
+// metalness:0.05,
+// emissive:0x991503,
+// emissiveIntensity: 0.15
 
-
-
-// 	for (let index = 0; index < objectstest.length; index++) {
-// 		colortween(index)
-
-
-// }
-
-//  }
-
-//  const grey = new THREE.Color(0xD90000);
-//  const green = {r: 1, g: 9, b: 1};
-//  let newcolor = green;
-//  function colortween(index){
-// 	 let tween = new TWEEN.Tween(objectstest[index].material.color).to(newcolor ,2000)
-// 	tween.easing(TWEEN.Easing.Back.EaseInOut)
-// 	tween.onComplete(function() {
-// 		if(newcolor == green ){
-// 			newcolor = grey;
-// 		}else{
-// 			newcolor = green
-// 		}
-// 	  });
-// 		tween.start();
-//  }
-let X = 0;
-
-// function TEST3(){
-	// c = 1;
-	// scene.setGravity( new THREE.Vector3( 0, 0, 0));
-	// for (let index = 0; index < objectstest.length; index++) {
-	// 	objectstest[index].__dirtyPosition = true;
-	// 	objectstest[index].angularVelocity = new THREE.Vector3( 0, 0, 0);
-	// 	objectstest[index].linearVelocity = new THREE.Vector3( 0, 0, 0);
-		// objectstest[index]._physijs.position.y = 200;
-		// objectstest[index]._physijs.position.y = 200;
-	// 	let tween = new TWEEN.Tween(objectstest[index].position).to(objects[index].translation ,3000)
-	// 	tween.easing(TWEEN.Easing.Back.EaseOut)
+// TWEENING
+let w = 0;
+// dim lights and set them back
+function dimlights(mesh, color){
+	// let tween = new TWEEN.Tween(light.intensity).to(0 ,1000)
+	let tween = new TWEEN.Tween(mesh).to(color ,3500)
+	tween.start();
+}
 
 
+// let tweenlights = new TWEEN.Tween(light7.in).to(newcolor ,2000)
 
-	// 	tween.onComplete(function() {
+ function TEST8(){
+	let color =  new THREE.Color(0xae1901);
+	dimlights(scene.background, color);
+	color = new THREE.Color(0xfe2a05);
+	dimlights(scene.children[3].material.color, color);
+	color = new THREE.Color(0xffffff);
+	dimlights(scene.children[70].children[1].material[0].color, color);
+	dimlights(scene.children[70].children[1].material[1].color, color);
+	// dimlights(light_4, 0.1);
+	// dimlights(scene.children[0], 0.1);
+	color = new THREE.Color(0xe42304)
+	let color2 = new THREE.Color(0x991503)
+	for (let index = 0; index < objectstest.length; index++) {
+		colortween(index, color, color2)
 
-	// 		objectstest[index].__dirtyPosition = false;
-	// 	  });
+}
+ }
+ function TEST(){
+	let color = {r: 0, g: 0, b: 0};
+	dimlights(scene.background, color);
 
-	// 		tween.start();
-	// 		X++
-	// }
-	// console.log(objectstest[0])
-	// setTimeout(() => {/
-		// console.log()
-		// scene.onSimulationResume();
+	dimlights(scene.children[3].material.color, color);
+	dimlights(scene.children[70].children[1].material[0].color, color);
+	dimlights(scene.children[70].children[1].material[1].color, color);
+	// dimlights(light_4, 0.1);
+	// dimlights(scene.children[0], 0.1);
+	for (let index = 0; index < objectstest.length; index++) {
+		colortween(index, color)
 
-		// scene.simulate( ).clear;
-		// scene.setGravity( new THREE.Vector3( 0, -100, 0));
-		// c = 0;
+}
+ }
 
-	// },5000);
+ const red = new THREE.Color(0xe42304);
+ const redemissive = new THREE.Color(0x991503);
+ const green = {r: 0, g: 0, b: 0};
+ let newcolor = green;
+
+ function colortween(index, color, color2){
+
+			if(!color2){
+				color2 = color;
+			}
+		 let tween = new TWEEN.Tween(objectstest[index].material.emissive).to(color2 ,3500)
+		 dimlights(objectstest[index].material.color, color)
+		// tween.easing(TWEEN.Easing.Quadratic.EaseOut)
+
+	// tween.onComplete(function() {
+	// 	if(newcolor == green ){
+	// 		newcolor = red;
+	// 		newcoloremissive = redemissive;
+	// 	}else{
+	// 		newcolor = green
+	// 	}
+	//   });
+		tween.start();
+ }
 
 
-// }
 
-//  function TEST1(){
-
-// c = 1;
-// objectstest[2].__dirtyPosition = true;
-// console.log(objectstest[2])
-// var tween = new TWEEN.Tween(objectstest[2].position).to({x:100,y:120,z:0} ,3000)
-// tween.easing(TWEEN.Easing.Back.EaseInOut)
-
-
-
-// 	tween.onComplete(function() {
-
-// 		objectstest[2].__dirtyPosition = false;
-
-// 	  });
-
-// 		tween.start();
-
-// }
 
 
 
