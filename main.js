@@ -2372,19 +2372,22 @@ let X = 0;
 
 // }
 const bg = document.querySelector(".bg");
+const info2 = document.querySelector(".inner-info2");
 let bgleft,
 bgtop;
+console.log(info2.style.clipPath)
 
 window.addEventListener( 'resize', onWindowResize, false );
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			function onDocumentMouseMove( event ) {
 
-				bgleft = event.clientX+10;
-				bgtop = event.clientY-75;
-				console.log(bgtop)
-				bg.style.top = bgtop + "px"
-				bg.style.left = bgleft + "px"
+				bgleft = event.clientX;
+				bgtop = event.clientY;
+				console.log(info2.style.clipPath)
+				info2.style.clipPath = `circle(8%  at ${bgleft}px ${bgtop}px)`;
+				// bg.style.top = bgtop + "px"
+				// bg.style.left = bgleft + "px"
 
 
 				camera.position.y= 1.2;
