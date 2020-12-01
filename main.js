@@ -2257,12 +2257,12 @@ function test(){
 
 		// reversegravity()
 
-		setInterval(() => {
+		// setInterval(() => {
 			// TEST();
 			reversegravity()
 
-		}, 3000);
-	},3000);
+		// }, 4000);
+	},5000);
 }
 test();
 // reverse gravity
