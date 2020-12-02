@@ -15,7 +15,14 @@ canvas {
 }
 
 
-
+.soon{
+	font-size: 150px;
+	position: absolute;
+	bottom: 300px;
+	right: 537px;
+	line-height: 80%;
+	margin: 0;
+}
 
 .inner-info {
 	position: absolute;
