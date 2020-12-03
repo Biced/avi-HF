@@ -30,18 +30,8 @@ canvas {
 	margin: 0;
 }
 
-.inner-info {
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	height: 100vh;
-	/* background: transparent; */
-	transition: all 0.5s ease-out;
-	clip-path: circle(0 at -5% 105%);
 
-  }
-.inner-info2 {
+  .hebrew ,.inner-info2 {
 	position: absolute;
 	top: 0;
 	left:0;
@@ -53,10 +43,34 @@ canvas {
 	background: rgba(0, 0, 0, 0.8);
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
-
   }
 
-
+  .hebrew {
+	  z-index: 999999;
+	clip-path: circle(0 at 50% 94%);
+  }
+  .hebrew2 {
+	  display: none;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	  z-index: 99999;
+	clip-path: circle(40% at 50% 94%);
+	background: rgba(0, 0, 0, 0.8);
+  }
+  .hebrew3 {
+	  display: none;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	  z-index: 99999;
+	clip-path: circle(40% at 50% 6%);
+	background: rgba(0, 0, 0, 0.8);
+  }
 
 
   .inner-info-hover {
@@ -174,4 +188,13 @@ left: 3.9VW;
 	height: 1px;
 	background:white;
 	-webkit-transition: 0.5s ease;
+  }
+
+  .opacity{
+	  opacity: 0;
+  }
+
+  .soon,.fas,.btn-wraper,.link,.lang,.logo{
+	-webkit-transition: opacity 0.7s ease;
+	transition: opacity 0.7s ease;
   }

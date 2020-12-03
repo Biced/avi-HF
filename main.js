@@ -1763,7 +1763,7 @@ emissiveIntensity: 0.15
 
 
 
-			let middle = document.querySelector(".middle")
+				let middle = document.querySelector(".middle")
 			middle.addEventListener("click",()=>{
 				reversegravity();
 				// TEST();
@@ -1878,7 +1878,84 @@ let color;
  }
 
 
-const info2 = document.querySelector(".inner-info2");
+ const body = document.querySelector("body")
+const btnwrapper = document.querySelector(".btn-wraper");
+ const info2 = document.querySelector(".inner-info2");
+const lang = document.querySelector(".lang");
+const hebrew = document.querySelector(".hebrew");
+const soon = document.querySelector(".soon");
+const logo = document.querySelector(".logo");
+ let fas = document.querySelector(".fas")
+ let link = document.querySelector(".link")
+//  let info2 = document.querySelector(".info2")
+//  let inner_info = document.querySelector(".inner-info2")
+ fas.addEventListener("click", ()=>
+ {
+	 if(fas.firstChild.innerHTML !== "Close"){
+
+		 fas.firstChild.innerHTML = "Close";
+		 setTimeout(() => {
+			info2.classList.add("inner-info-hover")
+		 }, );
+
+		 // fas.lastChild.style="width :0;"
+		 // console.log(fas.lastChild)
+		 // console.log(fas.lastElementChild)
+	 }else{
+		info2.classList.remove("inner-info-hover")
+		 fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+		 // fas.lastChild.style="width :100%;"
+	 }
+
+})
+
+
+lang.addEventListener("click", () => {
+	circlesize = 0;
+	info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+	hebrew.style.clipPath = `circle(75%)`
+	toggleAll();
+
+	setTimeout(() => {
+		console.log(lang.firstElementChild.innerHTML)
+		if(lang.firstElementChild.innerHTML == "עברית"){
+			lang.firstElementChild.innerHTML = "English"
+			soon.innerHTML = "עולים</br><span style=\"font-weight: 200;\"> בקרוב</span>"
+			soon.dir = "rtl";
+			fas.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 200;\"> שלנו</span>"
+			fas.style = `right:3.9vw; left:auto;`
+			link.style.left = "3.9vw"
+			logo.style = `right:3.9vw; left:auto;`
+			btnwrapper.style.left = "3.9vw"
+		}
+
+
+		toggleAll();
+		circlesize = 8;
+		hebrew.style.clipPath = `circle(0 at 50% 94%)`
+
+	}, 700);
+	setTimeout(() => {
+		info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+	}, 850);
+
+})
+
+function toggleAll(){
+	opacityToggle(soon)
+	opacityToggle(lang)
+	opacityToggle(fas)
+	opacityToggle(logo)
+	opacityToggle(btnwrapper)
+	opacityToggle(link)
+}
+function opacityToggle(element){
+	element.classList.toggle("opacity")
+}
+ function langChange(){
+
+	hebrew.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
+}
 let bgleft,
 bgtop,
 circlesize;

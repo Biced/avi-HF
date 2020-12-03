@@ -7,11 +7,28 @@
 </head>
 <body>
   <style>
+.hebrew{
+	text-align: center;
 
+}
+.hebrew h1{
+	/* line-height: 100vh; */
+}
     </style>
 
     <div class="overlayui">
-		<h2 class="soon">Coming <br> <span style="font-weight: 400;">Soon</span></h1>
+		<div class="hebrew">
+		<h1>TESTING</h1>
+		</div>
+		<!-- <div class="hebrew2">
+		<h1>TESTING</h1>
+		<h2 class="soon" >gOING <br> <span style="font-weight: 400;">BACK</span></h2>
+		</div>
+		<div class="hebrew3">
+		<h1>TESTING</h1>
+		<h2 class="soon">Coming <br> <span style="font-weight: 400;">Soon</span></h2>
+		</div> -->
+		<h2 class="soon">Coming <br> <span style="font-weight: 400;">Soon</span></h2>
 
 		<!-- <div class="overlaywrapper"> -->
 			<img src="./logos/nav.svg" alt="" class="logo">
@@ -233,28 +250,7 @@
 
 
 	<script>
-		let fas = document.querySelector(".fas")
-		let info2 = document.querySelector(".info2")
-		let inner_info = document.querySelector(".inner-info2")
-		fas.addEventListener("click", ()=>
-		{
-			if(fas.firstChild.innerHTML !== "Close"){
 
-				fas.firstChild.innerHTML = "Close";
-				setTimeout(() => {
-					inner_info.classList.add("inner-info-hover")
-				}, );
-
-				// fas.lastChild.style="width :0;"
-				// console.log(fas.lastChild)
-				// console.log(fas.lastElementChild)
-			}else{
-				inner_info.classList.remove("inner-info-hover")
-				fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
-				// fas.lastChild.style="width :100%;"
-			}
-
-	})
 	</script>
 </body>
 </html>
