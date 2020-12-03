@@ -1924,9 +1924,9 @@ lang.addEventListener("click", () => {
 			soon.dir = "rtl";
 			fas.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 200;\"> שלנו</span>"
 			fas.style = `right:3.9vw; left:auto;`
-			link.style.left = "3.9vw"
+			link.style = `left:3.9vw; width:max-content`
 			logo.style = `right:3.9vw; left:auto;`
-			btnwrapper.style.left = "3.9vw"
+			btnwrapper.style = `left:3.9vw; width:max-content`
 		}
 
 
