@@ -1890,7 +1890,7 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			function onDocumentMouseMove( event ) {
 				if(fas.firstChild.innerHTML !== "Close"){
-					bgleft= event.clientX;
+				bgleft= event.clientX;
 				bgtop  = event.clientY;
 				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
 				}
