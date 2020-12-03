@@ -1763,9 +1763,22 @@ emissiveIntensity: 0.15
 
 
 
-			// let btn_wraper = document.querySelector(".btn-wraper")
-			// btn_wraper.addEventListener("click",()=>colorchange());
-function test(){
+			let middle = document.querySelector(".middle")
+			middle.addEventListener("click",()=>{
+				reversegravity();
+				// TEST();
+
+				console.log("clicked")
+			});
+			let left = document.querySelector(".left")
+			left.addEventListener("click",()=>{
+
+				reversegravity();
+				// ttout();
+				scene.simulate();
+				console.log("clicked")
+			});
+// function test(){
 
 	// setTimeout(() => {
 		// TEST();
@@ -1774,36 +1787,36 @@ function test(){
 
 		// reversegravity()
 
-		setInterval(() => {
-			console.log(objectstest)
+		// setInterval(() => {
+			// console.log(objectstest)
 			// objectstest[0].activate();
-			reversegravity()
+			// reversegravity()
 			// TEST();
-			ttout()
+			// ttout()
 
 
-	},8000);
+	// },8000);
 
 
 
 	// }, 4000);
-}
-test();
+// }
+// test();
 
 function ttout(){
-	setTimeout(() => {
+	// setTimeout(() => {
 		TEST8();
 		reversegravity()
 
 
-	}, 4000);
+	// }, 4000);
 }
 // reverse gravity
 let gforce = 20;
 function reversegravity(){
 	gforce = gforce*-1
 	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
-	scene.simulate();
+	// scene.simulate();
 }
 // comment
 
@@ -1876,9 +1889,12 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 
 			function onDocumentMouseMove( event ) {
-				bgleft= event.clientX;
+				if(fas.firstChild.innerHTML !== "Close"){
+					bgleft= event.clientX;
 				bgtop  = event.clientY;
 				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
+				}
+
 				camera.position.y= 1.2;
 				// mouseX = ( event.clientX - windowHalfX )*0.002;
 				// mouseY = ( event.clientY - windowHalfY ) * 0.005;
@@ -1893,11 +1909,11 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 			}
 		function onWindowResize() {
 
-			camera.aspect = ( container.offsetWidth ) / container.offsetHeight;
+			camera.aspect =  container.offsetWidth  / container.offsetHeight;
 			camera.updateProjectionMatrix();
 
 			renderer.setSize( container.offsetWidth, container.offsetHeight );
-			composer.setSize( container.offsetWidth, container.offsetHeight );
+			// composer.setSize( container.offsetWidth, container.offsetHeight );
 			const pixelRatio = renderer.getPixelRatio();
 
 			fxaaPass.material.uniforms[ 'resolution' ].value.x = 1 / ( container.offsetWidth * pixelRatio );

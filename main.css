@@ -41,7 +41,7 @@ canvas {
 	left:0;
 	width: 100vw;
 	height: 100vh;
-
+	transition: all 0.5s ease-out;
 
 	clip-path: circle(8%  at 0 0);
 	background: rgba(0, 0, 0, 0.8);
@@ -54,11 +54,7 @@ canvas {
 
 
   .inner-info-hover {
-	clip-path: circle(75%);
-	background: rgba(0, 0, 0, 0.8);
-
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
+	clip-path: circle(75%) !IMPORTANT;
   }
 
   .overlayui{
@@ -74,6 +70,7 @@ canvas {
 		position: absolute;
 		bottom: 75px;
 		right:75px;
+		z-index: 99999;
 
 		}
 		.logo{
@@ -127,11 +124,13 @@ left: 75px;
 	z-index: 9;
 	cursor: pointer;
 	text-decoration: none;
+
   }
 
-.text-decoration, .fas:hover{
-	text-decoration: underline;
+.fas:hover .underbar{
+	width: 100%;
 }
+
 
   .content-wrapper > h2{
 	  font-size: 50px;
@@ -149,3 +148,9 @@ left: 75px;
 	height: 70%;
   }
 
+  .underbar{
+	width: 0;
+	height: 1px;
+	background:white;
+	-webkit-transition: 0.5s ease;
+  }
