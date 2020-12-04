@@ -1878,7 +1878,7 @@ let color;
  }
 
 
- const body = document.querySelector("body")
+ const contentwrapper = document.querySelector(".content-wrapper")
 const btnwrapper = document.querySelector(".btn-wraper");
  const info2 = document.querySelector(".inner-info2");
 const lang = document.querySelector(".lang");
@@ -1891,21 +1891,31 @@ const logo = document.querySelector(".logo");
 //  let inner_info = document.querySelector(".inner-info2")
  fas.addEventListener("click", ()=>
  {
-	 if(fas.firstChild.innerHTML !== "Close"){
+	if(lang.firstElementChild.innerHTML == "עברית"){
+		if(fas.firstChild.innerHTML !== "Close"){
 
-		 fas.firstChild.innerHTML = "Close";
-		 setTimeout(() => {
-			info2.classList.add("inner-info-hover")
-		 }, );
+			fas.firstChild.innerHTML = "Close";
+			setTimeout(() => {
+			   info2.classList.add("inner-info-hover", "ease")
+			}, );
+		}else{
+		   info2.classList.remove("inner-info-hover")
+			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+		}
+	}else{
+		if(fas.firstChild.innerHTML !== "סגור"){
 
-		 // fas.lastChild.style="width :0;"
-		 // console.log(fas.lastChild)
-		 // console.log(fas.lastElementChild)
-	 }else{
-		info2.classList.remove("inner-info-hover")
-		 fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
-		 // fas.lastChild.style="width :100%;"
-	 }
+			fas.firstChild.innerHTML = "סגור";
+			setTimeout(() => {
+			   info2.classList.add("inner-info-hover" , "ease")
+			}, );
+		}else{
+		   info2.classList.remove("inner-info-hover")
+		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
+		}
+
+	}
+
 
 })
 
@@ -1915,29 +1925,64 @@ lang.addEventListener("click", () => {
 	info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
 	hebrew.style.clipPath = `circle(75%)`
 	toggleAll();
+	if(lang.firstElementChild.innerHTML == "עברית"){
+		setTimeout(() => {
+			if(lang.firstElementChild.innerHTML == "עברית"){
+				lang.firstElementChild.innerHTML = "English"
+				soon.innerHTML = "עולים</br><span style=\"font-weight: 400;\"> בקרוב</span>"
+				soon.dir = "rtl";
+				if(!info2.classList.contains("inner-info-hover")){
+					fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
+				}else{
+					fas.firstElementChild.innerHTML = "סגור"
+				}
+				fas.style = `right:3.9vw; left:auto;`
+				link.style = `left:3.9vw; width:max-content`
+				logo.style = `right:3.9vw; left:auto;`
+				btnwrapper.style = `left:3.9vw; width:max-content`
+				contentwrapper.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 400;\"> שלנו</span>"
+				contentwrapper.firstElementChild.dir = "rtl";
+			}
 
-	setTimeout(() => {
-		console.log(lang.firstElementChild.innerHTML)
-		if(lang.firstElementChild.innerHTML == "עברית"){
-			lang.firstElementChild.innerHTML = "English"
-			soon.innerHTML = "עולים</br><span style=\"font-weight: 200;\"> בקרוב</span>"
-			soon.dir = "rtl";
-			fas.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 200;\"> שלנו</span>"
-			fas.style = `right:3.9vw; left:auto;`
-			link.style = `left:3.9vw; width:max-content`
-			logo.style = `right:3.9vw; left:auto;`
-			btnwrapper.style = `left:3.9vw; width:max-content`
-		}
+
+			toggleAll();
+			circlesize = 8;
+			hebrew.style.clipPath = `circle(0 at 50% 94%)`
+
+		}, 700);
+		setTimeout(() => {
+			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+		}, 850);
+	}
+	else{
+		setTimeout(() => {
+				lang.firstElementChild.innerHTML = "עברית"
+				soon.innerHTML = "Coming</br><span style=\"font-weight: 400;\"> Soon</span>"
+				soon.dir = "ltr";
+				if(!info2.classList.contains("inner-info-hover")){
+					fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+				}else{
+					fas.firstElementChild.innerHTML = "Close"
+				}
+
+				fas.style = `left:3.9vw; right:auto;`
+				link.style = `right:3.9vw; width:max-content`
+				logo.style = `left:3.9vw; right:auto;`
+				btnwrapper.style = `right:3.9vw; width:max-content`
+				contentwrapper.firstElementChild.innerHTML = "Our<span style=\"font-weight: 400;\"> Clients</span>"
+				contentwrapper.firstElementChild.dir = "ltr";
 
 
-		toggleAll();
-		circlesize = 8;
-		hebrew.style.clipPath = `circle(0 at 50% 94%)`
+			toggleAll();
+			circlesize = 8;
+			hebrew.style.clipPath = `circle(0 at 50% 94%)`
 
-	}, 700);
-	setTimeout(() => {
-		info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-	}, 850);
+		}, 700);
+		setTimeout(() => {
+			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+		}, 850);
+	}
+
 
 })
 
@@ -1948,14 +1993,12 @@ function toggleAll(){
 	opacityToggle(logo)
 	opacityToggle(btnwrapper)
 	opacityToggle(link)
+	opacityToggle(contentwrapper.firstElementChild)
 }
 function opacityToggle(element){
 	element.classList.toggle("opacity")
 }
- function langChange(){
 
-	hebrew.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
-}
 let bgleft,
 bgtop,
 circlesize;
@@ -1966,12 +2009,18 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 
 			function onDocumentMouseMove( event ) {
-				if(fas.firstChild.innerHTML !== "Close"){
+
+				// if(!info2.classList.contains("inner-info-hover")){
+					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגור"){
+						info2.classList.remove("ease")
+					}
 				bgleft= event.clientX;
 				bgtop  = event.clientY;
 				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
-				}
 
+
+				// }
+//
 				camera.position.y= 1.2;
 				// mouseX = ( event.clientX - windowHalfX )*0.002;
 				// mouseY = ( event.clientY - windowHalfY ) * 0.005;

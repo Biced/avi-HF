@@ -37,7 +37,7 @@ canvas {
 	left:0;
 	width: 100vw;
 	height: 100vh;
-	transition: all 0.5s ease-out;
+
 
 	clip-path: circle(8%  at 0 0);
 	background: rgba(0, 0, 0, 0.8);
@@ -46,6 +46,7 @@ canvas {
   }
 
   .hebrew {
+	transition: all 0.5s ease-out;
 	  z-index: 999999;
 	clip-path: circle(0 at 50% 94%);
   }
@@ -75,6 +76,10 @@ canvas {
 
   .inner-info-hover {
 	clip-path: circle(75%) !IMPORTANT;
+  }
+  .ease{
+	transition: all 0.5s ease-out;
+
   }
 
   .overlayui{
@@ -194,7 +199,7 @@ left: 3.9VW;
 	  opacity: 0;
   }
 
-  .soon,.fas,.btn-wraper,.link,.lang,.logo{
+  .soon,.fas,.btn-wraper,.link,.lang,.logo, .content-wrapper h2{
 	-webkit-transition: opacity 0.7s ease;
 	transition: opacity 0.7s ease;
   }
