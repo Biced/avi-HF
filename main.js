@@ -1766,17 +1766,12 @@ emissiveIntensity: 0.15
 				let middle = document.querySelector(".middle")
 			middle.addEventListener("click",()=>{
 				reversegravity();
-				// TEST();
-
-				console.log("clicked")
+				TEST();
 			});
 			let left = document.querySelector(".left")
 			left.addEventListener("click",()=>{
-
 				reversegravity();
-				// ttout();
-				scene.simulate();
-				console.log("clicked")
+				TEST8();
 			});
 // function test(){
 
@@ -1803,17 +1798,18 @@ emissiveIntensity: 0.15
 // }
 // test();
 
-function ttout(){
-	// setTimeout(() => {
-		TEST8();
-		reversegravity()
 
 
-	// }, 4000);
-}
+
+
+const impulse = new THREE.Vector3(0,0,0);
+// element.apply.CentralImpulse(impulse);
 // reverse gravity
 let gforce = 20;
 function reversegravity(){
+	objectstest.forEach(element => {
+		element.applyCentralImpulse(impulse);
+	});
 	gforce = gforce*-1
 	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
 	// scene.simulate();
@@ -1837,14 +1833,14 @@ function dimlights(mesh, color){
 
 
 let color;
- async function TEST8(){
+ function TEST8(){
 	color =  new THREE.Color(0xae1901);
-	await dimlights(scene.background, color);
+	dimlights(scene.background, color);
 	color = new THREE.Color(0xfe2a05);
-	await dimlights(scene.children[3].material.color, color);
+	dimlights(scene.children[3].material.color, color);
 	color = new THREE.Color(0xffffff);
-	// await dimlights(scene.children[70].children[1].material[0].color, color);
-	// await dimlights(scene.children[70].children[1].material[1].color, color);
+	dimlights(scene.children[70].children[1].material[0].color, color);
+	dimlights(scene.children[70].children[1].material[1].color, color);
 	color = new THREE.Color(0xe42304)
 	let color2 = new THREE.Color(0x991503)
 
@@ -1853,12 +1849,12 @@ let color;
 
 }
  }
- async function TEST(){
+ function TEST(){
 	color = {r: 0, g: 0, b: 0};
-	await dimlights(scene.background, color);
-	await dimlights(scene.children[3].material.color, color);
-	// await dimlights(scene.children[70].children[1].material[0].color, color);
-	// await dimlights(scene.children[70].children[1].material[1].color, color);
+	dimlights(scene.background, color);
+	dimlights(scene.children[3].material.color, color);
+	dimlights(scene.children[70].children[1].material[0].color, color);
+	dimlights(scene.children[70].children[1].material[1].color, color);
 	for (let index = 0; index < objectstest.length; index++) {
 		colortween(index, color)
 
@@ -1878,13 +1874,16 @@ let color;
  }
 
 
+
+
+
  const contentwrapper = document.querySelector(".content-wrapper")
-const btnwrapper = document.querySelector(".btn-wraper");
+ const btnwrapper = document.querySelector(".btn-wraper");
  const info2 = document.querySelector(".inner-info2");
-const lang = document.querySelector(".lang");
-const hebrew = document.querySelector(".hebrew");
-const soon = document.querySelector(".soon");
-const logo = document.querySelector(".logo");
+ const lang = document.querySelector(".lang");
+ const hebrew = document.querySelector(".hebrew");
+ const soon = document.querySelector(".soon");
+ const logo = document.querySelector(".logo");
  let fas = document.querySelector(".fas")
  let link = document.querySelector(".link")
 //  let info2 = document.querySelector(".info2")
@@ -2010,7 +2009,6 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			function onDocumentMouseMove( event ) {
 
-				// if(!info2.classList.contains("inner-info-hover")){
 					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגור"){
 						info2.classList.remove("ease")
 					}
@@ -2019,8 +2017,7 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
 
 
-				// }
-//
+
 				camera.position.y= 1.2;
 				// mouseX = ( event.clientX - windowHalfX )*0.002;
 				// mouseY = ( event.clientY - windowHalfY ) * 0.005;
