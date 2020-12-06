@@ -1615,6 +1615,9 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 
 	object.scale.set(-0.015,0.015,0.015)
 	object.position.set(-2.6,2.5,-0.1)
+	if(window.innerWidth < 1025){
+		object.position.x = 0;
+	}
 	scene.add( object );
 	object.rotation.z = Math.PI;
 	let video = document.getElementById( 'video' );
@@ -2004,7 +2007,6 @@ circlesize = 8;
 window.addEventListener( 'resize', onWindowResize, false );
 document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
-
 			function onDocumentMouseMove( event ) {
 
 					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגור"){
@@ -2030,9 +2032,15 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 			}
 		function onWindowResize() {
 
+
 			camera.aspect =  container.offsetWidth  / container.offsetHeight;
 
-
+			if(window.innerWidth < 1025){
+				scene.children[70].position.x = 0;
+				console.log(scene.children[70])
+			}else{
+				scene.children[70].position.x = -2.6;
+			}
 			// renderer.setSize( container.offsetWidth, container.offsetHeight );
 			renderer.setSize( container.offsetWidth, container.offsetHeight );
 			composer.setSize( container.offsetWidth, container.offsetHeight );
