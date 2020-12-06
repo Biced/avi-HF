@@ -235,7 +235,8 @@ margin: auto;
 }
   @media only screen and (max-width: 600px) {
 	.soon{
-		font-size: 18vw;
+		font-size: 16vw;
+		top: 18vh;
 	}
 	.content-wrapper h2{
 		font-size: 36px;
