@@ -2023,8 +2023,8 @@ function handleOrientation(event) {
 	x += 90;
 	y += 90;
 	camera.position.y= 1.2;
-	camera.position.x  += (y/180 - camera.position.x);
-	camera.position.y += (x/180 - camera.position.y);
+	camera.position.x  += (y - camera.position.x);
+	camera.position.y += (x - camera.position.y);
 	camera.lookAt(center);
   }
 
