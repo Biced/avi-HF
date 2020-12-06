@@ -55,28 +55,7 @@ canvas {
 	  z-index: 99;
 	clip-path: circle(0 at 50% 94%);
   }
-  .hebrew2 {
-	  display: none;
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	height: 100vh;
-	  z-index: 99999;
-	clip-path: circle(40% at 50% 94%);
-	background: rgba(0, 0, 0, 0.8);
-  }
-  .hebrew3 {
-	  display: none;
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	height: 100vh;
-	  z-index: 99999;
-	clip-path: circle(40% at 50% 6%);
-	background: rgba(0, 0, 0, 0.8);
-  }
+
 
 
   .inner-info-hover {
@@ -172,7 +151,7 @@ margin: auto;
 	font-size: 20px;
 	 position: absolute;
 	bottom: 3.9VW;
-left: 3.9VW;
+	left: 3.9VW;
 	z-index: 9;
 	cursor: pointer;
 	-webkit-transition: all 0.7s ease;
@@ -217,6 +196,9 @@ left: 3.9VW;
   }
 
   @media only screen and (max-width: 1025px) {
+	.hebrew ,.inner-info2{
+		clip-path: circle(0, 50% 100%);
+	}
 	.soon{
 		top: 20vh;
 		left: 50%;
@@ -226,11 +208,7 @@ left: 3.9VW;
 	}
 	.row-1{
 		padding-top: 7.4VH;
-		/* display: grid;
-		text-align: center; */
-	/* grid-gap:7.4VH; */
-	/* height: auto; */
-	/* grid-template-rows:repeat(2, 1fr); */
+
 	}
 	.row-1 ,.grid-1{
 		grid-template-columns: repeat(2, 1fr);
@@ -240,7 +218,7 @@ left: 3.9VW;
 		margin: 0;
 	}
 	.content-wrapper{
-		overflow: scroll;
+		/* overflow: scroll; */
 		position: initial;
 		width: 100%;
 		margin: 10vh 0;

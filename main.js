@@ -2005,7 +2005,10 @@ circlesize;
 circlesize = 8;
 
 window.addEventListener( 'resize', onWindowResize, false );
-document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+if(!window.innerWidth < 1025){
+	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+}
 
 			function onDocumentMouseMove( event ) {
 
