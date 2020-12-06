@@ -197,7 +197,7 @@ margin: auto;
 
   @media only screen and (max-width: 1025px) {
 	.hebrew ,.inner-info2{
-		clip-path: circle(0, 50% 100%);
+		clip-path: circle(0 at 50% 100%);
 	}
 	.soon{
 		top: 20vh;

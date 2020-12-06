@@ -2005,10 +2005,28 @@ circlesize;
 circlesize = 8;
 
 window.addEventListener( 'resize', onWindowResize, false );
-if(!window.innerWidth < 1025){
+if(window.innerWidth > 1025){
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+	window.addEventListener("deviceorientation", handleOrientation, true);
 
 }
+
+function handleOrientation(event) {
+	var x = event.beta;  // In degree in the range [-180,180]
+	var y = event.gamma; // In degree in the range [-90,90]
+	// Because we don't want to have the device upside down
+	// We constrain the x value to the range [-90,90]
+	if (x >  90) { x =  90};
+	if (x < -90) { x = -90};
+	// To make computation easier we shift the range of
+	// x and y to [0,180]
+	x += 90;
+	y += 90;
+	camera.position.y= 1.2;
+	camera.position.x  += (y/180 - camera.position.x)* 0.1;
+	camera.position.y = (x/180 - camera.position.y)*0.1;
+	camera.lookAt(center);
+  }
 
 			function onDocumentMouseMove( event ) {
 
