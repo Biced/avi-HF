@@ -1423,11 +1423,6 @@ let container;
             let mouseX = windowHalfX;
             let mouseY = windowHalfY;
 			objectsSphere = [];
-			let cubejects = [{name:"Cube.1",translation:[-61.3784065246582,
-                0.0,
-                -290.60125732421877]}
-				,
-			]
            let objects =[{name:"Sphere.8",translation:{x:-4,
 			y: 3.57,
 			 z:-3.88, r:0.15}},
@@ -1493,7 +1488,8 @@ let container;
 					async  function init() {
 
 				container = document.createElement( 'div' );
-                document.body.appendChild( container );
+				document.body.appendChild( container );
+				container.classList.add("canvas-container");
 
 
 
@@ -1709,7 +1705,8 @@ function createDrop(object) {
 
     var material = Physijs.createMaterial(
         new THREE.MeshStandardMaterial( {
-			color:0xe42304,
+			// color:0xe42304,
+			color:0xff0000,
 roughness:0.9,
 metalness:0.05,
 emissive:0x991503,
@@ -1841,7 +1838,8 @@ let color;
 	color = new THREE.Color(0xffffff);
 	dimlights(scene.children[70].children[1].material[0].color, color);
 	dimlights(scene.children[70].children[1].material[1].color, color);
-	color = new THREE.Color(0xe42304)
+	// color = new THREE.Color(0xe42304)
+	color = new THREE.Color(0xff0000)
 	let color2 = new THREE.Color(0x991503)
 
 	for (let index = 0; index < objectstest.length; index++) {
@@ -2033,15 +2031,16 @@ document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		function onWindowResize() {
 
 			camera.aspect =  container.offsetWidth  / container.offsetHeight;
-			camera.updateProjectionMatrix();
 
+
+			// renderer.setSize( container.offsetWidth, container.offsetHeight );
 			renderer.setSize( container.offsetWidth, container.offsetHeight );
-			// composer.setSize( container.offsetWidth, container.offsetHeight );
+			composer.setSize( container.offsetWidth, container.offsetHeight );
 			const pixelRatio = renderer.getPixelRatio();
 
 			fxaaPass.material.uniforms[ 'resolution' ].value.x = 1 / ( container.offsetWidth * pixelRatio );
 			fxaaPass.material.uniforms[ 'resolution' ].value.y = 1 / ( container.offsetHeight * pixelRatio );
-
+			camera.updateProjectionMatrix();
 		}
 
 
