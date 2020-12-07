@@ -196,8 +196,8 @@ margin: auto;
   }
 
   .soon,.fas,.btn-wraper,.link,.lang,.logo, .content-wrapper h2{
-	-webkit-transition: opacity 0.7s ease;
-	transition: opacity 0.7s ease;
+	-webkit-transition: opacity 1.2s ease;
+	transition: opacity 1.2s ease;
   }
 
   @media only screen and (max-width: 1025px) {
