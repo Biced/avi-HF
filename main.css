@@ -48,11 +48,13 @@ canvas {
 
 
 	clip-path: circle(8%  at 0 0);
-	background: rgba(0, 0, 0, 0.8);
+	background: rgba(0, 0, 0, 0.5);
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
   }
-
+.bg-op{
+	background: rgba(0, 0, 0, 0.8);
+}
   .hebrew {
 	transition: all 1s ease-in-out;
 	  z-index: 99;
@@ -196,8 +198,8 @@ margin: auto;
   }
 
   .soon,.fas,.btn-wraper,.link,.lang,.logo, .content-wrapper h2{
-	-webkit-transition: opacity 1.2s ease-in-out;
-	transition: opacity 1.2s ease-in-out;
+	-webkit-transition: opacity 1.6s ease-in-out;
+	transition: opacity 1.6s ease-in-out;
   }
 
   @media only screen and (max-width: 1025px) {

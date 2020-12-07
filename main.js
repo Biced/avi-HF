@@ -1896,10 +1896,10 @@ let color;
 
 			fas.firstChild.innerHTML = "Close";
 			setTimeout(() => {
-			   info2.classList.add("inner-info-hover", "ease")
+			   info2.classList.add("inner-info-hover", "ease" , "bg-op")
 			}, );
 		}else{
-		   info2.classList.remove("inner-info-hover")
+		   info2.classList.remove("inner-info-hover", "bg-op")
 			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
 		}
 	}else{
@@ -1907,10 +1907,10 @@ let color;
 
 			fas.firstChild.innerHTML = "סגור";
 			setTimeout(() => {
-			   info2.classList.add("inner-info-hover" , "ease")
+			   info2.classList.add("inner-info-hover" , "ease" , "bg-op")
 			}, );
 		}else{
-		   info2.classList.remove("inner-info-hover")
+		   info2.classList.remove("inner-info-hover" , "bg-op")
 		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
 		}
 
@@ -1949,7 +1949,7 @@ lang.addEventListener("click", () => {
 			circlesize = 8;
 			hebrew.style.clipPath = `circle(0 at 50% 94%)`
 
-		}, 1000);
+		}, 1600);
 		setTimeout(() => {
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
 		}, 1150);
@@ -1973,11 +1973,11 @@ lang.addEventListener("click", () => {
 				contentwrapper.firstElementChild.dir = "ltr";
 
 
-			toggleAll();
+
 			circlesize = 8;
 			hebrew.style.clipPath = `circle(0 at 50% 94%)`
-
-		}, 1000);
+			toggleAll();
+		}, 1600);
 		setTimeout(() => {
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
 		}, 1150);
