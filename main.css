@@ -1,9 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&display=swap');
+@font-face{
+	font-family: 'ploni';
+	font-weight: 400; /*(regular)*/
+	font-style: normal;
+	src: url('fonts/ploni-regular-aaa.woff2') format('woff2'),
+		url('fonts/ploni-regular-aaa.woff') format('woff');
+}
+@font-face{
+	font-family: 'ploni';
+	font-weight: 700; /*(bold)*/
+	font-style: normal;
+	src: url('fonts/ploni-bold-aaa.woff2') format('woff2'),
+		url('fonts/ploni-bold-aaa.woff') format('woff');
+}
+@font-face{
+	font-family: 'ploni';
+	font-weight: 300;
+	font-style: normal;
+	src: url('fonts/ploni-light-aaa.woff2') format('woff2'),
+		url('fonts/ploni-light-aaa.woff') format('woff');
+}
+@font-face{
+	font-family: 'ploni';
+	font-weight: 800;
+	font-style: normal;
+	src: url('fonts/ploni-demibold-aaa.woff2') format('woff2'),
+		url('fonts/ploni-demibold-aaa.woff') format('woff');
+}
 
 body {
 	margin: 0;
 	color: #fff;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'ploni';
 	line-height: 24px;
 	overscroll-behavior: none;
 	overflow: hidden;
@@ -155,7 +182,7 @@ margin: auto;
 }
 
   .fas{
-
+	font-weight: 800;
 	font-size: 20px;
 	 position: absolute;
 	bottom: 3.9VW;

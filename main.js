@@ -1932,7 +1932,7 @@ lang.addEventListener("click", () => {
 				soon.innerHTML = "עולים</br><span style=\"font-weight: 400;\"> בקרוב</span>"
 				soon.dir = "rtl";
 				if(!info2.classList.contains("inner-info-hover")){
-					fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
+					fas.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 400;\"> שלנו</span> ";
 				}else{
 					fas.firstElementChild.innerHTML = "סגור"
 				}
@@ -1940,7 +1940,7 @@ lang.addEventListener("click", () => {
 				link.style = `left:3.9vw; width:max-content`
 				logo.style = `right:3.9vw; left:auto;`
 				btnwrapper.style = `left:3.9vw; width:max-content`
-				contentwrapper.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 400;\"> שלנו</span>"
+				contentwrapper.firstElementChild.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
 				contentwrapper.firstElementChild.dir = "rtl";
 			}
 
@@ -1960,7 +1960,7 @@ lang.addEventListener("click", () => {
 				soon.innerHTML = "Coming</br><span style=\"font-weight: 400;\"> Soon</span>"
 				soon.dir = "ltr";
 				if(!info2.classList.contains("inner-info-hover")){
-					fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+					fas.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\">Clients</span> ";
 				}else{
 					fas.firstElementChild.innerHTML = "Close"
 				}
@@ -1969,7 +1969,7 @@ lang.addEventListener("click", () => {
 				link.style = `right:3.9vw; width:max-content`
 				logo.style = `left:3.9vw; right:auto;`
 				btnwrapper.style = `right:3.9vw; width:max-content`
-				contentwrapper.firstElementChild.innerHTML = "Our<span style=\"font-weight: 400;\"> Clients</span>"
+				contentwrapper.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
 				contentwrapper.firstElementChild.dir = "ltr";
 
 
