@@ -54,7 +54,7 @@ canvas {
   }
 
   .hebrew {
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 	  z-index: 99;
 	clip-path: circle(0 at 50% 94%);
   }
@@ -67,7 +67,7 @@ canvas {
   .ease{
 	/* transition: all 0.5s ease-out; */
 
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 
   }
 
@@ -159,8 +159,8 @@ margin: auto;
 	left: 3.9VW;
 	z-index: 9;
 	cursor: pointer;
-	-webkit-transition: all 0.7s ease;
-	transition: all 0.7s ease;
+	-webkit-transition: all 0.7s ease-in-out;
+	transition: all 0.7s ease-in-out;
 
   }
 
@@ -188,7 +188,7 @@ margin: auto;
 	width: 0;
 	height: 1px;
 	background:white;
-	-webkit-transition: 0.5s ease;
+	-webkit-transition: 0.5s ease-in-out;
   }
 
   .opacity{
@@ -196,8 +196,8 @@ margin: auto;
   }
 
   .soon,.fas,.btn-wraper,.link,.lang,.logo, .content-wrapper h2{
-	-webkit-transition: opacity 1.2s ease;
-	transition: opacity 1.2s ease;
+	-webkit-transition: opacity 1.2s ease-in-out;
+	transition: opacity 1.2s ease-in-out;
   }
 
   @media only screen and (max-width: 1025px) {
