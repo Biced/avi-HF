@@ -32,7 +32,8 @@ canvas {
 .soon{
 	font-size: 150px;
 	position: absolute;
-	TOP: 48VH;
+	TOP: 50%;
+	transform: translateY(-50%);
 	LEFT: 40VW;
 	line-height: 80%;
 	margin: 0;

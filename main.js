@@ -1494,11 +1494,11 @@ let container;
 
 
 
-                camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 100 );
+                camera = new THREE.PerspectiveCamera( 23, window.innerWidth / window.innerHeight, 1, 100 );
                 camera.position.x = 0;
-    			camera.position.y = 1.9;
-				camera.position.z = 13.8;
-				center = new THREE.Vector3(0,1.9,0);
+    			camera.position.y = 1;
+				camera.position.z = 12.8;
+				center = new THREE.Vector3(0,1,0);
 				camera.up = new THREE.Vector3(0, 1, 0);
 
 				camera.lookAt(center);
@@ -2024,7 +2024,7 @@ function handleOrientation(event) {
 	// x and y to [0,180]
 	x += 90;
 	y += 90;
-	camera.position.y= 1.2;
+	camera.position.y= 1;
 	camera.position.x  += (y/180 - camera.position.x)*1.1;
 	camera.position.y += (x/180 - camera.position.y);
 	camera.lookAt(center);
@@ -2041,7 +2041,7 @@ function handleOrientation(event) {
 
 
 
-				camera.position.y= 1.2;
+				camera.position.y= 0.5;
 				// mouseX = ( event.clientX - windowHalfX )*0.002;
 				// mouseY = ( event.clientY - windowHalfY ) * 0.005;
 				mouseX = ( event.clientX / window.innerWidth ) -0.5;
