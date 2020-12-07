@@ -1923,7 +1923,7 @@ let color;
 lang.addEventListener("click", () => {
 	circlesize = 0;
 	info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-	hebrew.style.clipPath = `circle(75%)`
+	hebrew.style.clipPath = `circle(100%)`
 	toggleAll();
 	if(lang.firstElementChild.innerHTML == "עברית"){
 		setTimeout(() => {
@@ -1949,10 +1949,10 @@ lang.addEventListener("click", () => {
 			circlesize = 8;
 			hebrew.style.clipPath = `circle(0 at 50% 94%)`
 
-		}, 700);
+		}, 1000);
 		setTimeout(() => {
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		}, 850);
+		}, 1150);
 	}
 	else{
 		setTimeout(() => {
@@ -1977,10 +1977,10 @@ lang.addEventListener("click", () => {
 			circlesize = 8;
 			hebrew.style.clipPath = `circle(0 at 50% 94%)`
 
-		}, 700);
+		}, 1000);
 		setTimeout(() => {
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		}, 850);
+		}, 1150);
 	}
 
 

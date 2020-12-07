@@ -8,7 +8,10 @@ body {
 	overscroll-behavior: none;
 	overflow: hidden;
 	font-size: 21px;
+	/* background: transparent;
+    transition: background-color 2s ease; */
 }
+
 
 .canvas-container{
 	width: 100vw;
@@ -51,7 +54,7 @@ canvas {
   }
 
   .hebrew {
-	transition: all 0.5s ease-out;
+	transition: all 1s ease;
 	  z-index: 99;
 	clip-path: circle(0 at 50% 94%);
   }
@@ -62,7 +65,9 @@ canvas {
 	clip-path: circle(75%) !IMPORTANT;
   }
   .ease{
-	transition: all 0.5s ease-out;
+	/* transition: all 0.5s ease-out; */
+
+	transition: all 1s ease;
 
   }
 
@@ -243,3 +248,64 @@ margin: auto;
 		margin-bottom: 50px;
 	}
   }
+
+
+  /* css test */
+  #progress {
+    display: none;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+
+
+	clip-path: circle(0%  at 50% 50%);
+	/* background: rgba(0, 0, 0, 0.8); */
+	background: black;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+    /* z-index:999999999; */
+}
+
+
+#gallery {
+	display: none;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+
+	clip-path: circle(20%  at 50% 50%);
+	/* background: rgba(0, 0, 0, 0.8); */
+	background: red;
+	/* -webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px); */
+	/* z-index:999; */
+}
+#gallery img , #progress img{
+	width: 29%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* transform: scale(1); */
+}
+/* img {
+    width: 100%;
+    cursor: pointer;
+    transform: scale(1);
+} */
+
+/* .fadeIn {
+    transform: scale(0) !important;
+    opacity: 0 !important;
+    transition: all 1s 1.5s;
+} */
+
+.expand {
+    opacity: 0 !important;
+    transition: opacity 2s !important;
+}

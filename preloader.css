@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: rgb(29, 29, 29);
+    transition: background-color 2s ease;
+}
+
+#progress {
+    height: 1px;
+    background: rgb(126, 126, 126);
+    position: absolute;
+    transition: width 0.5s ease;
+    top: 45%;
+    opacity: 1;
+    z-index: 9;
+}
+
+
+/* #gallery { */
+    /* opacity: 0; */
+    /* display: grid; */
+    /* width: 100%; */
+    /* grid-template-columns: repeat(2, 25%); */
+    /* grid-gap: 5em; */
+    /* height: 100vh; */
+    /* justify-content: center; */
+    /* align-content: center; */
+    /* transform: scale(.8); */
+/* } */
+
+/* img {
+    width: 100%;
+    cursor: pointer;
+    transform: scale(1);
+} */
+
+.fadeIn {
+    /* transform: scale(1) !important;
+    opacity: 1 !important;
+    transition: all 1s 1.5s; */
+}
+
+.expand {
+    /* opacity: 0 !important;
+    transition: opacity 2s !important; */
+}
+
+
