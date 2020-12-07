@@ -1952,7 +1952,7 @@ lang.addEventListener("click", () => {
 		}, 1600);
 		setTimeout(() => {
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		}, 1150);
+		}, 2650);
 	}
 	else{
 		setTimeout(() => {
@@ -1979,8 +1979,9 @@ lang.addEventListener("click", () => {
 			toggleAll();
 		}, 1600);
 		setTimeout(() => {
+			circlesize = 8;
 			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		}, 1150);
+		},2650);
 	}
 
 
@@ -2034,6 +2035,7 @@ function handleOrientation(event) {
 
 					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגור"){
 						info2.classList.remove("ease")
+						circlesize = 8;
 					}
 				bgleft= event.clientX;
 				bgtop  = event.clientY;
