@@ -1496,9 +1496,9 @@ let container;
 
                 camera = new THREE.PerspectiveCamera( 23, window.innerWidth / window.innerHeight, 1, 100 );
                 camera.position.x = 0;
-    			camera.position.y = 1;
+    			camera.position.y = 0.8;
 				camera.position.z = 12.8;
-				center = new THREE.Vector3(0,1,0);
+				center = new THREE.Vector3(0,0.8,0);
 				camera.up = new THREE.Vector3(0, 1, 0);
 
 				camera.lookAt(center);
@@ -1614,7 +1614,7 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	} );
 
 	object.scale.set(-0.015,0.015,0.015)
-	object.position.set(-2.6,2.5,-0.1)
+	object.position.set(-2.5,2.5,0)
 	if(window.innerWidth < 1025){
 		object.position.x = 0;
 	}
@@ -2048,7 +2048,7 @@ function handleOrientation(event) {
 				mouseY = ( event.clientY / window.innerHeight ) -0.5;
 				// camera.position.x += ( mouseX - camera.position.x ) * 0.002;
 				// camera.position.y += ( - mouseY - camera.position.y ) * 0.005;
-				camera.position.x += ( mouseX - camera.position.x ) * 0.1;
+				camera.position.x += ( mouseX - camera.position.x ) * 0.2;
 				camera.position.y += ( - mouseY - camera.position.y ) *0.1;
 				camera.lookAt(center);
 
