@@ -20,15 +20,18 @@ queue.on('complete', event => {
 
         progress.classList.add('expand');
 
+
+	loadingmanager.onLoad = setTimeout(() => {
+
+		TEST8();
+		reversegravity();
+}, 1500);
+
         setTimeout(() => {
             progress.remove();
 
 	},1000)
-	setTimeout(() => {
 
-			TEST8();
-			reversegravity();
-	}, 1500);
 })
 queue.loadFile('main.js');
 queue.loadFile('models/main-page-first-fold.mp4');
@@ -1679,9 +1682,9 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 } );
 
 //
-// loadingmanager = new THREE.LoadingManager();
+loadingmanager = new THREE.LoadingManager();
 
-// loadingmanager.onLoad = (something)=>console.log(something)
+
 
 // *****************************CYLINDER****************
 
@@ -2154,7 +2157,7 @@ function handleOrientation(event) {
 	x += 90;
 	y += 90;
 	camera.position.y= 1;
-	camera.position.x  += (y/180 - camera.position.x)*1.05;
+	camera.position.x  += (y/180 - camera.position.x)*1.1;
 	camera.position.y += (x/180 - camera.position.y);
 	camera.lookAt(center);
   }
@@ -2179,7 +2182,7 @@ function handleOrientation(event) {
 				mouseY = ( event.clientY / window.innerHeight ) -0.5;
 				// camera.position.x += ( mouseX - camera.position.x ) * 0.002;
 				// camera.position.y += ( - mouseY - camera.position.y ) * 0.005;
-				camera.position.x += ( mouseX - camera.position.x ) * 0.15;
+				camera.position.x += ( mouseX - camera.position.x ) * 0.105;
 				camera.position.y += ( - mouseY - camera.position.y ) *0.1;
 				camera.lookAt(center);
 
