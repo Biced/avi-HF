@@ -2157,7 +2157,7 @@ function handleOrientation(event) {
 	x += 90;
 	y += 90;
 	camera.position.y= 1;
-	camera.position.x  += (y/180 - camera.position.x)*2;
+	camera.position.x  += (y/180 - camera.position.x)*1.2;
 	camera.position.y += (x/180 - camera.position.y);
 	camera.lookAt(center);
   }
