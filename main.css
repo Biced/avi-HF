@@ -67,27 +67,50 @@ canvas {
 }
 
 
-  .hebrew ,.inner-info2 {
+ .contact, .hebrew ,.inner-info2 {
 	position: absolute;
 	top: 0;
 	left:0;
 	width: 100vw;
 	height: 100vh;
-
-
-	clip-path: circle(8%  at 0 0);
-	background: rgba(0, 0, 0, 0.5);
 	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
+  }
+  .inner-info2{
+	clip-path: circle(8%  at 0 0);
+	background: rgba(0, 0, 0, 0.5);
   }
 .bg-op{
 	background: rgba(0, 0, 0, 0.8);
 }
   .hebrew {
 	transition: all 1s ease-in-out;
+	background: rgba(0, 0, 0, 0.8);
 	  z-index: 99;
 	clip-path: circle(0 at 50% 94%);
   }
+
+.contact{
+	background: rgba(0, 0, 0, 0.8);
+	clip-path: circle(0% at 92% 6%);
+	z-index: 99;
+
+}
+
+
+
+/* contact after instead of div for hover */
+.wrapper-a{
+	/* display: flex; */
+	/* flex-direction: column; */
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+
 
 
 
@@ -114,7 +137,7 @@ canvas {
 		position: absolute;
 		bottom: 3.9VW;
 		right:3.9VW;
-		z-index: 99999;
+		z-index: 9;
 		/* width: 68px; */
 		display: flex;
 
@@ -125,7 +148,7 @@ canvas {
 		.left .underbar, .middle .underbar{
 			margin-top: -3px;
 		}
-		.lang:hover .underbar ,.left:hover .underbar , .middle:hover .underbar{
+		.lang:hover .underbar ,.left:hover .underbar , .middle:hover .underbar, .close:hover .underbar{
 			width: 100%;
 		}
 		.logo{
@@ -181,7 +204,7 @@ margin: auto;
 
 }
 
-  .fas{
+  .fas , .close{
 	font-weight: 800;
 	font-size: 20px;
 	 position: absolute;
@@ -194,7 +217,18 @@ margin: auto;
 
   }
 
-.fas:hover .underbar ,.link:hover .underbar{
+  .contact-link{
+	  margin: auto;
+	  margin-bottom: 50px;
+	  font-size: 40px;
+	  max-width: max-content;
+  }
+  .contact-link .underbar{
+	  margin-top: 5px;
+	  height: 2px;
+  }
+
+.fas:hover .underbar ,.link:hover .underbar ,.contact-link:hover .underbar {
 	width: 100%;
 }
 
@@ -282,47 +316,51 @@ margin: auto;
 
   /* css test */
   #progress {
-    display: none;
+    /* display: none; */
 	position: absolute;
 	top: 0;
 	left:0;
 	width: 100vw;
 	height: 100vh;
-
-
+	font-size: 200px;
+	text-align: center;
 	clip-path: circle(0%  at 50% 50%);
 	/* background: rgba(0, 0, 0, 0.8); */
 	background: black;
-	-webkit-backdrop-filter: blur(10px);
-	backdrop-filter: blur(10px);
-    /* z-index:999999999; */
+	color: white;
+	line-height: 100vh;
+	/* -webkit-backdrop-filter: blur(10px); */
+	/* backdrop-filter: blur(10px); */
+    z-index:99999;
 }
 
 
 #gallery {
-	display: none;
+	/* display: none; */
 	position: absolute;
 	top: 0;
 	left:0;
 	width: 100vw;
 	height: 100vh;
 	text-align: center;
-
-	clip-path: circle(20%  at 50% 50%);
+	font-size: 200px;
+	/* clip-path: circle(20%  at 50% 50%); */
 	/* background: rgba(0, 0, 0, 0.8); */
-	background: red;
+	background:white;
+	color: black;
+	line-height: 100vh;
 	/* -webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px); */
-	/* z-index:999; */
+	z-index:9999;
 }
-#gallery img , #progress img{
+/* #gallery img , #progress img{
 	width: 29%;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%); */
 	/* transform: scale(1); */
-}
+/* } */
 /* img {
     width: 100%;
     cursor: pointer;
@@ -337,5 +375,9 @@ margin: auto;
 
 .expand {
     opacity: 0 !important;
-    transition: opacity 2s !important;
+    transition: opacity 1s !important;
+}
+
+.zzero{
+	z-index: 0;
 }

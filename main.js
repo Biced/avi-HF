@@ -1,7 +1,51 @@
+let progress = document.getElementById('progress');
+let gallery = document.getElementById('gallery');
+let loadingmanager
+var queue = new createjs.LoadQueue(false);
+
+
+queue.on('progress', event => {
+
+	let prog = Math.floor(event.progress * 80);
+
+	progress.style =`clip-path: circle(${prog}%)`;
+
+    if (prog == 80) {
+        document.querySelector('body').style.background = 'black'
+    }
+})
+queue.on('complete', event => {
+
+        gallery.remove();
+
+        progress.classList.add('expand');
+
+        setTimeout(() => {
+            progress.remove();
+
+	},1000)
+	setTimeout(() => {
+
+			TEST8();
+			reversegravity();
+	}, 1500);
+})
+queue.loadFile('main.js');
+queue.loadFile('models/main-page-first-fold.mp4');
+queue.loadFile('models/fbx/phone (2).fbx');
+queue.loadFile('tween.js');
+queue.loadFile('main.css');
+queue.loadFile('physijs/ammo.js');
+queue.loadFile('physijs/physijs_worker.js');
+
+// queue.
+// ;
+
+console.log(loadingmanager)
+
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
 import {FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 // import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
-
 
 
 
@@ -1485,7 +1529,7 @@ let container;
 					fxaaPass,shader,light7,light_4,loader, overlayui,center
 
 
-					async  function init() {
+			function init() {
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
@@ -1506,9 +1550,10 @@ let container;
 
    /* Init the scene */
    scene = new Physijs.Scene();
-   scene.setGravity( new THREE.Vector3( 0, 0, 0));
+   scene.setGravity( new THREE.Vector3( 0, -20, 0));
 
-   scene.background = new THREE.Color( 0xae1901 )
+//    scene.background = new THREE.Color( 0xae1901 )
+   scene.background = new THREE.Color( 0x000000 )
 
 // lights
 scene.add( new THREE.AmbientLight( 0xF2f2f2, 1.2 ) );
@@ -1577,7 +1622,8 @@ THREE.ShaderChunk.shadowmap_pars_fragment = shader;
 
 // ********************************GROUND***********************
 
-				let maincolor = new THREE.Color(0xfe2a05)
+				// let maincolor = new THREE.Color(0xfe2a05)
+				let maincolor = new THREE.Color(0x000000)
 				maincolor.convertSRGBToLinear();
                 var ground_material = Physijs.createMaterial(
                     new THREE.MeshStandardMaterial( {
@@ -1596,20 +1642,22 @@ light_4.target = ground;
 light7.target = ground;
 
 
-
+// loading manager
 
 
 //  **************************PHONE***************************
 
 overlayui = document.querySelector(".overlayui")
 overlayui.addEventListener("click", ()=> {if(video.currentTime == 0){video.play()}})
-loader = new FBXLoader();
+loader = new FBXLoader(loadingmanager);
 loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.traverse( function ( child ) {
 
 		if ( child.isMesh ) {
 			child.castShadow = true;
 			child.receiveShadow = true;
+
+
 		}
 	} );
 
@@ -1624,11 +1672,16 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	let texture = new THREE.VideoTexture( video );
 	let materialphone = new THREE.MeshBasicMaterial( { map: texture } );
 	object.children[1].material[1] = materialphone
+	object.children[1].material[0].color = maincolor
+	object.children[1].material[1].color = maincolor
 
 
 } );
 
+//
+// loadingmanager = new THREE.LoadingManager();
 
+// loadingmanager.onLoad = (something)=>console.log(something)
 
 // *****************************CYLINDER****************
 
@@ -1709,10 +1762,12 @@ function createDrop(object) {
     var material = Physijs.createMaterial(
         new THREE.MeshStandardMaterial( {
 			// color:0xe42304,
-			color:0xff0000,
+			// color:0xff0000,
+			color:0x000000,
 roughness:0.9,
 metalness:0.05,
-emissive:0x991503,
+// emissive:0x991503,
+emissive:0x000000,
 emissiveIntensity: 0.15
 
         } ),
@@ -1802,16 +1857,17 @@ emissiveIntensity: 0.15
 
 
 
-const impulse = new THREE.Vector3(0,0,0);
+const impulse = new THREE.Vector3(0,1,0);
 // element.apply.CentralImpulse(impulse);
 // reverse gravity
-let gforce = 20;
+let gforce = -0.5;
 function reversegravity(){
+
+	gforce = gforce*-1
+	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
 	objectstest.forEach(element => {
 		element.applyCentralImpulse(impulse);
 	});
-	gforce = gforce*-1
-	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
 	// scene.simulate();
 }
 // comment
@@ -1827,7 +1883,7 @@ function reversegravity(){
 
 // dim lights and set them back
 function dimlights(mesh, color){
-	let tween = new TWEEN.Tween(mesh).to(color ,3500)
+	let tween = new TWEEN.Tween(mesh).to(color ,1500)
 	tween.start();
 }
 
@@ -1895,21 +1951,30 @@ let color;
 		if(fas.firstChild.innerHTML !== "Close"){
 
 			fas.firstChild.innerHTML = "Close";
+			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover", "ease" , "bg-op")
 			}, );
 		}else{
+			setTimeout(() => {
+				toggleZ(uiel);
+			}, 1000);
+
 		   info2.classList.remove("inner-info-hover", "bg-op")
 			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
 		}
 	}else{
-		if(fas.firstChild.innerHTML !== "סגור"){
+		if(fas.firstChild.innerHTML !== "סגירה"){
 
-			fas.firstChild.innerHTML = "סגור";
+			fas.firstChild.innerHTML = "סגירה";
+			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover" , "ease" , "bg-op")
 			}, );
 		}else{
+			setTimeout(() => {
+				toggleZ(uiel);
+			}, 1000);
 		   info2.classList.remove("inner-info-hover" , "bg-op")
 		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
 		}
@@ -1919,7 +1984,61 @@ let color;
 
 })
 
+let contact = document.querySelector(".contact")
+let close = document.querySelector(".close")
+let wrappera = document.querySelector(".wrapper-a")
+let uiel = [link,logo,btnwrapper,lang]
+function toggleZ(el){
+	el.forEach(element => {
+		element.classList.toggle("zzero")
+	});
 
+}
+
+
+
+// make sure top stop click when on the contacts div
+wrappera.addEventListener("click" , (e) => e.stopPropagation())
+
+
+// clip path for contactus div
+link.addEventListener("click" ,() =>{
+	circlesize =0;
+
+	 betterCode(betterCode2);
+
+	// setTimeout(() => {
+	// 	betterCode2()
+	// },0);
+
+	// test.then(console.log(contact.style)).then(() => contact.classList.add("ease", "inner-info-hover"))
+	// setTimeout(() => {
+	// 	contact.classList.add("ease", "inner-info-hover")
+	// }, 1000);
+	// contact.classList.add("ease", "inner-info-hover")
+	// console.log(contact)
+})
+close.addEventListener("click",  () => {
+	// contact.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+	contact.classList.remove("inner-info-hover")
+	contact.classList.remove("ease") })
+contact.addEventListener("click", () => contact.classList.remove("inner-info-hover") )
+
+
+function betterCode(d){
+	if(contact.classList.contains("ease")){
+		contact.classList.remove("ease")
+	}
+	// contact.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
+d();
+}
+function betterCode2(){
+	contact.classList.add("ease", "inner-info-hover")}
+
+
+
+
+	// clip path for heb/eng switch
 lang.addEventListener("click", () => {
 	circlesize = 0;
 	info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
@@ -1934,12 +2053,15 @@ lang.addEventListener("click", () => {
 				if(!info2.classList.contains("inner-info-hover")){
 					fas.firstElementChild.innerHTML = "הלקוחות<span style=\"font-weight: 400;\"> שלנו</span> ";
 				}else{
-					fas.firstElementChild.innerHTML = "סגור"
+					fas.firstElementChild.innerHTML = "סגירה"
+
 				}
-				fas.style = `right:3.9vw; left:auto;`
-				link.style = `left:3.9vw; width:max-content`
-				logo.style = `right:3.9vw; left:auto;`
-				btnwrapper.style = `left:3.9vw; width:max-content`
+				// fas.style = `right:3.9vw; left:auto;`
+				// link.style = `left:3.9vw; width:max-content`
+				// logo.style = `right:3.9vw; left:auto;`
+				// btnwrapper.style = `left:3.9vw; width:max-content`
+				close.firstElementChild.innerHTML = "סגירה"
+				link.firstElementChild.innerHTML = "יצירת<span style=\"font-weight: 400;\"> קשר</span> "
 				contentwrapper.firstElementChild.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
 				contentwrapper.firstElementChild.dir = "rtl";
 			}
@@ -1965,11 +2087,17 @@ lang.addEventListener("click", () => {
 					fas.firstElementChild.innerHTML = "Close"
 				}
 
-				fas.style = `left:3.9vw; right:auto;`
-				link.style = `right:3.9vw; width:max-content`
-				logo.style = `left:3.9vw; right:auto;`
-				btnwrapper.style = `right:3.9vw; width:max-content`
+				// fas.style = `left:3.9vw; right:auto;`
+				// link.style = `right:3.9vw; width:max-content`
+				// logo.style = `left:3.9vw; right:auto;`
+				// btnwrapper.style = `right:3.9vw; width:max-content`
+				// fas.style = `left:3.9vw; right:auto;`
+				link.firstElementChild.innerHTML = "Contact <span style=\"font-weight: 400;\"> Us</span>"
+				close.firstElementChild.innerHTML = "Close"
+
+
 				contentwrapper.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
+
 				contentwrapper.firstElementChild.dir = "ltr";
 
 
@@ -2026,18 +2154,19 @@ function handleOrientation(event) {
 	x += 90;
 	y += 90;
 	camera.position.y= 1;
-	camera.position.x  += (y/180 - camera.position.x)*1.1;
+	camera.position.x  += (y/180 - camera.position.x)*1.05;
 	camera.position.y += (x/180 - camera.position.y);
 	camera.lookAt(center);
   }
 
 			function onDocumentMouseMove( event ) {
 
-					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגור"){
+					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגירה"){
 						info2.classList.remove("ease")
 						circlesize = 8;
 					}
-				bgleft= event.clientX;
+					circlesize = 8;
+				bgleft = event.clientX;
 				bgtop  = event.clientY;
 				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
 
@@ -2089,3 +2218,6 @@ function handleOrientation(event) {
 
             init();
 				animate();
+
+
+
