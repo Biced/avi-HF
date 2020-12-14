@@ -1814,12 +1814,7 @@ emissiveIntensity: 0.15
 			composer.addPass( renderModel );
 			composer.addPass( fxaaPass );
 
-
                 }
-
-
-
-
 
 				let middle = document.querySelector(".middle")
 			middle.addEventListener("click",()=>{
@@ -1939,7 +1934,6 @@ let color;
 			}
 		 let tween = new TWEEN.Tween(objectstest[index].material.emissive).to(color2 ,3500)
 		 dimlights(objectstest[index].material.color, color)
-		// tween.easing(TWEEN.Easing.Quadratic.EaseOut)
 		tween.start();
  }
 
@@ -1956,8 +1950,7 @@ let color;
  const logo = document.querySelector(".logo");
  let fas = document.querySelector(".fas")
  let link = document.querySelector(".link")
-//  let info2 = document.querySelector(".info2")
-//  let inner_info = document.querySelector(".inner-info2")
+
  fas.addEventListener("click", ()=>
  {
 	if(lang.firstElementChild.innerHTML == "עברית"){
@@ -2015,47 +2008,19 @@ wrappera.addEventListener("click" , (e) => e.stopPropagation())
 
 
 // clip path for contactus div
-link.addEventListener("click" ,() =>{
-	circlesize =0;
-
-	 betterCode(betterCode2);
-
-	// setTimeout(() => {
-	// 	betterCode2()
-	// },0);
-
-	// test.then(console.log(contact.style)).then(() => contact.classList.add("ease", "inner-info-hover"))
-	// setTimeout(() => {
-	// 	contact.classList.add("ease", "inner-info-hover")
-	// }, 1000);
-	// contact.classList.add("ease", "inner-info-hover")
-	// console.log(contact)
-})
-close.addEventListener("click",  () => {
-	// contact.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-	contact.classList.remove("inner-info-hover")
-	contact.classList.remove("ease") })
-contact.addEventListener("click", () => contact.classList.remove("inner-info-hover") )
+link.addEventListener("click" , () => yosik(contact))
+close.addEventListener("click",  () => yosik(contact))
+contact.addEventListener("click", () => yosik(contact))
 
 
-function betterCode(d){
-	if(contact.classList.contains("ease")){
-		contact.classList.remove("ease")
-	}
-	// contact.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-d();
+function yosik(el){
+	el.classList.toggle("inner-info-hover")
 }
-function betterCode2(){
-	contact.classList.add("ease", "inner-info-hover")}
-
-
 
 
 	// clip path for heb/eng switch
 lang.addEventListener("click", () => {
-	circlesize = 0;
-	info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-	hebrew.style.clipPath = `circle(100%)`
+	hebrew.classList.toggle("inner-info-hover")
 	toggleAll();
 	if(lang.firstElementChild.innerHTML == "עברית"){
 		setTimeout(() => {
@@ -2069,25 +2034,14 @@ lang.addEventListener("click", () => {
 					fas.firstElementChild.innerHTML = "סגירה"
 
 				}
-				// fas.style = `right:3.9vw; left:auto;`
-				// link.style = `left:3.9vw; width:max-content`
-				// logo.style = `right:3.9vw; left:auto;`
-				// btnwrapper.style = `left:3.9vw; width:max-content`
 				close.firstElementChild.innerHTML = "סגירה"
 				link.firstElementChild.innerHTML = "יצירת<span style=\"font-weight: 400;\"> קשר</span> "
 				contentwrapper.firstElementChild.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
 				contentwrapper.firstElementChild.dir = "rtl";
 			}
-
-
 			toggleAll();
-			circlesize = 8;
-			hebrew.style.clipPath = `circle(0 at 50% 94%)`
-
+			hebrew.classList.toggle("inner-info-hover")
 		}, 1600);
-		setTimeout(() => {
-			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		}, 2650);
 	}
 	else{
 		setTimeout(() => {
@@ -2099,30 +2053,13 @@ lang.addEventListener("click", () => {
 				}else{
 					fas.firstElementChild.innerHTML = "Close"
 				}
-
-				// fas.style = `left:3.9vw; right:auto;`
-				// link.style = `right:3.9vw; width:max-content`
-				// logo.style = `left:3.9vw; right:auto;`
-				// btnwrapper.style = `right:3.9vw; width:max-content`
-				// fas.style = `left:3.9vw; right:auto;`
 				link.firstElementChild.innerHTML = "Contact <span style=\"font-weight: 400;\"> Us</span>"
 				close.firstElementChild.innerHTML = "Close"
-
-
 				contentwrapper.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
-
 				contentwrapper.firstElementChild.dir = "ltr";
-
-
-
-			circlesize = 8;
-			hebrew.style.clipPath = `circle(0 at 50% 94%)`
+			hebrew.classList.toggle("inner-info-hover")
 			toggleAll();
 		}, 1600);
-		setTimeout(() => {
-			circlesize = 8;
-			info2.style.clipPath = `circle(${circlesize}% at ${bgleft}px ${bgtop}px)`;
-		},2650);
 	}
 
 
@@ -2141,10 +2078,7 @@ function opacityToggle(element){
 	element.classList.toggle("opacity")
 }
 
-let bgleft,
-bgtop,
-circlesize;
-circlesize = 8;
+
 
 window.addEventListener( 'resize', onWindowResize, false );
 if(window.innerWidth > 1025){
@@ -2172,9 +2106,7 @@ function handleOrientation(event) {
 	camera.lookAt(center);
   }
 
-  var moveForce = 30; // max popup movement in pixels
-var rotateForce = 20; // max popup rotation in deg
-// setInterval (move,1000/60)
+
 
 
 
@@ -2190,9 +2122,7 @@ let mousePosition = {x: 0, y: 0};
 let dots = [];
 let timeoutID;
 let idle = false;
-let hoverButton;
-let hoverTL;
-let centerdot;
+
 
 
 class Dot {
@@ -2257,47 +2187,34 @@ function buildDots() {
 
 
 }
+
+// lerp
+// const lerp = (x, y, a) => x * (1 - a) + y * a;
+// let newlerp
  		function onDocumentMouseMove( event ) {
 
-// start mouse
-			mousePosition.x = event.clientX - width / 2;
-    mousePosition.y = event.clientY - width / 2;
-	resetIdleTimer();
+
+
+
 
 	// end mouse
-			let docX = window.innerWidth;
-			let docY = window.innerHeight;
 
-			let moveX = (event.clientX - docX/2) / (docX/2) * -moveForce;
-			let moveY = (event.clientY - docY/2) / (docY/2) * -moveForce;
-
-			let rotateY = (event.clientX / docX * rotateForce*2) - rotateForce;
-			let rotateX = -((event.clientY / docY * rotateForce*2) - rotateForce);
-
-
-					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגירה"){
-						info2.classList.remove("ease")
-						circlesize = 8;
-					}
-					circlesize = 8;
-				bgleft = event.clientX;
-				bgtop  = event.clientY;
+				// 	if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגירה"){
+				// 		info2.classList.remove("ease")
+				// 		circlesize = 8;
+				// 	}
+				// 	circlesize = 8;
+				// bgleft = event.clientX;
+				// bgtop  = event.clientY;
 				// info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
 
 				// soon.style = `left: calc(${moveX}px + 50%); top: calc(${moveY}px + 40vh); transform: rotateX(${rotateX}deg), rotateY(${rotateY}deg)`
-
-
-				camera.position.y= 0.5;
-				// mouseX = ( event.clientX - windowHalfX )*0.002;
-				// mouseY = ( event.clientY - windowHalfY ) * 0.005;
-				mouseX = ( event.clientX / window.innerWidth ) -0.5;
-				mouseY = ( event.clientY / window.innerHeight ) -0.5;
-				// camera.position.x += ( mouseX - camera.position.x ) * 0.002;
-				// camera.position.y += ( - mouseY - camera.position.y ) * 0.005;
-				camera.position.x += ( mouseX - camera.position.x ) * 0.105;
-				camera.position.y += ( - mouseY - camera.position.y ) *0.1;
-				camera.lookAt(center);
-
+				mouseX = ( event.clientX - windowHalfX );
+				mouseY = ( event.clientY - windowHalfY );
+				// start mouse
+				mousePosition.x = event.clientX - width / 2;
+				mousePosition.y = event.clientY - width / 2;
+				resetIdleTimer();
 			}
 		function onWindowResize() {
 
@@ -2339,6 +2256,10 @@ function buildDots() {
 		};
 
 		function animate(timestamp) {
+
+				camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
+				camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.8) * .03;
+				camera.lookAt(center);
 				const delta = timestamp - lastFrame;
     			positionCursor(delta);
     			lastFrame = timestamp;

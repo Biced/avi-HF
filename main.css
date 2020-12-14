@@ -37,7 +37,8 @@ body {
 	overflow: hidden;
 	font-size: 21px;
 	/* background: transparent;
-    transition: background-color 2s ease; */
+	transition: background-color 2s ease; */
+	mix-blend-mode: exclusion;
 }
 
 
@@ -79,8 +80,8 @@ canvas {
 	backdrop-filter: blur(10px);
   }
   .inner-info2{
-	clip-path: circle(8%  at 0 0);
-	background: rgba(0, 0, 0, 0.5);
+	clip-path: circle(0  at -5% 105%);
+	background: rgba(0, 0, 0, 0.8);
   }
 .bg-op{
 	background: rgba(0, 0, 0, 0.8);
@@ -90,13 +91,15 @@ canvas {
 	transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
 	background: rgba(0, 0, 0, 0.8);
 	  z-index: 99;
-	clip-path: circle(0 at 50% 94%);
+	clip-path: circle(0 at 50% 105%);
   }
 
 .contact{
 	background: rgba(0, 0, 0, 0.8);
-	clip-path: circle(0% at 92% 6%);
+	clip-path: circle(0% at 105% -5%);
 	z-index: 99;
+	-webkit-transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
+	transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
 
 }
 
@@ -204,7 +207,6 @@ margin: auto;
 	line-height: 30px;
 	font-size: 21px;
   font-weight: bold;
-
 }
 
   .fas , .close{
@@ -263,14 +265,14 @@ margin: auto;
   }
 
   .soon,.fas,.btn-wraper,.link,.lang,.logo, .content-wrapper h2{
-	-webkit-transition: opacity 1.6s ease-in-out;
-	transition: opacity 1.6s ease-in-out;
+	-webkit-transition: opacity 2s ease-in-out;
+	transition: opacity 2s ease-in-out;
   }
 
   @media only screen and (max-width: 1025px) {
-	.hebrew ,.inner-info2{
+	/* .hebrew ,.inner-info2{
 		clip-path: circle(0 at 50% 100%);
-	}
+	} */
 	.soon{
 		top: 20vh;
 		left: 50%;
@@ -370,7 +372,7 @@ margin: auto;
     top: 0;
     left: 0;
  z-index: 1000000000000;
- mix-blend-mode: difference;
+ /* mix-blend-mode: difference; */
   }
   .Cursor span {
 
@@ -380,7 +382,9 @@ margin: auto;
     height: 26px;
     border-radius: 20px;
     transition: all 0.15s linear;
-	/* background-color:rgba(0, 0, 0, 0.3); */
-	background-color:rgba(255, 255, 255, 0.3);
-	/* mix-blend-mode: exclusion; */
+	background-color:rgba(0, 0, 0, 0.5);
+	/* background-color:rgba(255, 255, 255, 0.5); */
+	/* background-color:oldlace; */
+	opacity: 0.3;
+	/* mix-blend-mode: difference; */
   }
