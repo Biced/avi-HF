@@ -118,6 +118,10 @@
 
 		</div>
 		<video id="video" src="./models/main-page-first-fold.MP4" style="display:none" autoplay loop playsinline type="video/mp4" ></video>
+		<div id="cursor" class="Cursor">
+
+		</div>
+
 
     <script type="x-shader/x-fragment" id="PCSS">
 
@@ -213,6 +217,7 @@
 		return PCSS( shadowMap, shadowCoord );
 
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js" ></script>
   <script src="tween.js"></script>
 
     <script src="./main.js" type="module"></script>

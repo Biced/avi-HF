@@ -1860,17 +1860,27 @@ emissiveIntensity: 0.15
 
 
 
-const impulse = new THREE.Vector3(0,1,0);
+const impulse = new THREE.Vector3(0,1.5,0);
 // element.apply.CentralImpulse(impulse);
 // reverse gravity
 let gforce = -0.5;
-function reversegravity(){
+let counter =0;
 
+function reversegravity(){
+	if(counter === 0){
+		counter++;
+		impulse.y = 0;
+	// 	setTimeout(() => {
+	// 	reversegravity()
+	// }, 4500);
+	}
 	gforce = gforce*-1
+
 	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
 	objectstest.forEach(element => {
 		element.applyCentralImpulse(impulse);
 	});
+
 	// scene.simulate();
 }
 // comment
@@ -2162,7 +2172,108 @@ function handleOrientation(event) {
 	camera.lookAt(center);
   }
 
-			function onDocumentMouseMove( event ) {
+  var moveForce = 30; // max popup movement in pixels
+var rotateForce = 20; // max popup rotation in deg
+// setInterval (move,1000/60)
+
+
+
+// new mouse
+
+const cursor = document.getElementById("cursor");
+const amount = 20;
+const sineDots = Math.floor(amount * 0.3);
+const width = 50;
+const idleTimeout = 150;
+let lastFrame = 0;
+let mousePosition = {x: 0, y: 0};
+let dots = [];
+let timeoutID;
+let idle = false;
+let hoverButton;
+let hoverTL;
+let centerdot;
+
+
+class Dot {
+    constructor(index = 0) {
+        this.index = index;
+        this.anglespeed = 0.03;
+        this.x = 0;
+        this.y = 0;
+        this.scale = 2 - 0.1 * index;
+        this.range = width / 1.2 - width / 2 * this.scale + 3;
+        this.limit = width * 1 * this.scale;
+        this.element = document.createElement("span");
+        TweenMax.set(this.element, {scale: this.scale});
+        cursor.appendChild(this.element);
+    }
+
+    lock() {
+        this.lockX = this.x;
+        this.lockY = this.y;
+        this.angleX = Math.PI * 2 * Math.random();
+        this.angleY = Math.PI * 2 * Math.random();
+    }
+
+    draw(delta) {
+        if (!idle || this.index <= sineDots) {
+            TweenMax.set(this.element, {x: this.x + 11, y: this.y +11});
+        } else {
+            this.angleX += this.anglespeed;
+            this.angleY += this.anglespeed;
+            this.y = this.lockY + Math.sin(this.angleY) * this.range;
+            this.x = this.lockX + Math.sin(this.angleX) * this.range;
+            TweenMax.set(this.element, {x: this.x, y: this.y});
+        }
+    }
+}
+
+function startIdleTimer() {
+    timeoutID = setTimeout(goInactive, idleTimeout);
+    idle = false;
+}
+
+function resetIdleTimer() {
+    clearTimeout(timeoutID);
+    startIdleTimer();
+}
+
+
+function goInactive() {
+    idle = true;
+    for (let dot of dots) {
+        dot.lock();
+
+    }
+
+}
+
+function buildDots() {
+    for (let i = 0; i < amount; i++) {
+        let dot = new Dot(i);
+        dots.push(dot);
+    }
+
+
+}
+ 		function onDocumentMouseMove( event ) {
+
+// start mouse
+			mousePosition.x = event.clientX - width / 2;
+    mousePosition.y = event.clientY - width / 2;
+	resetIdleTimer();
+
+	// end mouse
+			let docX = window.innerWidth;
+			let docY = window.innerHeight;
+
+			let moveX = (event.clientX - docX/2) / (docX/2) * -moveForce;
+			let moveY = (event.clientY - docY/2) / (docY/2) * -moveForce;
+
+			let rotateY = (event.clientX / docX * rotateForce*2) - rotateForce;
+			let rotateX = -((event.clientY / docY * rotateForce*2) - rotateForce);
+
 
 					if(info2.classList.contains("ease") && fas.firstElementChild.innerHTML !== "Close" && fas.firstElementChild.innerHTML !== "סגירה"){
 						info2.classList.remove("ease")
@@ -2171,8 +2282,9 @@ function handleOrientation(event) {
 					circlesize = 8;
 				bgleft = event.clientX;
 				bgtop  = event.clientY;
-				info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
+				// info2.style.clipPath = `circle(${circlesize}%  at ${bgleft}px ${bgtop}px)`;
 
+				// soon.style = `left: calc(${moveX}px + 50%); top: calc(${moveY}px + 40vh); transform: rotateX(${rotateX}deg), rotateY(${rotateY}deg)`
 
 
 				camera.position.y= 0.5;
@@ -2208,9 +2320,28 @@ function handleOrientation(event) {
 			camera.updateProjectionMatrix();
 		}
 
+		const positionCursor = delta => {
+			let x = mousePosition.x;
+			let y = mousePosition.y;
+			dots.forEach((dot, index, dots) => {
+				let nextDot = dots[index + 1] || dots[0];
+				dot.x = x;
+				dot.y = y;
+				dot.draw(delta);
 
+				if (!idle || index <= sineDots) {
+					const dx = (nextDot.x - dot.x) * 0.35;
+					const dy = (nextDot.y - dot.y) * 0.35;
+					x += dx;
+					y += dy;
+				}
+			});
+		};
 
-		function animate() {
+		function animate(timestamp) {
+				const delta = timestamp - lastFrame;
+    			positionCursor(delta);
+    			lastFrame = timestamp;
 				requestAnimationFrame( animate );
 				TWEEN.update();
 				scene.simulate();
@@ -2219,6 +2350,9 @@ function handleOrientation(event) {
 				composer.render();
 		}
 
+
+		lastFrame += new Date();
+    buildDots();
             init();
 				animate();
 
