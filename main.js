@@ -1940,6 +1940,19 @@ let color;
 
 
 
+// new mouse
+
+const cursor = document.getElementById("cursor");
+const amount = 20;
+const sineDots = Math.floor(amount * 0.3);
+const width = 50;
+const idleTimeout = 150;
+let lastFrame = 0;
+let mousePosition = {x: 0, y: 0};
+let dots = [];
+let dotspanss = [];
+let timeoutID;
+let idle = false;
 
  const contentwrapper = document.querySelector(".content-wrapper")
  const btnwrapper = document.querySelector(".btn-wraper");
@@ -1951,6 +1964,7 @@ let color;
  let fas = document.querySelector(".fas")
  let link = document.querySelector(".link")
 
+
  fas.addEventListener("click", ()=>
  {
 	if(lang.firstElementChild.innerHTML == "עברית"){
@@ -1961,6 +1975,8 @@ let color;
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover", "ease" , "bg-op")
 			}, );
+
+			togglebled()
 		}else{
 			setTimeout(() => {
 				toggleZ(uiel);
@@ -1968,6 +1984,7 @@ let color;
 
 		   info2.classList.remove("inner-info-hover", "bg-op")
 			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+			togglebled()
 		}
 	}else{
 		if(fas.firstChild.innerHTML !== "סגירה"){
@@ -1977,18 +1994,30 @@ let color;
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover" , "ease" , "bg-op")
 			}, );
+			togglebled()
 		}else{
 			setTimeout(() => {
 				toggleZ(uiel);
 			}, 1000);
 		   info2.classList.remove("inner-info-hover" , "bg-op")
 		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
+		   togglebled()
 		}
 
 	}
 
 
 })
+
+
+function togglebled(){
+	setTimeout(() => {
+		cursor.classList.toggle("blend")
+		dotspanss.forEach(element => {
+		element.classList.toggle("cursorspan")
+	});
+	}, 500);
+}
 
 let contact = document.querySelector(".contact")
 let close = document.querySelector(".close")
@@ -2009,12 +2038,15 @@ wrappera.addEventListener("click" , (e) => e.stopPropagation())
 
 // clip path for contactus div
 link.addEventListener("click" , () => yosik(contact))
-close.addEventListener("click",  () => yosik(contact))
+close.addEventListener("click",  (e) => {
+	e.stopPropagation();
+	yosik(contact)})
 contact.addEventListener("click", () => yosik(contact))
 
 
 function yosik(el){
 	el.classList.toggle("inner-info-hover")
+	togglebled()
 }
 
 
@@ -2022,6 +2054,7 @@ function yosik(el){
 lang.addEventListener("click", () => {
 	hebrew.classList.toggle("inner-info-hover")
 	toggleAll();
+	togglebled()
 	if(lang.firstElementChild.innerHTML == "עברית"){
 		setTimeout(() => {
 			if(lang.firstElementChild.innerHTML == "עברית"){
@@ -2041,6 +2074,7 @@ lang.addEventListener("click", () => {
 			}
 			toggleAll();
 			hebrew.classList.toggle("inner-info-hover")
+			togglebled()
 		}, 1600);
 	}
 	else{
@@ -2059,6 +2093,7 @@ lang.addEventListener("click", () => {
 				contentwrapper.firstElementChild.dir = "ltr";
 			hebrew.classList.toggle("inner-info-hover")
 			toggleAll();
+			togglebled()
 		}, 1600);
 	}
 
@@ -2110,18 +2145,7 @@ function handleOrientation(event) {
 
 
 
-// new mouse
 
-const cursor = document.getElementById("cursor");
-const amount = 20;
-const sineDots = Math.floor(amount * 0.3);
-const width = 50;
-const idleTimeout = 150;
-let lastFrame = 0;
-let mousePosition = {x: 0, y: 0};
-let dots = [];
-let timeoutID;
-let idle = false;
 
 
 
@@ -2136,7 +2160,8 @@ class Dot {
         this.limit = width * 1 * this.scale;
         this.element = document.createElement("span");
         TweenMax.set(this.element, {scale: this.scale});
-        cursor.appendChild(this.element);
+		cursor.appendChild(this.element);
+		dotspanss.push(this.element)
     }
 
     lock() {
