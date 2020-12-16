@@ -1667,7 +1667,8 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.scale.set(-0.015,0.015,0.015)
 	object.position.set(-2.25,2.5,0)
 	if(window.innerWidth < 1025){
-		object.position.x = 0;
+		object.position.set(0,2.5,-2)
+
 	}
 	scene.add( object );
 	object.rotation.z = Math.PI;
