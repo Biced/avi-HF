@@ -27,6 +27,22 @@
 		url('fonts/ploni-demibold-aaa.woff') format('woff');
 }
 
+body:-webkit-full-screen {
+	width: 100% !important;
+	height: 100% !important;
+  }
+  body:-moz-full-screen {
+	width: 100% !important;
+	height: 100% !important;
+  }
+  body:-ms-fullscreen {
+	width: 100% !important;
+	height: 100% !important;
+  }
+  body:fullscreen {
+	width: 100% !important;
+	height: 100% !important;
+  }
 body {
 	position: fixed;
 
