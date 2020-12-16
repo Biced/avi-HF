@@ -1543,9 +1543,12 @@ let container;
 
                 camera = new THREE.PerspectiveCamera( 23, window.innerWidth / window.innerHeight, 1, 100 );
                 camera.position.x = 0;
-    			camera.position.y = 0.8;
+    			camera.position.y = 1;
+    			camera.position.y = 1;
+
 				camera.position.z = 12.8;
-				center = new THREE.Vector3(0,0.8,0);
+				// center = new THREE.Vector3(0,0.8,0);
+				center = new THREE.Vector3(0,1,0);
 				camera.up = new THREE.Vector3(0, 1, 0);
 
 				camera.lookAt(center);
@@ -1667,7 +1670,7 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.scale.set(-0.015,0.015,0.015)
 	object.position.set(-2.25,2.5,0)
 	if(window.innerWidth < 1025){
-		object.position.set(-0.05 ,2.5,-1)
+		object.position.x = 0;
 
 	}
 	scene.add( object );
@@ -2124,7 +2127,7 @@ if(window.innerWidth > 1025){
 }else{
 	window.addEventListener("deviceorientation", handleOrientation, true);
 }
-
+let newcenter = new THREE.Vector3(0,4.8,0);
 function handleOrientation(event) {
 	let x = event.beta;  // In degree in the range [-180,180]
 	let y = event.gamma; // In degree in the range [-90,90]
@@ -2136,10 +2139,12 @@ function handleOrientation(event) {
 	// x and y to [0,180]
 	x += 90;
 	y += 90;
-	camera.position.y= 1;
+
+	// camera.position.y= 0.8;
+	// camera.position.y= 5;
 	camera.position.x  += (y/180 - camera.position.x)*1.2;
-	camera.position.y += (x/180 - camera.position.y);
-	camera.lookAt(center);
+	camera.position.y += (x/180 - camera.position.y + 1);
+	camera.lookAt(newcenter);
   }
 
 
@@ -2284,7 +2289,7 @@ function buildDots() {
 		function animate(timestamp) {
 
 				camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
-				camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.8) * .03;
+				camera.position.y += ( -mouseY*0.00025 - camera.position.y +1) * .03;
 				camera.lookAt(center);
 				const delta = timestamp - lastFrame;
     			positionCursor(delta);
