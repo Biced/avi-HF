@@ -28,6 +28,9 @@
 }
 
 body {
+	position: fixed;
+
+
 	cursor: url("data:image/svg+xml,%3Csvg height='6' width='6' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='4' cy='4' fill='%23eee' r='4'/%3E%3C/svg%3E") 3 3, auto;
 	margin: 0;
 	height: 100%;
@@ -365,8 +368,12 @@ margin: auto;
   border-radius: 50%;
   text-align: center;
   z-index: 99999;
+  transition: background-color 0.5s cubic-bezier(0.76, 0, 0.24, 1); ;
 	}
 
+	.toggle-btn-open{
+		background-color: black;
+	}
 
 	/* very very messed up svg */
 	.toggle-btn img{
@@ -378,6 +385,7 @@ margin: auto;
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
+  transition: opacity 0.25s linear;
 	}
 	.mobile-container{
 		z-index: 9999;
