@@ -82,8 +82,8 @@ body {
 	text-align: center;
 	margin: 0 !important;
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 50vh;
+	left: 50vw;
 	transform: translate(-50% , -50%);
 }
 
@@ -397,7 +397,7 @@ margin: auto;
 	}
 
 	/* #progress , #gallery{
-		height: 100vh;
+		height: 100%;
 		line-height: 100%;
 	} */
 
@@ -442,9 +442,7 @@ margin: auto;
   transition: background-color 0.5s cubic-bezier(0.76, 0, 0.24, 1); ;
 	}
 
-	.toggle-btn-open{
-		background-color: black;
-	}
+
 
 	/* very very messed up svg */
 	.toggle-btn:first-child{
@@ -484,28 +482,55 @@ margin: auto;
 	}
 
 
-	.mobile-link{
+	.mobile-link , .mobile-link-dragged{
 		position: absolute;
-		top:12.5vw;
+		top: 25%;
 		width:calc(100% - 25vw);
 		margin: 0 12.5vw;
 		display: flex;
 		justify-content: space-between;
+		transition: all 0.5s linear;
 	}
-	.mobile-link a img{
+	.dragged-top{
+		top:55%;
+		transform: translateX(-120%);
+	}
+	.mobile-link a img ,.mobile-link-dragged a img{
 		width: 8.334vw;
 		height: 8.334vw;
 		text-align: center;
 	}
 
-	.mobile-link{
+	.mobile-link-dragged{
+		top:12.33%;
 		flex-direction: column;
 	}
-	.mobile-link a {
+	.mobile-link-dragged a{
+		transition: all 0.5s linear;
+		transform: translateX(-120%);
+	}
+/*
+	.mobile-link-dragged:nth-child(1) a {
+		transition-delay:all 0.1s;
+	  }
+
+	  .mobile-link-dragged:nth-child(2) a {
+		transition-delay:all 0.6s;
+	  }
+
+	  .mobile-link-dragged:nth-child(3) a {
+		transition-delay:all 1.1s;
+	  }
+
+	  .mobile-link-dragged:nth-child(4) a {
+		transition-delay:all 1.6s;
+	  } */
+	.mobile-link-dragged a {
 		margin-bottom: 8.334vw;
 		display: flex;
 	}
-	.mobile-link a p{
+	.mobile-link-dragged a p{
+
 		margin: 0;
 		font-size: 16px;
 		/* height:100%; */
@@ -514,7 +539,9 @@ margin: auto;
 		color: black;
 		margin-left: 4.167vw;
   }
-
+.dragged-height{
+	height: 55.625% !important;
+}
   }
 
 

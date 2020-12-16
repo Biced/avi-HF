@@ -1854,10 +1854,89 @@ emissiveIntensity: 0.15
 // }
 // test();
 
+// mobile ui logic
+let btn_toggle, mobile_container, drag, mobile_link, mobile_link_dragged;
+btn_toggle = document.querySelector(".toggle-btn")
+mobile_container = document.querySelector(".mobile-container")
+drag = document.querySelector(".drag")
+mobile_link = document.querySelector(".mobile-link")
+mobile_link_dragged = document.querySelectorAll(".mobile-link-dragged a")
+console.log(mobile_link_dragged)
+
+btn_toggle.addEventListener("click", ()=>{
+	switch(mobile_container.style.height) {
+		case "":
+			mobile_container.style.height = "28.125%"
+			btn_toggle.style.background = "black"
+			btn_toggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+			<defs>
+				<filter id="lvz8b86wxa">
+					<feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+				</filter>
+			</defs>
+			<g fill="none" fill-rule="evenodd">
+				<g filter="url(#lvz8b86wxa)">
+					<path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.1 17.757L17.415 6.444m-11.07-.1l11.313 11.313"/>
+				</g>
+			</g>
+		</svg>`
+		  break;
+		case "28.125%":
+			mobile_container.style.height = ""
+			btn_toggle.style.background = "white"
+			btn_toggle.innerHTML = "m"
+			if(mobile_container.classList.contains("dragged-height")){
+				mobile_container.classList.remove("dragged-height")
+			}
+			if(mobile_link.classList.contains("dragged-top")){
+				resetDragged();
+			}
+
+	  }
+})
+
+drag.addEventListener("click", ()=>{
+	mobile_container.classList.toggle("dragged-height");
+	if(!mobile_link.classList.contains("dragged-top")){
+
+		mobile_link.classList.toggle("dragged-top");
+	}
+
+	// }
+
+
+	if(mobile_link_dragged[0].style.transform == "translateX(0px)"){
+
+		resetDragged();
+		// return
+	}else{
+		let counter = 0;
+		mobile_link_dragged.forEach(element => {
+			counter += 100;
+			setTimeout(() => {
+				element.style.transform = "translateX(0)"
+			}, counter);
+		});
+	}
 
 
 
 
+})
+
+
+function resetDragged(){
+	let counter = 0;
+		for (let index = mobile_link_dragged.length-1; index > -1 ; index--) {
+			counter += 100;
+			setTimeout(() => {
+				mobile_link_dragged[index].style.transform = ""
+			}, counter);
+		}
+		setTimeout(() => {
+			mobile_link.classList.toggle("dragged-top");
+		}, 500);
+}
 const impulse = new THREE.Vector3(0,1.5,0);
 // element.apply.CentralImpulse(impulse);
 // reverse gravity
