@@ -2306,7 +2306,7 @@ function transitionCamera(){
 				}else if(x !== undefined){
 
 					camera.position.y  += (x/180 - camera.position.y + 0.9)* .5;
-					camera.position.x += (y/180 - camera.position.x)* 1.3;
+					camera.position.x += ((y/180 *2) - camera.position.x);
 				}
 
 				camera.lookAt(center);
