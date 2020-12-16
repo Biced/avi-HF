@@ -2303,7 +2303,8 @@ function transitionCamera(){
 				if(window.innerWidth > 1025){
 					camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
 					camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.9) * .03;
-				}else{
+				}else if(x !== undefined){
+
 					camera.position.x  += (x/180 - camera.position.x);
 					camera.position.y += (y/180 - camera.position.y +0.9);
 				}
