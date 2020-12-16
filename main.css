@@ -46,6 +46,51 @@ body {
 	mix-blend-mode: exclusion;
 }
 
+ /* preloader */
+ #progress {
+    height: 100vh;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	text-align: center;
+	clip-path: circle(0%  at 50% 50%);
+	background: black;
+	color: white;
+	z-index:9999999;
+	transition: clip-path all 0.8s linear;
+}
+
+
+#gallery {
+	/* display: none; */
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	text-align: center;
+	background:white;
+	color: black;
+	z-index:999999;
+}
+
+#gallery h3 ,#progress h3{
+	height: 200px;
+	font-size: 200px;
+	line-height: 200px;
+	text-align: center;
+	margin: 0 !important;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50% , -50%);
+}
+
+.expand {
+    opacity: 0 !important;
+    transition: opacity 1s cubic-bezier(0.76, 0, 0.24, 1)!important;
+}
 
 .canvas-container{
 	width: 100vw;
@@ -266,6 +311,7 @@ margin: auto;
 	width: 0;
 	height: 1px;
 	background:white;
+	transition: all 0.5s ease-in-out;
 	-webkit-transition:all 0.5s ease-in-out;
   }
 
@@ -278,17 +324,22 @@ margin: auto;
 	transition: opacity 2s ease-in-out;
   }
 
+
+  @media only screen and (max-width: 1240px) {
+	.soon{
+		top: 11vh;
+		left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+		font-size: 96px;
+	}
+  }
+
   @media only screen and (max-width: 1025px) {
 	/* .hebrew ,.inner-info2{
 		clip-path: circle(0 at 50% 100%);
 	} */
-	.soon{
-		top: 20vh;
-		left: 50%;
-		transform: translateX(-50%);
-		text-align: center;
-		font-size: 12vw;
-	}
+
 	.row-1{
 		margin-top: 21px;
 		height: min-content;
@@ -329,18 +380,28 @@ margin: auto;
 	.content-wrapper h2{
 		text-align: center;
 	}
+	#cursor{
+		display: none;
+	}
 }
 
 .toggle-btn, .mobile-container {
 	display: none;
 }
   @media only screen and (max-width: 600px) {
-	  .link, .fas, .btn-wraper, #cursor{
+	  .link, .fas, .btn-wraper{
 		  display: none;
 	  }
 	  .toggle-btn, .mobile-container {
 		display: block;
 	}
+
+	/* #progress , #gallery{
+		height: 100vh;
+		line-height: 100%;
+	} */
+
+
 	  .lang{
 		transform:initial;
 
@@ -354,7 +415,6 @@ margin: auto;
 	  }
 	.soon{
 		font-size: 50px;
-		top: 11vh;
 	}
 	.content-wrapper h2{
 		font-size: 32px;
@@ -363,6 +423,9 @@ margin: auto;
 	}
 
 	.toggle-btn{
+		font-size: 24px;
+		line-height: 100%;
+		font-weight: bold;
 		z-index:1;
 		position: absolute;
 		width: 50px;
@@ -384,7 +447,8 @@ margin: auto;
 	}
 
 	/* very very messed up svg */
-	.toggle-btn img{
+	.toggle-btn:first-child{
+		font-size: 24px;
 		width: 24px;
   height: 24px;
   object-fit: contain;
@@ -452,45 +516,7 @@ margin: auto;
   }
 
   }
-  /* css test */
-  #progress {
-    /* display: none; */
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	height: 100vh;
-	font-size: 200px;
-	text-align: center;
-	clip-path: circle(0%  at 50% 50%);
-	background: black;
-	color: white;
-	line-height: 100vh;
-	z-index:99999;
-	transition: all 0.8s linear;
-}
 
-
-#gallery {
-	/* display: none; */
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	height: 100vh;
-	text-align: center;
-	font-size: 200px;
-	background:white;
-	color: black;
-	line-height: 100vh;
-	z-index:9999;
-}
-
-
-.expand {
-    opacity: 0 !important;
-    transition: opacity 1s cubic-bezier(0.76, 0, 0.24, 1)!important;
-}
 
 .zzero{
 	z-index: 0;

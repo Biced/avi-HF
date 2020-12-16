@@ -7,7 +7,7 @@ var queue = new createjs.LoadQueue(false);
 queue.on('progress', event => {
 
 	let prog = Math.floor(event.progress * 80);
-
+	// debugger
 	progress.style =`clip-path: circle(${prog}%)`;
 
     if (prog == 80) {
@@ -1668,7 +1668,7 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 
 	object.scale.set(-0.015,0.015,0.015)
 	object.position.set(-2.25,2.5,0)
-	if(window.innerWidth < 1025){
+	if(window.innerWidth < 1240){
 		object.position.x = 0;
 
 	}
@@ -2250,7 +2250,7 @@ function buildDots() {
 
 			camera.aspect =  container.offsetWidth  / container.offsetHeight;
 
-			if(window.innerWidth < 1025){
+			if(window.innerWidth < 1240){
 				scene.children[70].position.x = 0;
 				console.log(scene.children[70])
 			}else{
