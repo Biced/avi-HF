@@ -2305,8 +2305,8 @@ function transitionCamera(){
 					camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.9) * .03;
 				}else if(x !== undefined){
 
-					camera.position.x  += (x/180 - camera.position.x);
-					camera.position.y += (y/180 - camera.position.y +0.9);
+					camera.position.y  += (x/180 - camera.position.y +0.9);
+					camera.position.x += (y/180 - camera.position.x)*1.3;
 				}
 
 				camera.lookAt(center);
