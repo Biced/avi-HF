@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <filter id="epji6ldmja">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g filter="url(#epji6ldmja)">
+            <circle cx="12" cy="12" r="10" stroke="#D8D8D8" stroke-width="2"/>
+            <path fill="#FFF" fill-rule="nonzero" d="M13.563 22h-3.126v-7.03h-2.54v-2.91h2.54V9.845c0-2.521 1.492-3.914 3.778-3.914 1.094 0 2.238.197 2.238.197V8.6h-1.261c-1.242 0-1.63.776-1.63 1.571v1.889h2.774l-.444 2.908h-2.33V22z"/>
+        </g>
+    </g>
+</svg>
