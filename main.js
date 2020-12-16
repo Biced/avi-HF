@@ -1667,7 +1667,7 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.scale.set(-0.015,0.015,0.015)
 	object.position.set(-2.25,2.5,0)
 	if(window.innerWidth < 1025){
-		object.position.set(-0.25 ,2.5,-1)
+		object.position.set(-0.05 ,2.5,-1)
 
 	}
 	scene.add( object );
