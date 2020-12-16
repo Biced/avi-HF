@@ -1543,12 +1543,11 @@ let container;
 
                 camera = new THREE.PerspectiveCamera( 23, window.innerWidth / window.innerHeight, 1, 100 );
                 camera.position.x = 0;
-    			camera.position.y = 1;
+    			camera.position.y = 0.9;
     			camera.position.y = 1;
 
 				camera.position.z = 12.8;
-				// center = new THREE.Vector3(0,0.8,0);
-				center = new THREE.Vector3(0,1,0);
+				center = new THREE.Vector3(0,0.9,0);
 				camera.up = new THREE.Vector3(0, 1, 0);
 
 				camera.lookAt(center);
@@ -2142,8 +2141,7 @@ function handleOrientation(event) {
 
 	// camera.position.y= 0.8;
 	// camera.position.y= 5;
-	camera.position.x  += (y/180 - camera.position.x)*1.2;
-	camera.position.y += (x/180 - camera.position.y + 1);
+
 	camera.lookAt(newcenter);
   }
 
@@ -2287,9 +2285,10 @@ function buildDots() {
 		};
 
 		function animate(timestamp) {
-
+				camera.position.x  += (y/180 - camera.position.x)*1.2;
+				camera.position.y += (x/180 - camera.position.y +0.9);
 				camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
-				camera.position.y += ( -mouseY*0.00025 - camera.position.y +1) * .03;
+				camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.9) * .03;
 				camera.lookAt(center);
 				const delta = timestamp - lastFrame;
     			positionCursor(delta);
