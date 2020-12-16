@@ -2126,10 +2126,10 @@ if(window.innerWidth > 1025){
 }else{
 	window.addEventListener("deviceorientation", handleOrientation, true);
 }
-let newcenter = new THREE.Vector3(0,4.8,0);
+let y,x;
 function handleOrientation(event) {
-	let x = event.beta;  // In degree in the range [-180,180]
-	let y = event.gamma; // In degree in the range [-90,90]
+	x = event.beta;  // In degree in the range [-180,180]
+	y = event.gamma; // In degree in the range [-90,90]
 	// Because we don't want to have the device upside down
 	// We constrain the x value to the range [-90,90]
 	if (x >  90) { x =  90};
@@ -2142,7 +2142,7 @@ function handleOrientation(event) {
 	// camera.position.y= 0.8;
 	// camera.position.y= 5;
 
-	camera.lookAt(newcenter);
+	// camera.lookAt(newcenter);
   }
 
 
@@ -2285,11 +2285,8 @@ function buildDots() {
 		};
 
 		function animate(timestamp) {
-				camera.position.x  += (y/180 - camera.position.x)*1.2;
-				camera.position.y += (x/180 - camera.position.y +0.9);
-				camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
-				camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.9) * .03;
-				camera.lookAt(center);
+				transitionCamera();
+
 				const delta = timestamp - lastFrame;
     			positionCursor(delta);
     			lastFrame = timestamp;
@@ -2301,7 +2298,18 @@ function buildDots() {
 				composer.render();
 		}
 
+function transitionCamera(){
 
+				if(window.innerWidth > 1025){
+					camera.position.x += ( mouseX*0.0020 - camera.position.x ) * .03;
+					camera.position.y += ( -mouseY*0.00025 - camera.position.y +0.9) * .03;
+				}else{
+					camera.position.x  += (x/180 - camera.position.x);
+					camera.position.y += (y/180 - camera.position.y +0.9);
+				}
+
+				camera.lookAt(center);
+}
 		lastFrame += new Date();
     buildDots();
             init();
