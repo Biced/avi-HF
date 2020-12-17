@@ -1674,8 +1674,13 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	}
 	scene.add( object );
 	object.rotation.z = Math.PI;
-	let video = document.getElementById( 'video' );
-	let texture = new THREE.VideoTexture( video );
+
+	let video = document.getElementById( 'video' ),
+	texture = new THREE.VideoTexture( video );
+
+	video.onload = function() {
+		texture = new THREE.VideoTexture( video );
+	}
 	let materialphone = new THREE.MeshBasicMaterial( { map: texture } );
 	object.children[1].material[1] = materialphone
 	object.children[1].material[0].color = maincolor
