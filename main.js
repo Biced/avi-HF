@@ -7,7 +7,7 @@ var queue = new createjs.LoadQueue(false);
 queue.on('progress', event => {
 
 	let prog = Math.floor(event.progress * 80);
-	debugger
+
 	progress.style =`clip-path: circle(${prog}%)`;
 
     if (prog == 80) {
