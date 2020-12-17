@@ -7,7 +7,7 @@ var queue = new createjs.LoadQueue(false);
 queue.on('progress', event => {
 
 	let prog = Math.floor(event.progress * 80);
-	// debugger
+	debugger
 	progress.style =`clip-path: circle(${prog}%)`;
 
     if (prog == 80) {
@@ -1880,11 +1880,13 @@ btn_toggle.addEventListener("click", ()=>{
 				</g>
 			</g>
 		</svg>`
+		yosik(info2)
 		  break;
 		case "28.125%":
 			mobile_container.style.height = ""
 			btn_toggle.style.background = "white"
 			btn_toggle.innerHTML = "m"
+			yosik(info2)
 			if(mobile_container.classList.contains("dragged-height")){
 				mobile_container.classList.remove("dragged-height")
 			}

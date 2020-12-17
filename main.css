@@ -43,7 +43,7 @@ body {
 	font-size: 21px;
 	/* background: transparent;
 	transition: background-color 2s ease; */
-	mix-blend-mode: exclusion;
+	/* mix-blend-mode: exclusion; */
 }
 
  /* preloader */
@@ -58,7 +58,7 @@ body {
 	background: black;
 	color: white;
 	z-index:9999999;
-	transition: clip-path all 0.8s linear;
+	transition: all 0.8s linear;
 }
 
 
@@ -82,8 +82,8 @@ body {
 	text-align: center;
 	margin: 0 !important;
 	position: absolute;
-	top: 50vh;
-	left: 50vw;
+	top: 50%;
+	left: 50%;
 	transform: translate(-50% , -50%);
 }
 
@@ -173,7 +173,7 @@ canvas {
   .inner-info-hover {
 	clip-path: circle(75%) !IMPORTANT;
   }
-  .ease{
+  .ease , .inner-info2{
 	/* transition: all 0.5s ease-out; */
 	-webkit-transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
 	transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
@@ -396,12 +396,18 @@ margin: auto;
 		display: block;
 	}
 
-	/* #progress , #gallery{
+	#progress , #gallery{
 		height: 100%;
-		line-height: 100%;
-	} */
+	}
 
-
+	.inner-info2{
+		clip-path: circle(0  at 50% 110%);
+		-webkit-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+	}
+	.hebrew{
+		clip-path: circle(0  at 105% -5%);
+	}
 	  .lang{
 		transform:initial;
 
