@@ -1658,7 +1658,7 @@ let video = document.getElementById( 'video' ),
 	texture = new THREE.VideoTexture( video );
 
 	video.onload = function() {
-		// if(video.currentTime == 0){video.play()}
+
 		texture = new THREE.VideoTexture( video );
 	}
 	let materialphone = new THREE.MeshBasicMaterial( { map: texture } );
@@ -1683,7 +1683,7 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	scene.add( object );
 	object.rotation.z = Math.PI;
 
-
+	if(video.currentTime == 0){video.play()}
 	object.children[1].material[1] = materialphone
 	object.children[1].material[0].color = maincolor
 	object.children[1].material[1].color = maincolor
