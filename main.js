@@ -1,52 +1,5 @@
-let progress = document.getElementById('progress');
-let gallery = document.getElementById('gallery');
-let loadingmanager
-var queue = new createjs.LoadQueue(false);
-
-
-queue.on('progress', event => {
-
-	let prog = Math.floor(event.progress * 80);
-
-	progress.style =`clip-path: circle(${prog}%)`;
-
-    if (prog == 80) {
-        document.querySelector('body').style.background = 'black'
-    }
-})
-queue.on('complete', event => {
-
-        gallery.remove();
-
-        progress.classList.add('expand');
-
-
-	loadingmanager.onLoad = setTimeout(() => {
-
-		TEST8();
-		reversegravity();
-}, 1500);
-
-        setTimeout(() => {
-            progress.remove();
-
-	},1000)
-
-})
-queue.loadFile('main.js');
-queue.loadFile('models/main-page-first-fold.mp4');
-queue.loadFile('models/fbx/phone (2).fbx');
-queue.loadFile('tween.js');
-queue.loadFile('main.css');
-queue.loadFile('physijs/ammo.js');
-queue.loadFile('physijs/physijs_worker.js');
-
-// queue.
-// ;
-
-console.log(loadingmanager)
-
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+// import * as THREE from 'three.module.js';
 import {FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 // import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 
@@ -1662,7 +1615,8 @@ let video = document.getElementById( 'video' ),
 		texture = new THREE.VideoTexture( video );
 	}
 	let materialphone = new THREE.MeshBasicMaterial( { map: texture } );
-loader = new FBXLoader(loadingmanager);
+// loader = new FBXLoader(loadingmanager);
+loader = new FBXLoader();
 loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.traverse( function ( child ) {
 
@@ -1689,10 +1643,13 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.children[1].material[1].color = maincolor
 
 
+	TEST8();
+	reversegravity();
+
 } );
 
 //
-loadingmanager = new THREE.LoadingManager();
+// let loadingmanager = new THREE.LoadingManager();
 
 
 
@@ -1867,7 +1824,7 @@ btn_toggle = document.querySelector(".toggle-btn")
 mobile_container = document.querySelector(".mobile-container")
 drag = document.querySelector(".drag")
 mobile_link = document.querySelector(".mobile-link")
-mobile_link_dragged = document.querySelectorAll(".mobile-link-dragged a")
+// mobile_link_dragged = document.querySelectorAll(".mobile-link-dragged a")
 console.log(mobile_link_dragged)
 
 btn_toggle.addEventListener("click", ()=>{
@@ -1896,56 +1853,25 @@ btn_toggle.addEventListener("click", ()=>{
 			yosik(info2)
 			if(mobile_container.classList.contains("dragged-height")){
 				mobile_container.classList.remove("dragged-height")
+				resetZmobile()
 			}
-			if(mobile_link.classList.contains("dragged-top")){
-				resetDragged();
-			}
+
 
 	  }
 })
-
+ let mobile_container_after = document.querySelector(".mobile-over")
 drag.addEventListener("click", ()=>{
 	mobile_container.classList.toggle("dragged-height");
-	if(!mobile_link.classList.contains("dragged-top")){
-
-		mobile_link.classList.toggle("dragged-top");
-	}
-
-	// }
-
-
-	if(mobile_link_dragged[0].style.transform == "translateX(0px)"){
-
-		resetDragged();
-		// return
-	}else{
-		let counter = 0;
-		mobile_link_dragged.forEach(element => {
-			counter += 100;
-			setTimeout(() => {
-				element.style.transform = "translateX(0)"
-			}, counter);
-		});
-	}
-
-
-
+	resetZmobile()
 
 })
 
-
-function resetDragged(){
-	let counter = 0;
-		for (let index = mobile_link_dragged.length-1; index > -1 ; index--) {
-			counter += 100;
-			setTimeout(() => {
-				mobile_link_dragged[index].style.transform = ""
-			}, counter);
-		}
-		setTimeout(() => {
-			mobile_link.classList.toggle("dragged-top");
-		}, 500);
+function resetZmobile(){
+	setTimeout(() => {
+		mobile_container_after.classList.toggle("z-mobile")
+	}, 300);
 }
+
 const impulse = new THREE.Vector3(0,1.5,0);
 // element.apply.CentralImpulse(impulse);
 // reverse gravity
@@ -2400,9 +2326,13 @@ function transitionCamera(){
 				camera.lookAt(center);
 }
 		lastFrame += new Date();
-    buildDots();
-            init();
-				animate();
+		buildDots()
+        init();
+		animate();
 
 
 
+				// loadingmanager.onLoad = setTimeout(() => {
+
+
+				// }, 1500);

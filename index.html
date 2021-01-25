@@ -1,19 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
   <title>Basic 3D World</title>
+  <script src="pace.min.js"></script>
+  <style>
+	  .pace-running {
+		  /* background: red; */
+	  }
+	  .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace.pace-inactive .pace-progress {
+  display: none;
+}
+
+.pace .pace-progress {
+  /* position: fixed; */
+  /* z-index: 9992000; */
+  /* border-radius: 0 50vh 50vh 0; */
+  /* top: 0;
+  right: 0;
+  height: 5rem;
+  width: 5rem;
+	width: 100%;
+	right: 100%; */
+	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
+	/* top: 0; */
+  /* right: 100%; */
+  /* bottom: 0; */
+  /* width: 100%; */
+  /* z-index: -1; */
+  /* background-color: black;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  -ms-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important; */
+}
+
+/* .pace .pace-progress{
+	-webkit-transform: translate3d(0, 0, 0) !important;
+  -ms-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+    height: 100vh;
+	position: absolute;
+	top: 0;
+	left:0;
+	width: 100vw;
+	text-align: center; */
+	/* clip-path: circle(attr(data-progress-text)  at 50% 50%);
+	background: black;
+	color: white; */
+	/* z-index:9999999; */
+	/* transition: all 0.8s linear; */
+/* } */
+:root{
+	--check: attr(data-progress-text);
+}
+.pace .pace-progress{
+	-webkit-transform: translate3d(0, 0, 0) !important;
+  -ms-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  height: var(--check);
+	position: absolute;
+	top: 50%;
+	left:50%;
+	width:var(--check);
+	text-align: center;
+	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
+	background: yellow;
+	color: white;
+	z-index:9999999;
+}
+.pace .pace-progress:before{
+
+    height: 50px;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	width:50px;
+	text-align: center;
+	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
+	background: yellow;
+	color: white;
+	z-index:9999999;
+	/* transition: all 0.8s linear; */
+}
+
+.pace .pace-progress:after {
+  display: block;
+  position: fixed;
+  top: 60%;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* content: attr(data-progress-text); */
+  content: var(--check);
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 100;
+  font-size: 5rem;
+  line-height: 1;
+  text-align: right;
+  z-index: 9999999999999999999;
+  /* color: red; */
+}
+/* .pace .pace-progress:before {
+
+	display: block;
+  position: fixed;
+  top: 40%;
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "m";
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  font-size: 15rem;
+
+  line-height: 1;
+  text-align: right;
+  z-index: 9999999999999999999;
+
+} */
+  </style>
+
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-  <link rel="preload" href="./models/main-page-first-fold.MP4" as="video" type="video/mp4">
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
-	<div id="progress"><h3>m</h3></div>
+	<!-- <script defer>
+		setTimeout(() => {
+			let checking213 = document.getElementsByClassName("pace-progress")
+		console.log(checking213[0].getAttribute("data-progress-text"))
+		console.log(checking213[0]) -->
+		<!-- }, ); -->
 
-    <div id="gallery"><h3>m</h3></div>
-	<script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script>
-	<!-- <script src="./prelader.js"></script> -->
+	<!-- </script> -->
+	<!-- <div id="progress"><h3>m</h3></div>
+
+    <div id="progress-cover"><h3>m</h3></div> -->
+	<!-- <script src="https://code.createjs.com/1.0.0/preloadjs.min.js"></script> -->
 	<video id="video" src="./models/main-page-first-fold.MP4" style="display:none" autoplay loop playsinline muted type="video/mp4" ></video>
-    <div class="overlayui">
+	<!-- <script src="prelader.js"></script> -->
+
+
+	<div class="overlayui">
 		<div class="hebrew">
 		</div>
 		<div class="contact">
@@ -21,14 +157,16 @@
 				<div class="contact-link"><a href="mailto:sayhi@morning.agency" >sayhi@morning.agency</a>
 					<div class="underbar"></div>
 				</div>
+				<div class="phone-wrap">
+					<div class="contact-link"><a href="tel:054-9481114" >054-9481114</a>
+						<div class="underbar"></div>
+					</div>
 
-				<div class="contact-link"><a href="tel:054-9481114" >054-9481114</a>
+				<div class="contact-link"><a  href="tel:073-7885077" >073-7885077</a>
 					<div class="underbar"></div>
 				</div>
+				</div>
 
-			<div class="contact-link"><a class="contact-link" href="tel:073-7885077" >073-7885077</a>
-				<div class="underbar"></div>
-			</div>
 
 			</div>
 
@@ -126,20 +264,38 @@
 			m
 		</button>
 		<div class="mobile-container">
-
-			<button class="drag"></button>
+			<div class="mobile-over" style=""></div>
+			<button class="drag"><div class="drag-bar"></div></button>
 			<div class="mobile-link">
-				<a href="tel:052 2526651" ><img src="/logos/icon-24-phone.svg" ></a>
-				<a href="mailto:sayhi@morning.agency"><img src="/logos/icon-24-mail.svg" ></a>
-				<a href="linked.in/morning.agency"><img src="/logos/icon-24-phone.svg" ></a>
-				<a href="fb.com/morning.agency.rocks"><img src="/logos/icon-24-phone.svg" ></a>
+				<div class="wrapper-a-m">
+					<h2>Contact <span>Us</span></h2>
+					<div class="phone-wrap-m">
+						<div class="contact-link-m"><a href="tel:+9720549481114" >+972 054 9481114</a>
+							<div class="underbar"></div>
+						</div>
+
+					<div class="contact-link-m"><a  href="tel:+9720737885077" >+972 073 7885077</a>
+						<div class="underbar"></div>
+					</div>
+
+					</div>
+					<div class="contact-link-m"><a href="mailto:sayhi@morning.agency" >sayhi@morning.agency</a>
+						<div class="underbar"></div>
+					</div>
+				</div>
+				<div class="mobile-social">
+				<a href="linked.in/morning.agency"><img src=".\logos\icon-24-phone.svg" ></a>
+				<a href="fb.com/morning.agency.rocks"><img src=".\logos\icon-24-phone.svg" ></a>
+				<a href="fb.com/morning.agency.rocks"><img src=".\logos\icon-24-phone.svg" ></a>
+				</div>
+
 			</div>
-			<div class="mobile-link-dragged">
-				<a href="tel:052 2526651" ><img src="/logos/icon-24-phone.svg" ><p>052 2526651</p></a>
-				<a href="mailto:sayhi@morning.agency"><img src="/logos/icon-24-mail.svg" ><p>sayhi@morning.agency</p></a>
-				<a href="linked.in/morning.agency"><img src="/logos/icon-24-phone.svg" ><p>linked.in/morning.agency</p></a>
-				<a href="fb.com/morning.agency.rocks"><img src="/logos/icon-24-phone.svg" ><p>fb.com/morning.agency.rocks</p></a>
-			</div>
+			<!-- <div class="mobile-link-dragged">
+				<a href="tel:052 2526651" ><img src="./logos/icon-24-phone.svg" ><p>052 2526651</p></a>
+				<a href="mailto:sayhi@morning.agency"><img src="./logos/icon-24-mail.svg" ><p>sayhi@morning.agency</p></a>
+				<a href="linked.in/morning.agency"><img src="./logos/icon-24-phone.svg" ><p>linked.in/morning.agency</p></a>
+				<a href="fb.com/morning.agency.rocks"><img src="./logos/icon-24-phone.svg" ><p>fb.com/morning.agency.rocks</p></a>
+			</div> -->
 		</div>
     <script type="x-shader/x-fragment" id="PCSS">
 
@@ -235,12 +391,14 @@
 		return PCSS( shadowMap, shadowCoord );
 
 	</script>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js" ></script>
   <script src="tween.js"></script>
 
-    <script src="./main.js" type="module"></script>
+  <script defer src="./main.js" type="module"></script>
     <!-- <script src="threex.domevents.js"></script> -->
     <!-- <script src="./main2.js"></script> -->
 
 </body>
+
 </html>
