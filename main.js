@@ -1589,7 +1589,7 @@ THREE.ShaderChunk.shadowmap_pars_fragment = shader;
                 } ),
                     0.5, 0.5
                 );
-                var ground = new Physijs.BoxMesh( new THREE.BoxGeometry( 17, 0.5, 17 ), ground_material, 0 );
+                var ground = new Physijs.BoxMesh( new THREE.BoxGeometry( 19, 0.5, 17 ), ground_material, 0 );
                 ground.position.set(-0.61,-1.2,-2.9);
                 ground.receiveShadow = true;
                 ground.castShadow = true;
@@ -1643,9 +1643,10 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 	object.children[1].material[1].color = maincolor
 
 
-	TEST8();
-	reversegravity();
-
+	// TEST8();
+	// reversegravity();
+	lastlinejs = true;
+	console.log(lastlinejs)
 } );
 
 //
@@ -1822,49 +1823,51 @@ emissiveIntensity: 0.15
 let btn_toggle, mobile_container, drag, mobile_link, mobile_link_dragged;
 btn_toggle = document.querySelector(".toggle-btn")
 mobile_container = document.querySelector(".mobile-container")
-drag = document.querySelector(".drag")
+// drag = document.querySelector(".drag")
 mobile_link = document.querySelector(".mobile-link")
 // mobile_link_dragged = document.querySelectorAll(".mobile-link-dragged a")
-console.log(mobile_link_dragged)
-
+// console.log(mobile_link_dragged)
+let mobile_container_after = document.querySelector(".mobile-over")
+// now1
 btn_toggle.addEventListener("click", ()=>{
-	switch(mobile_container.style.height) {
-		case "":
-			mobile_container.style.height = "28.125%"
-			btn_toggle.style.background = "black"
-			btn_toggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-			<defs>
-				<filter id="lvz8b86wxa">
-					<feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
-				</filter>
-			</defs>
-			<g fill="none" fill-rule="evenodd">
-				<g filter="url(#lvz8b86wxa)">
-					<path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.1 17.757L17.415 6.444m-11.07-.1l11.313 11.313"/>
-				</g>
-			</g>
-		</svg>`
-		yosik(info2)
-		  break;
-		case "28.125%":
-			mobile_container.style.height = ""
-			btn_toggle.style.background = "white"
-			btn_toggle.innerHTML = "m"
-			yosik(info2)
-			if(mobile_container.classList.contains("dragged-height")){
-				mobile_container.classList.remove("dragged-height")
-				resetZmobile()
-			}
+	// switch(mobile_container.style.height) {
+		// case "":
+			// mobile_container.style.height = "50%"
+		// 	btn_toggle.style.background = "black"
+		// 	btn_toggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+		// 	<defs>
+		// 		<filter id="lvz8b86wxa">
+		// 			<feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+		// 		</filter>
+		// 	</defs>
+		// 	<g fill="none" fill-rule="evenodd">
+		// 		<g filter="url(#lvz8b86wxa)">
+		// 			<path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.1 17.757L17.415 6.444m-11.07-.1l11.313 11.313"/>
+		// 		</g>
+		// 	</g>
+		// </svg>`
+		// yosik(info2)
+		//   break;
+		// case "50%":
+			mobile_container.style.height = "";
+			mobile_container_after.style = "";
+			// btn_toggle.style.background = "white"
+			// btn_toggle.innerHTML = "m"
+			// yosik(info2)
+			// if(mobile_container.classList.contains("dragged-height")){
+			// 	mobile_container.classList.remove("dragged-height")
+			// 	resetZmobile()
+			// }
 
 
-	  }
+	//   }
 })
- let mobile_container_after = document.querySelector(".mobile-over")
-drag.addEventListener("click", ()=>{
-	mobile_container.classList.toggle("dragged-height");
-	resetZmobile()
 
-})
+// drag.addEventListener("click", ()=>{
+// 	mobile_container.classList.toggle("dragged-height");
+// 	resetZmobile()
+
+// })
 
 function resetZmobile(){
 	setTimeout(() => {
@@ -1878,7 +1881,7 @@ const impulse = new THREE.Vector3(0,1.5,0);
 let gforce = -0.5;
 let counter =0;
 
-function reversegravity(){
+reversegravity = function(){
 	if(counter === 0){
 		counter++;
 		impulse.y = 0;
@@ -1914,7 +1917,8 @@ function dimlights(mesh, color){
 
 
 let color;
- function TEST8(){
+
+TEST8 = function(){
 	color =  new THREE.Color(0xae1901);
 	dimlights(scene.background, color);
 	color = new THREE.Color(0xfe2a05);
@@ -1984,7 +1988,7 @@ let idle = false;
 
  fas.addEventListener("click", ()=>
  {
-	if(lang.firstElementChild.innerHTML == "עברית"){
+	if(lang.firstElementChild.innerHTML == "עברית" || lang.firstElementChild.innerHTML == "עב׳"){
 		if(fas.firstChild.innerHTML !== "Close"){
 
 			fas.firstChild.innerHTML = "Close";
@@ -1998,10 +2002,13 @@ let idle = false;
 			setTimeout(() => {
 				toggleZ(uiel);
 			}, 1000);
-
+			contentwrapper.style = "overflow-x: hidden";
 		   info2.classList.remove("inner-info-hover", "bg-op")
 			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
 			togglebled()
+			setTimeout(() => {
+				contentwrapper .style = "";
+			}, 1000);
 		}
 	}else{
 		if(fas.firstChild.innerHTML !== "סגירה"){
@@ -2013,12 +2020,18 @@ let idle = false;
 			}, );
 			togglebled()
 		}else{
+
+
 			setTimeout(() => {
 				toggleZ(uiel);
 			}, 1000);
+			contentwrapper.style = "overflow-x: hidden";
 		   info2.classList.remove("inner-info-hover" , "bg-op")
 		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
 		   togglebled()
+			setTimeout(() => {
+				contentwrapper .style = "";
+			}, 1000);
 		}
 
 	}
@@ -2028,12 +2041,15 @@ let idle = false;
 
 
 function togglebled(){
-	setTimeout(() => {
-		cursor.classList.toggle("blend")
-		dotspanss.forEach(element => {
-		element.classList.toggle("cursorspan")
-	});
-	}, 500);
+	if(window.innerWidth > 600){
+		setTimeout(() => {
+			cursor.classList.toggle("blend")
+			dotspanss.forEach(element => {
+			element.classList.toggle("cursorspan")
+		});
+		}, 500);
+	}
+
 }
 
 let contact = document.querySelector(".contact")
@@ -2054,7 +2070,14 @@ wrappera.addEventListener("click" , (e) => e.stopPropagation())
 
 
 // clip path for contactus div
-link.addEventListener("click" , () => yosik(contact))
+link.addEventListener("click" , () => {
+	if(window.innerWidth > 600){
+		yosik(contact)
+	}else{
+		mobile_container.style.height = "50%"
+		mobile_container_after.style = "opacity:1"
+	}
+})
 close.addEventListener("click",  (e) => {
 	e.stopPropagation();
 	yosik(contact)})
@@ -2066,16 +2089,28 @@ function yosik(el){
 	togglebled()
 }
 
-
+if(window.innerWidth < 600){
+	lang.firstElementChild.style = "font-weight:normal"
+	if(lang.firstElementChild.innerHTML == "English"){
+		lang.firstElementChild.innerHTML = "Eng"
+	}else{
+	lang.firstElementChild.innerHTML = "עב׳"
+}
+}
 	// clip path for heb/eng switch
 lang.addEventListener("click", () => {
 	hebrew.classList.toggle("inner-info-hover")
 	toggleAll();
 	togglebled()
-	if(lang.firstElementChild.innerHTML == "עברית"){
+	if(lang.firstElementChild.innerHTML == "עברית" || lang.firstElementChild.innerHTML == `עב׳`){
 		setTimeout(() => {
-			if(lang.firstElementChild.innerHTML == "עברית"){
-				lang.firstElementChild.innerHTML = "English"
+			if(lang.firstElementChild.innerHTML == "עברית" || lang.firstElementChild.innerHTML == `עב׳`){
+				if(lang.firstElementChild.innerHTML == "עברית"){
+					lang.firstElementChild.innerHTML = "English"
+				}else{
+					lang.firstElementChild.innerHTML = `Eng`
+				}
+
 				soon.innerHTML = "עולים</br><span style=\"font-weight: 400;\"> בקרוב</span>"
 				soon.dir = "rtl";
 				if(!info2.classList.contains("inner-info-hover")){
@@ -2086,8 +2121,10 @@ lang.addEventListener("click", () => {
 				}
 				close.firstElementChild.innerHTML = "סגירה"
 				link.firstElementChild.innerHTML = "יצירת<span style=\"font-weight: 400;\"> קשר</span> "
-				contentwrapper.firstElementChild.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
-				contentwrapper.firstElementChild.dir = "rtl";
+				contentwrapper.previousElementSibling.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
+				contentwrapper.previousElementSibling.dir = "rtl";
+				mobile_link.firstElementChild.firstElementChild.innerHTML = "יצירת <span style=\"font-weight: 400;\"> קשר</span>  "
+				mobile_link.firstElementChild.firstElementChild.dir = "rtl";
 			}
 			toggleAll();
 			hebrew.classList.toggle("inner-info-hover")
@@ -2096,7 +2133,12 @@ lang.addEventListener("click", () => {
 	}
 	else{
 		setTimeout(() => {
+			if(lang.firstElementChild.innerHTML == "English"){
 				lang.firstElementChild.innerHTML = "עברית"
+			}else{
+				lang.firstElementChild.innerHTML = `עב׳`
+			}
+				// lang.firstElementChild.innerHTML = "עברית"
 				soon.innerHTML = "Coming</br><span style=\"font-weight: 400;\"> Soon</span>"
 				soon.dir = "ltr";
 				if(!info2.classList.contains("inner-info-hover")){
@@ -2106,8 +2148,10 @@ lang.addEventListener("click", () => {
 				}
 				link.firstElementChild.innerHTML = "Contact <span style=\"font-weight: 400;\"> Us</span>"
 				close.firstElementChild.innerHTML = "Close"
-				contentwrapper.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
-				contentwrapper.firstElementChild.dir = "ltr";
+				contentwrapper.previousElementSibling.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
+				contentwrapper.previousElementSibling.dir = "ltr";
+				mobile_link.firstElementChild.firstElementChild.innerHTML = " Contact <span style=\"font-weight: 400;\"> Us</span>"
+				mobile_link.firstElementChild.firstElementChild.dir = "ltr";
 			hebrew.classList.toggle("inner-info-hover")
 			toggleAll();
 			togglebled()
@@ -2124,7 +2168,9 @@ function toggleAll(){
 	opacityToggle(logo)
 	opacityToggle(btnwrapper)
 	opacityToggle(link)
-	opacityToggle(contentwrapper.firstElementChild)
+	// might need some css for transition opacity
+	opacityToggle(contentwrapper.previousElementSibling)
+	opacityToggle(mobile_link.firstElementChild.firstElementChild)
 }
 function opacityToggle(element){
 	element.classList.toggle("opacity")
@@ -2160,10 +2206,15 @@ function handleOrientation(event) {
   }
 
 
+// handle cursor z-index
 
-
-
-
+// function hoverUi(el){
+// 	el.forEach(element => {
+// 		element.addEventListener()
+// 	});
+// }
+// cursor.style = "z-index:99";
+// cursor.style = "";
 
 
 

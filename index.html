@@ -2,137 +2,74 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-  <title>Basic 3D World</title>
-  <script src="pace.min.js"></script>
+  <title>Coming Soon</title>
+
   <style>
-	  .pace-running {
-		  /* background: red; */
-	  }
-	  .pace {
-  -webkit-pointer-events: none;
-  pointer-events: none;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+	body{
+		height: 100vh;
+		width: 100vw;
+	}
+	.preloader {
+position: absolute;
+top: 0;
+left: 0;
+background: #fff;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: all 0.5s linear;
+/* color: #fff;
+mix-blend-mode: difference; */
 }
+.preloader .counter {
+position: absolute;
+/* font-family: Poppins; */
 
-.pace.pace-inactive .pace-progress {
-  display: none;
+color: #fff;
+mix-blend-mode: difference;
+text-align: center;
+font-size: 21px;
+	font-weight: bold;
+	line-height: 100%;
+
 }
-
-.pace .pace-progress {
-  /* position: fixed; */
-  /* z-index: 9992000; */
-  /* border-radius: 0 50vh 50vh 0; */
-  /* top: 0;
-  right: 0;
-  height: 5rem;
-  width: 5rem;
-	width: 100%;
-	right: 100%; */
-	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
-	/* top: 0; */
-  /* right: 100%; */
-  /* bottom: 0; */
-  /* width: 100%; */
-  /* z-index: -1; */
-  /* background-color: black;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  -ms-transform: translate3d(0, 0, 0) !important;
-  transform: translate3d(0, 0, 0) !important; */
+.counter h3{
+	font-size: 7rem;
+	line-height: 100%;
+	margin: 0;
+/* font-weight: 900; */
 }
-
-/* .pace .pace-progress{
-	-webkit-transform: translate3d(0, 0, 0) !important;
-  -ms-transform: translate3d(0, 0, 0) !important;
-  transform: translate3d(0, 0, 0) !important;
-    height: 100vh;
-	position: absolute;
-	top: 0;
-	left:0;
-	width: 100vw;
-	text-align: center; */
-	/* clip-path: circle(attr(data-progress-text)  at 50% 50%);
-	background: black;
-	color: white; */
-	/* z-index:9999999; */
-	/* transition: all 0.8s linear; */
-/* } */
-:root{
-	--check: attr(data-progress-text);
+.counter p{
+	/* font-size: 7rem;
+	line-height: 100%; */
+	margin: 0;
+/* font-weight: 900; */
 }
-.pace .pace-progress{
-	-webkit-transform: translate3d(0, 0, 0) !important;
-  -ms-transform: translate3d(0, 0, 0) !important;
-  transform: translate3d(0, 0, 0) !important;
-  height: var(--check);
-	position: absolute;
-	top: 50%;
-	left:50%;
-	width:var(--check);
-	text-align: center;
-	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
-	background: yellow;
-	color: white;
-	z-index:9999999;
+.preloader .loader {
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+clip-path: circle(0%  at 50% 50%);
+background: #000;
+transition: all 0.2s ease;
+/* transition: all 0.2s ease-in-out; */
 }
-.pace .pace-progress:before{
-
-    height: 50px;
-	position: absolute;
-	top: 50%;
-	left:50%;
-	width:50px;
-	text-align: center;
-	/* clip-path: circle(attr(data-progress-text)  at 50% 50%); */
-	background: yellow;
-	color: white;
-	z-index:9999999;
-	/* transition: all 0.8s linear; */
-}
-
-.pace .pace-progress:after {
-  display: block;
-  position: fixed;
-  top: 60%;
-
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* content: attr(data-progress-text); */
-  content: var(--check);
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 100;
-  font-size: 5rem;
-  line-height: 1;
-  text-align: right;
-  z-index: 9999999999999999999;
-  /* color: red; */
-}
-/* .pace .pace-progress:before {
-
-	display: block;
-  position: fixed;
-  top: 40%;
-
-  left: 50%;
-  transform: translate(-50%, -50%);
-  content: "m";
-  font-family: "Helvetica Neue", sans-serif;
-  font-weight: 900;
-  font-size: 15rem;
-
-  line-height: 1;
-  text-align: right;
-  z-index: 9999999999999999999;
-
-} */
-  </style>
-
+</style>
   <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+
+	<div class="preloader">
+  <div class="loader"></div>
+
+  <div class="counter"><h3>m</h3><p></p></div>
+</div>
+
 	<!-- <script defer>
 		setTimeout(() => {
 			let checking213 = document.getElementsByClassName("pace-progress")
@@ -150,6 +87,7 @@
 
 
 	<div class="overlayui">
+		<div id="cursor" class="Cursor"></div>
 		<div class="hebrew">
 		</div>
 		<div class="contact">
@@ -197,12 +135,31 @@
 		<div class="btn-wraper">
 			<!-- <button class="btn left"> < </button> -->
 			<div class="left">
-				<a href="#"> <img src="logos/nav-copy-2.svg" alt="">
+				<a href="fb.com/morning.agency.rocks"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<title>facebook-white</title>
+					<g id="facebook-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" fill-opacity="1">
+						<path d="M14.214513,1.93021837 C14.710077,1.93021837 15.2151967,1.96758009 15.6339689,2.01084103 L15.9303595,2.04390124 C16.3461647,2.0936759 16.6223421,2.14096183 16.6223421,2.14096183 C16.6223421,2.14096183 16.9656977,2.19974974 17.4532431,2.31291507 L17.4532431,2.31291507 L17.4532431,6.60120595 L15.1919418,6.60120595 C14.9711959,6.60120595 14.792107,6.62106289 14.6842304,6.72508464 L14.6842304,6.72508464 L14.5625,8.06085193 L17.4999703,8.06085193 L16.751403,12.9691858 L14.5625,12.9691858 L14.5625,20 L9.4375,20 L9.4375,12.9691858 L6.89717742,12.9691858 L6.89717742,8.06085193 L9.4375,8.06085193 L9.4375,6.84423333 C9.4375,5.29123973 9.92463607,4.10167995 10.7187615,3.27874959 C11.5496152,2.41775869 12.7422836,1.93021837 14.214513,1.93021837 Z" id="facebook-white-path" stroke="#FFFFFF" stroke-width="2" fill-rule="nonzero"/>
+					</g>
+				</svg>
 				</a>
 				<div class="underbar"></div>
 			</div>
 			<div class="middle">
-				<a class="btn middle" href="#"> <img src="logos/nav-copy.svg" alt=""></a>
+				<a  href="linked.in/morning.agency"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<title>linkedin-white</title>
+					<g id="linkedin-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" fill-opacity="1">
+						<path d="M15.8298537,7.06602919 C17.6945551,7.06602919 18.828844,7.67828482 19.5499345,8.60022355 C20.3615062,9.63784561 20.6325822,11.1700249 20.6325822,12.9588952 L20.6325822,12.9588952 L20.6325822,19.6031371 L15.5941267,19.6031371 L15.5941267,13.6071176 C15.5941267,13.0574371 15.6398418,12.3941374 15.369679,11.9501293 C15.2645272,11.7773139 15.064153,11.7116285 14.7888232,11.7116285 C14.423399,11.7116285 14.1566338,11.7911082 14.0047284,12.0001204 C13.7264914,12.3829568 13.7183225,12.9581597 13.7183225,13.5187345 L13.7183225,19.6031371 L8.67981906,19.6031371 L8.67981906,7.32628684 L13.585724,7.32628684 L13.585,7.617 L13.623159,7.59667534 C14.1687491,7.30759839 14.8201062,7.10903657 15.5745559,7.07221498 Z M8.41476375,7.32628684 L8.41476375,19.6031371 L3.37136876,19.6031371 L3.37136876,7.32628684 L8.41476375,7.32628684 Z M5.77777778,2.11111111 C6.51198368,2.11111111 7.17905443,2.40999203 7.66230898,2.89324658 C8.14556353,3.37650113 8.44444444,4.04357188 8.44444444,4.77777778 C8.44444444,5.51543335 8.14620505,6.18186258 7.66403381,6.66403381 C7.18186258,7.14620505 6.51543335,7.44444444 5.77777778,7.44444444 C5.04091233,7.44444444 4.37483474,7.14562299 3.89265252,6.66344077 C3.4094078,6.18019604 3.11111111,5.51276998 3.11111111,4.77777778 C3.11111111,4.04278558 3.4094078,3.37535951 3.89265252,2.89211479 C4.37483474,2.40993257 5.04091233,2.11111111 5.77777778,2.11111111 Z" id="linkedin-white-path" stroke="#FFFFFF" stroke-width="1.77777778" fill-rule="nonzero"/>
+					</g>
+				</svg></a>
+				<div class="underbar"></div>
+			</div>
+			<div class="right">
+				<a href="https://dribbble.com/morningagency"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<title>dribble-white</title>
+					<g id="dribble-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="1">
+						<path d="M11.9999762,22.1874948 C17.341684,22.1874948 21.6874531,17.8417257 21.6874531,12.5000179 C21.6874531,7.15831004 17.341684,2.81254098 11.9999762,2.81254098 C6.65826831,2.81254098 2.31249925,7.15831004 2.31249925,12.5000179 C2.31249925,17.8417257 6.65826831,22.1874948 11.9999762,22.1874948 Z M13.1484262,9.31208298 C11.7924953,6.82086272 10.2896226,4.77428252 10.060932,4.46803935 C12.6849797,3.8355259 15.450209,4.51766844 17.4851544,6.32308406 C17.3363434,6.53506628 16.0907333,8.20925663 13.1484262,9.31208298 Z M4.12346315,10.8185326 L3.93675118,10.818328 C3.92235963,10.8182023 3.91013706,10.8180631 3.90013432,10.8179311 C4.43670836,8.25022638 6.16708906,6.11617537 8.48207073,5.02425903 C8.70023274,5.32344503 10.178844,7.37254292 11.5498811,9.8097472 C8.09774811,10.7264941 5.01272583,10.8138281 4.12346315,10.8185326 L4.12346315,10.8185326 Z M20.273577,12.4344434 C20.0007887,12.3767272 17.2650851,11.8218426 14.5117957,12.1681019 C14.2871106,11.619626 14.0750521,11.1371442 13.7845636,10.5425488 C16.8439816,9.2934673 18.2305826,7.51593705 18.4050283,7.27996044 C19.5574838,8.68799999 20.255381,10.4813993 20.273577,12.4344434 Z M5.85260617,18.0452775 C4.53100745,16.5783392 3.72538346,14.6379217 3.72538346,12.5126445 C3.72538346,12.4280347 3.72706192,12.3438064 3.72961776,12.2597688 C4.09163167,12.2672075 8.10147929,12.3188965 12.2337402,11.0822127 C12.4705942,11.5458118 12.6968815,12.0163917 12.9045913,12.4864757 C9.9124262,13.3292166 7.19388868,15.7492167 5.85260617,18.0452775 Z M16.6233019,19.3720642 C16.5384633,18.8687161 16.0980575,16.4464272 15.0157923,13.4723437 C17.6087503,13.0572675 19.8868821,13.7367398 20.1699701,13.8260798 C19.8011279,16.1284348 18.4796055,18.116841 16.6233019,19.3720642 Z M6.92094774,19.0404533 C7.78527979,17.2735661 10.131046,14.992764 13.4669908,13.8546899 C14.6287159,16.8735579 15.1091378,19.4036498 15.2321996,20.1296231 C12.571569,21.2629288 9.37226636,20.9519936 6.92094774,19.0404533 Z" id="dribble-white-path" fill="#FFFFFF" fill-rule="nonzero"/>
+					</g>
+				</svg></a>
 				<div class="underbar"></div>
 			</div>
 
@@ -214,10 +171,10 @@
 
 
 			<div class="inner-info2">
-
+				<h2>Our <span style="font-weight: 400;"> Clients</span></h2>
 			<div class="content-wrapper">
 
-<h2>Our <span style="font-weight: 400;"> Clients</span></h2>
+
 
 
 <div class="grid-1">
@@ -232,23 +189,28 @@
 	<div class="img"><img src="./logos/logo-jewish-agency.svg" alt=""></div>
 	<div class="img"><img src="./logos/logo-migdal.svg" alt=""></div>
 	<div class="img">	<img src="./logos/logo-libra.svg" alt=""></div>
-	<div class="img">	<img src="./logos/logo-passportcard.png" alt=""></div>
+	<div class="img">	<img src="./logos/logo-chempion-copy-2.png" alt=""></div>
 	<div class="img">	<img src="./logos/logo-jacada.svg" alt=""></div>
 	<div class="img">	<img src="./logos/logo-volkswagen.svg" alt=""></div>
 	<div class="img">	<img src="./logos/logo-mediwho.svg" alt=""></div>
 	<div class="img">	<img src="./logos/logo-paamonim.png" alt=""></div>
-	<div class="img"><img src="./logos/logo-microsoft.png" alt=""></div>
+	<div class="img"><img src="./logos/logo-chempion-copy-6.png" alt=""></div>
 	<div class="img"><img src="./logos/logo-priority.svg" alt=""></div>
 	<div class="img">	<img src="./logos/logo-sears.svg" alt=""></div>
 	<div class="img"><img src="./logos/logo-refael.svg" alt=""></div>
-</div>
-<div class="row-1">
 	<div class="img">	<img src="./logos/logo-purina.svg" alt="">
 	</div>
 	<div class="img"><img src="./logos/logo-sodastream.svg" alt=""></div>
 	<div class="img"><img src="./logos/logo-super-pharm.svg" alt=""></div>
 	<div class="img"><img src="./logos/logo-vesttoo.svg" alt=""></div>
 </div>
+<!-- <div class="row-1">
+	<div class="img">	<img src="./logos/logo-purina.svg" alt="">
+	</div>
+	<div class="img"><img src="./logos/logo-sodastream.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-super-pharm.svg" alt=""></div>
+	<div class="img"><img src="./logos/logo-vesttoo.svg" alt=""></div>
+</div> -->
 			</div>
 
 			</div>
@@ -257,18 +219,36 @@
 
 		</div>
 
-		<div id="cursor" class="Cursor">
+
 
 		</div>
-		<button class="toggle-btn">
-			m
-		</button>
+		<div class="mobile-over" style=""></div>
 		<div class="mobile-container">
-			<div class="mobile-over" style=""></div>
-			<button class="drag"><div class="drag-bar"></div></button>
+
+			<!-- <button class="drag"><div class="drag-bar"></div></button> -->
 			<div class="mobile-link">
 				<div class="wrapper-a-m">
-					<h2>Contact <span>Us</span></h2>
+					<h2>Contact <span style="font-weight: 400;"> Us</span></h2>
+					<div class="mobile-social">
+						<a href="linked.in/morning.agency"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<title>linkedin-white</title>
+							<g id="linkedin-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-opacity="0.4">
+								<path d="M15.8298537,7.06602919 C17.6945551,7.06602919 18.828844,7.67828482 19.5499345,8.60022355 C20.3615062,9.63784561 20.6325822,11.1700249 20.6325822,12.9588952 L20.6325822,12.9588952 L20.6325822,19.6031371 L15.5941267,19.6031371 L15.5941267,13.6071176 C15.5941267,13.0574371 15.6398418,12.3941374 15.369679,11.9501293 C15.2645272,11.7773139 15.064153,11.7116285 14.7888232,11.7116285 C14.423399,11.7116285 14.1566338,11.7911082 14.0047284,12.0001204 C13.7264914,12.3829568 13.7183225,12.9581597 13.7183225,13.5187345 L13.7183225,19.6031371 L8.67981906,19.6031371 L8.67981906,7.32628684 L13.585724,7.32628684 L13.585,7.617 L13.623159,7.59667534 C14.1687491,7.30759839 14.8201062,7.10903657 15.5745559,7.07221498 Z M8.41476375,7.32628684 L8.41476375,19.6031371 L3.37136876,19.6031371 L3.37136876,7.32628684 L8.41476375,7.32628684 Z M5.77777778,2.11111111 C6.51198368,2.11111111 7.17905443,2.40999203 7.66230898,2.89324658 C8.14556353,3.37650113 8.44444444,4.04357188 8.44444444,4.77777778 C8.44444444,5.51543335 8.14620505,6.18186258 7.66403381,6.66403381 C7.18186258,7.14620505 6.51543335,7.44444444 5.77777778,7.44444444 C5.04091233,7.44444444 4.37483474,7.14562299 3.89265252,6.66344077 C3.4094078,6.18019604 3.11111111,5.51276998 3.11111111,4.77777778 C3.11111111,4.04278558 3.4094078,3.37535951 3.89265252,2.89211479 C4.37483474,2.40993257 5.04091233,2.11111111 5.77777778,2.11111111 Z" id="linkedin-white-path" stroke="#000000" stroke-width="1.77777778" fill-rule="nonzero"/>
+							</g>
+						</svg></a>
+						<a href="fb.com/morning.agency.rocks"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<title>facebook-white</title>
+							<g id="facebook-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linejoin="round" stroke-opacity="0.4">
+								<path d="M14.214513,1.93021837 C14.710077,1.93021837 15.2151967,1.96758009 15.6339689,2.01084103 L15.9303595,2.04390124 C16.3461647,2.0936759 16.6223421,2.14096183 16.6223421,2.14096183 C16.6223421,2.14096183 16.9656977,2.19974974 17.4532431,2.31291507 L17.4532431,2.31291507 L17.4532431,6.60120595 L15.1919418,6.60120595 C14.9711959,6.60120595 14.792107,6.62106289 14.6842304,6.72508464 L14.6842304,6.72508464 L14.5625,8.06085193 L17.4999703,8.06085193 L16.751403,12.9691858 L14.5625,12.9691858 L14.5625,20 L9.4375,20 L9.4375,12.9691858 L6.89717742,12.9691858 L6.89717742,8.06085193 L9.4375,8.06085193 L9.4375,6.84423333 C9.4375,5.29123973 9.92463607,4.10167995 10.7187615,3.27874959 C11.5496152,2.41775869 12.7422836,1.93021837 14.214513,1.93021837 Z" id="facebook-white-path" stroke="#000000" stroke-width="2" fill-rule="nonzero"/>
+							</g>
+						</svg></a>
+						<a href="https://dribbble.com/morningagency"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+							<title>dribble-white</title>
+							<g id="dribble-white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.4">
+								<path d="M11.9999762,22.1874948 C17.341684,22.1874948 21.6874531,17.8417257 21.6874531,12.5000179 C21.6874531,7.15831004 17.341684,2.81254098 11.9999762,2.81254098 C6.65826831,2.81254098 2.31249925,7.15831004 2.31249925,12.5000179 C2.31249925,17.8417257 6.65826831,22.1874948 11.9999762,22.1874948 Z M13.1484262,9.31208298 C11.7924953,6.82086272 10.2896226,4.77428252 10.060932,4.46803935 C12.6849797,3.8355259 15.450209,4.51766844 17.4851544,6.32308406 C17.3363434,6.53506628 16.0907333,8.20925663 13.1484262,9.31208298 Z M4.12346315,10.8185326 L3.93675118,10.818328 C3.92235963,10.8182023 3.91013706,10.8180631 3.90013432,10.8179311 C4.43670836,8.25022638 6.16708906,6.11617537 8.48207073,5.02425903 C8.70023274,5.32344503 10.178844,7.37254292 11.5498811,9.8097472 C8.09774811,10.7264941 5.01272583,10.8138281 4.12346315,10.8185326 L4.12346315,10.8185326 Z M20.273577,12.4344434 C20.0007887,12.3767272 17.2650851,11.8218426 14.5117957,12.1681019 C14.2871106,11.619626 14.0750521,11.1371442 13.7845636,10.5425488 C16.8439816,9.2934673 18.2305826,7.51593705 18.4050283,7.27996044 C19.5574838,8.68799999 20.255381,10.4813993 20.273577,12.4344434 Z M5.85260617,18.0452775 C4.53100745,16.5783392 3.72538346,14.6379217 3.72538346,12.5126445 C3.72538346,12.4280347 3.72706192,12.3438064 3.72961776,12.2597688 C4.09163167,12.2672075 8.10147929,12.3188965 12.2337402,11.0822127 C12.4705942,11.5458118 12.6968815,12.0163917 12.9045913,12.4864757 C9.9124262,13.3292166 7.19388868,15.7492167 5.85260617,18.0452775 Z M16.6233019,19.3720642 C16.5384633,18.8687161 16.0980575,16.4464272 15.0157923,13.4723437 C17.6087503,13.0572675 19.8868821,13.7367398 20.1699701,13.8260798 C19.8011279,16.1284348 18.4796055,18.116841 16.6233019,19.3720642 Z M6.92094774,19.0404533 C7.78527979,17.2735661 10.131046,14.992764 13.4669908,13.8546899 C14.6287159,16.8735579 15.1091378,19.4036498 15.2321996,20.1296231 C12.571569,21.2629288 9.37226636,20.9519936 6.92094774,19.0404533 Z" id="dribble-white-path" fill="#000000" fill-rule="nonzero"/>
+							</g>
+						</svg></a>
+						</div>
 					<div class="phone-wrap-m">
 						<div class="contact-link-m"><a href="tel:+9720549481114" >+972 054 9481114</a>
 							<div class="underbar"></div>
@@ -282,12 +262,22 @@
 					<div class="contact-link-m"><a href="mailto:sayhi@morning.agency" >sayhi@morning.agency</a>
 						<div class="underbar"></div>
 					</div>
+					<button class="toggle-btn">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+							<defs>
+								<filter id="lvz8b86wxa">
+									<feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+								</filter>
+							</defs>
+							<g fill="none" fill-rule="evenodd">
+								<g filter="url(#lvz8b86wxa)">
+									<path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.1 17.757L17.415 6.444m-11.07-.1l11.313 11.313"/>
+								</g>
+							</g>
+						</svg>
+					</button>
 				</div>
-				<div class="mobile-social">
-				<a href="linked.in/morning.agency"><img src=".\logos\icon-24-phone.svg" ></a>
-				<a href="fb.com/morning.agency.rocks"><img src=".\logos\icon-24-phone.svg" ></a>
-				<a href="fb.com/morning.agency.rocks"><img src=".\logos\icon-24-phone.svg" ></a>
-				</div>
+
 
 			</div>
 			<!-- <div class="mobile-link-dragged">
@@ -297,6 +287,77 @@
 				<a href="fb.com/morning.agency.rocks"><img src="./logos/icon-24-phone.svg" ><p>fb.com/morning.agency.rocks</p></a>
 			</div> -->
 		</div>
+
+		<script>
+			let element = document.querySelector('.counter');
+		   let loader = document.querySelector('.loader');
+		   let preloader = document.querySelector('.preloader');
+		   let ui = document.querySelector('.overlayui');
+		   let count = 0;
+		   let prog
+		   let counter
+		   let  TEST8
+		   let  reversegravity
+		   let domisloaded = false;
+		   let lastlinejs = false;
+
+		//    document.addEventListener('DOMContentLoaded',function(){
+
+			//    counter =
+			window.addEventListener('load', (event) => {
+				domisloaded = true;
+			})
+			counter = setInterval(() => {
+
+					runner(80);
+
+					if(domisloaded && count < 101){
+					runner(100)
+					}
+
+					if(count == 100 && lastlinejs){
+						clearInterval(counter);
+						   fadeOut(preloader);
+						//    debugger
+					}
+				   // })
+
+// debugger
+			//    }
+		   }, 20);
+		//    debugger
+		   function runner(x){
+			if (count <= x) {
+				   prog = Math.floor(count * 0.75);
+				   element.lastChild.textContent = count + '%';
+				   loader.style = `clip-path: circle(${prog}%)`;
+				   count++;
+			   }
+		   }
+
+
+		   function fadeOut(element) {
+			element.style.opacity = 0;
+			setTimeout(() => {
+				element.style.display = 'none';
+				ui.style =`opacity:1`;
+				setTimeout(() => {
+						TEST8();
+						reversegravity();
+				}, 500);
+			}, 600);
+			//    (function fade() {
+			// 	element.style.opacity -= .1
+			// 	   if (element.style.opacity < 0) {
+			// 		   element.style.display = 'none';
+			// 	   } else {
+			// 		   requestAnimationFrame(fade);
+			// 	   }
+			//    })();
+		   }
+	//    });
+
+		   </script>
     <script type="x-shader/x-fragment" id="PCSS">
 
 			#define LIGHT_WORLD_SIZE 0.005
@@ -391,7 +452,7 @@
 		return PCSS( shadowMap, shadowCoord );
 
 	</script>
-
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js" ></script>
   <script src="tween.js"></script>
 
