@@ -1995,6 +1995,7 @@ let idle = false;
 			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover", "ease" , "bg-op")
+			   contentwrapper.style = "";
 			}, );
 
 			togglebled()
@@ -2007,7 +2008,7 @@ let idle = false;
 			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
 			togglebled()
 			setTimeout(() => {
-				contentwrapper .style = "";
+
 			}, 1000);
 		}
 	}else{
@@ -2017,6 +2018,7 @@ let idle = false;
 			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover" , "ease" , "bg-op")
+			   contentwrapper.style = "";
 			}, );
 			togglebled()
 		}else{
@@ -2030,7 +2032,6 @@ let idle = false;
 		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
 		   togglebled()
 			setTimeout(() => {
-				contentwrapper .style = "";
 			}, 1000);
 		}
 
@@ -2074,7 +2075,7 @@ link.addEventListener("click" , () => {
 	if(window.innerWidth > 600){
 		yosik(contact)
 	}else{
-		mobile_container.style.height = "70%"
+		mobile_container.style.height = "60%"
 		mobile_container_after.style = "opacity:1;"
 	}
 })
