@@ -2074,7 +2074,7 @@ link.addEventListener("click" , () => {
 	if(window.innerWidth > 600){
 		yosik(contact)
 	}else{
-		mobile_container.style.height = "50%"
+		mobile_container.style.height = "70%"
 		mobile_container_after.style = "opacity:1;"
 	}
 })
