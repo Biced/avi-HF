@@ -490,6 +490,7 @@ margin: auto;
 	overflow-x: none;
 	}
 	.inner-info2{
+		display: none;
 		clip-path: circle(80%  at 50% 200%);
 	}
 .grid-1{
