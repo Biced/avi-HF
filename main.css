@@ -464,7 +464,7 @@ margin: auto;
 
 	.fas, .link , .lang{
 		font-size: 18px;
-		bottom :10Vh;
+		bottom :14Vh;
 	}
 	.btn-wraper{
 		display: none;
@@ -683,8 +683,6 @@ margin: auto;
 	.mobile-container{
 		z-index: 9999;
 		position: absolute;
-		visibility: hidden;
-		display: none;
 		bottom: 0;
 		width: 100%;
 		/* background-color: white; */
