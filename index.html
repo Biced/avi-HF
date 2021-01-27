@@ -222,7 +222,7 @@ transition: all 0.2s ease;
 
 
 		</div>
-		<div class="mobile-over" style=""></div>
+		<div class="mobile-over" style="visibility:hidden;"></div>
 		<div class="mobile-container">
 
 			<!-- <button class="drag"><div class="drag-bar"></div></button> -->
@@ -315,17 +315,14 @@ transition: all 0.2s ease;
 					runner(100)
 					}
 
-					if(count == 100 && lastlinejs){
+					if(count == 101 && lastlinejs){
 						clearInterval(counter);
 						   fadeOut(preloader);
-						//    debugger
-					}
-				   // })
 
-// debugger
-			//    }
+					}
+
 		   }, 20);
-		//    debugger
+
 		   function runner(x){
 			if (count <= x) {
 				   prog = Math.floor(count * 0.75);

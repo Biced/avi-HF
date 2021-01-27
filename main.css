@@ -693,11 +693,13 @@ margin: auto;
 		background-image: url("./logos/oval\ \(1\).svg");
 		background-repeat: no-repeat;
 		background-size: cover;
+		background-position: center top;
 	}
 
 
 .mobile-over{
 	pointer-events: none;
+	visibility: hidden;
 	opacity: 0;
 	background-color: rgba(0, 0, 0, 0.4);
 	content: "";

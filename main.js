@@ -1,5 +1,5 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
-// import * as THREE from 'three.module.js';
+// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.118/build/three.module.js';
+import * as THREE from './build/three.module.js';
 import {FBXLoader} from 'https://cdn.jsdelivr.net/npm/three@0.118.1/examples/jsm/loaders/FBXLoader.js';
 // import TWEEN from 'https://cdn.jsdelivr.net/npm/@tweenjs/tween.js@18.5.0/dist/tween.esm.js';
 
@@ -2075,7 +2075,7 @@ link.addEventListener("click" , () => {
 		yosik(contact)
 	}else{
 		mobile_container.style.height = "50%"
-		mobile_container_after.style = "opacity:1"
+		mobile_container_after.style = "opacity:1;"
 	}
 })
 close.addEventListener("click",  (e) => {
