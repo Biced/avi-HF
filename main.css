@@ -464,7 +464,7 @@ margin: auto;
 
 	.fas, .link , .lang{
 		font-size: 18px;
-		bottom :calc(104vh - 100%);
+		bottom :5vh
 	}
 	.btn-wraper{
 		display: none;
