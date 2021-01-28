@@ -1995,7 +1995,7 @@ let idle = false;
 			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover", "ease" , "bg-op")
-			   contentwrapper.style = "";
+			   contentwrapper.style = "opacity: 1";
 			}, );
 
 			togglebled()
@@ -2005,11 +2005,12 @@ let idle = false;
 			}, 1000);
 			contentwrapper.style = "overflow-x: hidden";
 		   info2.classList.remove("inner-info-hover", "bg-op")
-			fas.firstChild.innerHTML = "<span style=\"font-weight: 700;\">Our</span> Clients";
+			fas.firstChild.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
 			togglebled()
-			setTimeout(() => {
+			// check this timeout function
+			// setTimeout(() => {
 
-			}, 1000);
+			// }, 1000);
 		}
 	}else{
 		if(fas.firstChild.innerHTML !== "סגירה"){
@@ -2018,7 +2019,7 @@ let idle = false;
 			toggleZ(uiel);
 			setTimeout(() => {
 			   info2.classList.add("inner-info-hover" , "ease" , "bg-op")
-			   contentwrapper.style = "";
+			   contentwrapper.style = "opacity:1";
 			}, );
 			togglebled()
 		}else{
@@ -2029,7 +2030,7 @@ let idle = false;
 			}, 1000);
 			contentwrapper.style = "overflow-x: hidden";
 		   info2.classList.remove("inner-info-hover" , "bg-op")
-		   fas.firstElementChild.innerHTML = "<span style=\"font-weight: 700;\">הלקוחות</span> שלנו";
+		   fas.firstElementChild.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>"
 		   togglebled()
 			setTimeout(() => {
 			}, 1000);
@@ -2054,7 +2055,6 @@ function togglebled(){
 }
 
 let contact = document.querySelector(".contact")
-let close = document.querySelector(".close")
 let wrappera = document.querySelector(".wrapper-a")
 let uiel = [link,logo,btnwrapper,lang]
 function toggleZ(el){
@@ -2066,23 +2066,25 @@ function toggleZ(el){
 
 
 
-// make sure top stop click when on the contacts div
+// make sure to stop click when on the contacts div
 wrappera.addEventListener("click" , (e) => e.stopPropagation())
 
 
 // clip path for contactus div
 link.addEventListener("click" , () => {
 	if(window.innerWidth > 600){
-		yosik(contact)
-	}else{
+		redoToBig();
+}else{
 		mobile_container.style.height = "332px"
 		mobile_container_after.style = "opacity:1;"
 	}
-})
-close.addEventListener("click",  (e) => {
-	e.stopPropagation();
-	yosik(contact)})
-contact.addEventListener("click", () => yosik(contact))
+
+});
+
+// close.addEventListener("click",  (e) => {
+// 	e.stopPropagation();
+// 	yosik(contact)})
+contact.addEventListener("click", () => redoToBig())
 
 
 function yosik(el){
@@ -2090,10 +2092,33 @@ function yosik(el){
 	togglebled()
 }
 
+function redoToBig(){
+	yosik(contact)
+		if(lang.firstElementChild.innerHTML == "עברית" || lang.firstElementChild.innerHTML == "עב׳"){
+			if(link.firstElementChild.innerHTML !== "Close"){
+
+				link.firstElementChild.innerHTML = "Close";
+				link.style ="z-index:99"
+			}else{
+
+				link.firstElementChild.innerHTML = "Contact <span style=\"font-weight: 400;\"> Us</span>"
+				link.style =""
+			}
+	}else{
+		if(link.firstElementChild.innerHTML !== "סגירה"){
+			link.firstElementChild.innerHTML = "סגירה";
+			link.style ="z-index:99"
+		}else{
+			link.firstElementChild.innerHTML = "יצירת<span style=\"font-weight: 400;\"> קשר</span> "
+			link.style =""
+		}
+	}
+}
+
 if(window.innerWidth < 600){
 	lang.firstElementChild.style = "font-weight:normal"
-	if(lang.firstElementChild.innerHTML == "English"){
-		lang.firstElementChild.innerHTML = "Eng"
+	if(lang.firstElementChild.innerHTML == `En<span class="g">g</span>lish`){
+		lang.firstElementChild.innerHTML = `En<span class="g">g</span>`
 	}else{
 	lang.firstElementChild.innerHTML = "עב׳"
 }
@@ -2107,9 +2132,9 @@ lang.addEventListener("click", () => {
 		setTimeout(() => {
 			if(lang.firstElementChild.innerHTML == "עברית" || lang.firstElementChild.innerHTML == `עב׳`){
 				if(lang.firstElementChild.innerHTML == "עברית"){
-					lang.firstElementChild.innerHTML = "English"
+					lang.firstElementChild.innerHTML = `En<span class="g">g</span>lish`
 				}else{
-					lang.firstElementChild.innerHTML = `Eng`
+					lang.firstElementChild.innerHTML = `En<span class="g">g</span>`
 				}
 
 				soon.innerHTML = "עולים</br><span style=\"font-weight: 400;\"> בקרוב</span>"
@@ -2120,7 +2145,7 @@ lang.addEventListener("click", () => {
 					fas.firstElementChild.innerHTML = "סגירה"
 
 				}
-				close.firstElementChild.innerHTML = "סגירה"
+				// close.firstElementChild.innerHTML = "סגירה"
 				link.firstElementChild.innerHTML = "יצירת<span style=\"font-weight: 400;\"> קשר</span> "
 				contentwrapper.previousElementSibling.innerHTML = "הלקוחות <span style=\"font-weight: 400;\"> שלנו</span>  "
 				contentwrapper.previousElementSibling.dir = "rtl";
@@ -2134,13 +2159,13 @@ lang.addEventListener("click", () => {
 	}
 	else{
 		setTimeout(() => {
-			if(lang.firstElementChild.innerHTML == "English"){
+			if(lang.firstElementChild.innerHTML == `En<span class="g">g</span>lish`){
 				lang.firstElementChild.innerHTML = "עברית"
 			}else{
 				lang.firstElementChild.innerHTML = `עב׳`
 			}
 				// lang.firstElementChild.innerHTML = "עברית"
-				soon.innerHTML = "Coming</br><span style=\"font-weight: 400;\"> Soon</span>"
+				soon.innerHTML = `Comin<span class="g">g</span></br><span style=\"font-weight: 400;\"> Soon</span>`
 				soon.dir = "ltr";
 				if(!info2.classList.contains("inner-info-hover")){
 					fas.firstElementChild.innerHTML = "Our <span style=\"font-weight: 400;\">Clients</span> ";
@@ -2148,7 +2173,7 @@ lang.addEventListener("click", () => {
 					fas.firstElementChild.innerHTML = "Close"
 				}
 				link.firstElementChild.innerHTML = "Contact <span style=\"font-weight: 400;\"> Us</span>"
-				close.firstElementChild.innerHTML = "Close"
+				// close.firstElementChild.innerHTML = "Close"
 				contentwrapper.previousElementSibling.innerHTML = "Our <span style=\"font-weight: 400;\"> Clients</span>"
 				contentwrapper.previousElementSibling.dir = "ltr";
 				mobile_link.firstElementChild.firstElementChild.innerHTML = " Contact <span style=\"font-weight: 400;\"> Us</span>"
@@ -2180,13 +2205,14 @@ function opacityToggle(element){
 
 
 window.addEventListener( 'resize', onWindowResize, false );
-if(window.innerWidth > 1025){
+// if(window.innerWidth > 1025){
 	document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 
-}else{
-	window.addEventListener("deviceorientation", handleOrientation, true);
-}
+// }else{
+	// gyro
+	// window.addEventListener("deviceorientation", handleOrientation, true);
+// }
 let y,x;
 function handleOrientation(event) {
 	x = event.beta;  // In degree in the range [-180,180]
@@ -2318,7 +2344,7 @@ function buildDots() {
 
 			if(window.innerWidth < 1240){
 				scene.children[70].position.x = 0;
-				console.log(scene.children[70])
+				// console.log(scene.children[70])
 			}else{
 				scene.children[70].position.x = -2.6;
 			}

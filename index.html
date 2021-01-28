@@ -108,12 +108,12 @@ transition: all 0.2s ease;
 
 			</div>
 
-			<div class="close"><a>Close</a>
+			<!-- <div class="close"><a>Close</a>
 				<div class="underbar"></div>
-			</div>
+			</div> -->
 		</div>
 
-		<h2 class="soon">Coming <br> <span style="font-weight: 300;">Soon</span></h2>
+		<h2 class="soon">Comin<span class="g">g</span> <br> <span style="font-weight: 300;">Soon</span></h2>
 
 		<!-- <div class="overlaywrapper"> -->
 			<svg xmlns="http://www.w3.org/2000/svg" width="165" height="30" viewBox="0 0 165 30" class="logo">
@@ -300,7 +300,15 @@ transition: all 0.2s ease;
 				<a href="fb.com/morning.agency.rocks"><img src="./logos/icon-24-phone.svg" ><p>fb.com/morning.agency.rocks</p></a>
 			</div> -->
 		</div>
-
+		<script>
+			// underbar fire fox glitch
+			if (navigator.userAgent.indexOf("Firefox") !== -1){
+				let ffunder = document.querySelectorAll(".underbar")
+				ffunder.forEach(element => {
+					element.style = "transition:none;"
+				});
+			}
+		</script>
 		<script>
 			let element = document.querySelector('.counter');
 		   let loader = document.querySelector('.loader');

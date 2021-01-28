@@ -202,7 +202,7 @@ canvas {
   .inner-info-hover {
 	clip-path: circle(75%) !IMPORTANT;
   }
-  .ease , .inner-info2{
+  .ease , .inner-info2 {
 	/* transition: all 0.5s ease-out; */
 	-webkit-transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
 	transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
@@ -240,7 +240,7 @@ canvas {
 		.btn-wraper div .underbar{
 			margin-top: -3px;
 		}
-		.lang:hover .underbar ,.left:hover .underbar , .middle:hover .underbar, .close:hover .underbar{
+		.lang:hover .underbar ,.left:hover .underbar , .middle:hover .underbar{
 			width: 100%;
 		}
 		.logo{
@@ -256,6 +256,7 @@ canvas {
 	left: 50%;
 	transform: translatex(-50%);
 	z-index: 9;
+	font-weight: 800;
 }
 /* .grid-1, .row-1{
 	margin-top: 20px;
@@ -309,10 +310,10 @@ margin: auto;
 	z-index: 9;
 	line-height: 30px;
 	font-size: 21px;
-  font-weight: bold;
+	font-weight: 800;
 }
 
-  .fas , .close{
+  .fas{
 	font-weight: 800;
 	font-size: 20px;
 	 position: absolute;
@@ -324,12 +325,7 @@ margin: auto;
 	transition: all 1s cubic-bezier(0.76, 0, 0.24, 1);
 
   }
-.close{
-	bottom: initial;
-	left: initial;
-	right:3.9VW;
-	top:3.9VW;
-}
+
 
 
 .fas:hover .underbar ,.link:hover .underbar ,.contact-link:hover .underbar,.right:hover .underbar {
@@ -352,7 +348,11 @@ margin: auto;
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	opacity: 0;
 	transform: translate(-50%, -50%);
+	-webkit-transition: all 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+	transition: all 1.5s cubic-bezier(0.76, 0, 0.24, 1);
+
 
   }
 
@@ -434,7 +434,7 @@ margin: auto;
 		width: 100%;
 		margin: 10vh 0;
 		transform: initial;
-
+		opacity: 0;
 	}
 
 	.inner-info-hover{
