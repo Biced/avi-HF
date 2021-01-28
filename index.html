@@ -301,6 +301,11 @@ transition: all 0.2s ease;
 			</div> -->
 		</div>
 		<script>
+			let orientation = window.screen.orientation;
+			if(orientation.onchange){
+				orientation.lock("portrait");
+			}
+
 			// underbar fire fox glitch
 			if (navigator.userAgent.indexOf("Firefox") !== -1){
 				let ffunder = document.querySelectorAll(".underbar")
