@@ -1418,104 +1418,119 @@ import { FXAAShader } from './jsm/shaders/FXAAShader.js';
 
 
 
+let container;
 
-			let camera, scene, renderer, objectsSphere, stats, objects, checkIfMobile, dimmerPhone1, dimmerPhone2, overlayui, impulse, gforce, container, composer;
+			let camera, scene, renderer, objectsSphere, stats, objects, checkIfMobile;
+
+            let composer;
 			let windowHalfX = window.innerWidth / 2;
             let windowHalfY = window.innerHeight / 2;
             let mouseX = windowHalfX;
             let mouseY = windowHalfY;
 			objectsSphere = [];
 
+				window.mobileCheck = function() {
+				checkIfMobile = false;
+				(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) checkIfMobile = true;})(navigator.userAgent||navigator.vendor||window.opera);
+				return checkIfMobile;
+			  }
+			if(checkIfMobile){
+				objects =[{name:"Sphere.5",
+			 translation:{x:0.71,
+			 y:3.57,
+			 z:-3.42, r:0.3}},
+			 {name:"Sphere.6",
+			 translation:{x:1.47,
+			y: 1.34,
+			z: -1.87, r:0.2}}
+			 ,
+			 {name:"Sphere.7",
+			 translation:{x:-1.33,
+			 y:3.5,
+			 z:-2.4, r:0.15}}
+			 ,
+			 {name:"Sphere.1",
+			 translation:{x:-1.29,
+			 y:1.66,
+			 z:-0.39,r:0.25}}
+			 ,
+			 {name:"Sphere",
+			 translation:{x:1.34,
+			 y:2.33,
+			 z:-0.39,r:0.3}}
 
-				(function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))){checkIfMobile = true;}else{checkIfMobile = false;}})(navigator.userAgent||navigator.vendor||window.opera);
+			];
+			  } else{
+				objects =[
+							{name:"Sphere.8",translation:{x:-4,
+							 y: 3.57,
+							  z:-3.88, r:0.15}},
+							  {name:"Sphere.7",
+							  translation:{x:-1.33,
+							  y:3.57,
+							  z:-2.4, r:0.15}}
+							  ,
+				 				{name:"Sphere.5",
+							  translation:{x:0.71,
+							  y:3.57,
+							  z:-3.42, r:0.3}},
+							  {name:"Sphere.10",
+							  translation:{x:2.49,
+							 y: 3.39,
+							 z: -2.81 , r:0.3}
+
+							  },
+							  {name:"Sphere.4",
+							  translation:{x:2.49,
+							  y:2.9,
+							  z:-1.53 , r:0.3}},
+							  {name:"Sphere.3",
+							  translation:{x:-2.04,
+							  y:2.78,
+							  z:-1.38, r:0.3}}
+							  ,
+							  {name:"Sphere.6",
+							  translation:{x:1.47,
+							 y: 1.34,
+							 z: -1.87, r:0.2}}
+							  ,
+							  {name:"Sphere.9",
+							  translation:{x:-3.50,
+							  y:1.34,
+							  z:-0.1,r:0.1}}
+							  ,
+							  {name:"Sphere.1",
+							  translation:{x:-1.29,
+							  y:1.66,
+							  z:-0.39,r:0.25}}
+							  ,
+							  {name:"Sphere",
+							  translation:{x:1.34,
+							  y:2.33,
+							  z:-0.39,r:0.3}}
+							  ,
+							  {
+								  name:"Sphere.2",
+						  translation:{x:-3.6,
+						 y: 2.2,
+						  z:-2.62, r:0.3}
+							  }
+							 ];
+			  }
+
+
+
+
+                    // console.log(objects)
+
+
+
 					var objectstest = [];
-					let fxaaPass,shader,light7,light_4,loader,center;
+					let group,
+					fxaaPass,shader,light7,light_4,loader, overlayui,center
 
 
 			function init() {
-				if(checkIfMobile){
-					objects =[{name:"Sphere.5",
-				 translation:{x:0.71,
-				 y:3.57,
-				 z:-3.42, r:0.3}},
-				 {name:"Sphere.6",
-				 translation:{x:1.47,
-				y: 1.34,
-				z: -1.87, r:0.2}}
-				 ,
-				 {name:"Sphere.7",
-				 translation:{x:-1.33,
-				 y:3.5,
-				 z:-2.4, r:0.15}}
-				 ,
-				 {name:"Sphere.1",
-				 translation:{x:-1.29,
-				 y:1.66,
-				 z:-0.39,r:0.25}}
-				 ,
-				 {name:"Sphere",
-				 translation:{x:1.34,
-				 y:2.33,
-				 z:-0.39,r:0.3}}
-
-				];
-				  } else{
-					objects =[
-								{name:"Sphere.8",translation:{x:-4,
-								 y: 3.57,
-								  z:-3.88, r:0.15}},
-								  {name:"Sphere.7",
-								  translation:{x:-1.33,
-								  y:3.57,
-								  z:-2.4, r:0.15}}
-								  ,
-									 {name:"Sphere.5",
-								  translation:{x:0.71,
-								  y:3.57,
-								  z:-3.42, r:0.3}},
-								  {name:"Sphere.10",
-								  translation:{x:2.49,
-								 y: 3.39,
-								 z: -2.81 , r:0.3}
-
-								  },
-								  {name:"Sphere.4",
-								  translation:{x:2.49,
-								  y:2.9,
-								  z:-1.53 , r:0.3}},
-								  {name:"Sphere.3",
-								  translation:{x:-2.04,
-								  y:2.78,
-								  z:-1.38, r:0.3}}
-								  ,
-								  {name:"Sphere.6",
-								  translation:{x:1.47,
-								 y: 1.34,
-								 z: -1.87, r:0.2}}
-								  ,
-								  {name:"Sphere.9",
-								  translation:{x:-3.50,
-								  y:1.34,
-								  z:-0.1,r:0.1}}
-								  ,
-								  {name:"Sphere.1",
-								  translation:{x:-1.29,
-								  y:1.66,
-								  z:-0.39,r:0.25}}
-								  ,
-								  {name:"Sphere",
-								  translation:{x:1.34,
-								  y:2.33,
-								  z:-0.39,r:0.3}}
-								  ,
-								  {
-									  name:"Sphere.2",
-							  translation:{x:-3.6,
-							 y: 2.2,
-							  z:-2.62, r:0.3}
-								  }
-								 ];
-				  }
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
@@ -1538,7 +1553,7 @@ import { FXAAShader } from './jsm/shaders/FXAAShader.js';
 
    /* Init the scene */
    scene = new Physijs.Scene();
-//    scene.setGravity( new THREE.Vector3( 0, -20, 0));
+   scene.setGravity( new THREE.Vector3( 0, -20, 0));
 
 //    scene.background = new THREE.Color( 0xae1901 )
    scene.background = new THREE.Color( 0x000000 )
@@ -1555,16 +1570,12 @@ light_4.position.set(-1.6, 4, 4);
 light_4.castShadow = light7.castShadow = true;
 light_4.shadow.camera.far = light7.shadow.camera.far = 16;
 
-
-impulse = new THREE.Vector3(0,0,0);
 if(checkIfMobile){
 	light7.shadow.mapSize.width = light7.shadow.mapSize.height = light_4.shadow.mapSize.width = light_4.shadow.mapSize.height = 190;
-	gforce = -1.6;
 }else{
 	light_4.shadow.mapSize.width = light7.shadow.mapSize.width = 1920;
 	light_4.shadow.mapSize.height = light7.shadow.mapSize.height = 1080;
 	superShader();
-	gforce = -0.8;
 }
 
 scene.add( light_4 );
@@ -1674,10 +1685,8 @@ loader.load( 'models/fbx/phone (2).fbx', function ( object ) {
 
 	if(video.currentTime == 0){video.play()}
 	object.children[1].material[1] = materialphone
-	dimmerPhone1 = object.children[1].material[0].color = maincolor
-	dimmerPhone2 = object.children[1].material[1].color = maincolor
-
-
+	object.children[1].material[0].color = maincolor
+	object.children[1].material[1].color = maincolor
 	lastlinejs = true;
 } );
 
@@ -1772,7 +1781,7 @@ emissiveIntensity: 0.15
     );
 
 
-    sphere.position.set(object.translation.x,0.01, object.translation.z);
+    sphere.position.set(object.translation.x,object.translation.y, object.translation.z);
 
 
     sphere.receiveShadow = true;
@@ -1848,26 +1857,82 @@ container.appendChild( stats.dom );
 // test();
 
 // mobile ui logic
-let btn_toggle, mobile_container, mobile_link;
+let btn_toggle, mobile_container, mobile_link, mobile_link_dragged;
 btn_toggle = document.querySelector(".toggle-btn")
 mobile_container = document.querySelector(".mobile-container")
+// drag = document.querySelector(".drag")
 mobile_link = document.querySelector(".mobile-link")
+// mobile_link_dragged = document.querySelectorAll(".mobile-link-dragged a")
+// console.log(mobile_link_dragged)
 let mobile_container_after = document.querySelector(".mobile-over")
+// now1
 btn_toggle.addEventListener("click", ()=>{
+	// switch(mobile_container.style.height) {
+		// case "":
+			// mobile_container.style.height = "50%"
+		// 	btn_toggle.style.background = "black"
+		// 	btn_toggle.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+		// 	<defs>
+		// 		<filter id="lvz8b86wxa">
+		// 			<feColorMatrix in="SourceGraphic" values="0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 0 1.000000 0 0 0 1.000000 0"/>
+		// 		</filter>
+		// 	</defs>
+		// 	<g fill="none" fill-rule="evenodd">
+		// 		<g filter="url(#lvz8b86wxa)">
+		// 			<path stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6.1 17.757L17.415 6.444m-11.07-.1l11.313 11.313"/>
+		// 		</g>
+		// 	</g>
+		// </svg>`
+		// yosik(info2)
+		//   break;
+		// case "50%":
 			mobile_container.style.height = "";
 			mobile_container_after.style = "";
+			// btn_toggle.style.background = "white"
+			// btn_toggle.innerHTML = "m"
+			// yosik(info2)
+			// if(mobile_container.classList.contains("dragged-height")){
+			// 	mobile_container.classList.remove("dragged-height")
+			// 	resetZmobile()
+			// }
+
+
+	//   }
 })
 
+// drag.addEventListener("click", ()=>{
+// 	mobile_container.classList.toggle("dragged-height");
+// 	resetZmobile()
 
+// })
 
+function resetZmobile(){
+	setTimeout(() => {
+		mobile_container_after.classList.toggle("z-mobile")
+	}, 300);
+}
+
+const impulse = new THREE.Vector3(0,1.5,0);
+// element.apply.CentralImpulse(impulse);
 // reverse gravity
+let gforce = -0.5;
+let counter =0;
+
 reversegravity = function(){
+	if(counter === 0){
+		counter++;
+		impulse.y = 0;
+	// 	setTimeout(() => {
+	// 	reversegravity()
+	// }, 4500);
+	}
 	gforce = gforce*-1
-	impulse.y = impulse.y*-1;
+
+	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
 	objectstest.forEach(element => {
 		element.applyCentralImpulse(impulse);
 	});
-	scene.setGravity( new THREE.Vector3( 0, gforce, 0));
+
 	// scene.simulate();
 }
 // comment
@@ -1898,8 +1963,6 @@ TEST8 = function(){
 	color = new THREE.Color(0xffffff);
 	// dimlights(scene.children[70].children[1].material[0].color, color);
 	// dimlights(scene.children[70].children[1].material[1].color, color);
-	dimlights(dimmerPhone1, color);
-	dimlights(dimmerPhone2, color);
 	// color = new THREE.Color(0xe42304)
 	color = new THREE.Color(0xff0000)
 	let color2 = new THREE.Color(0x991503)
@@ -1915,8 +1978,6 @@ TEST8 = function(){
 	dimlights(scene.children[3].material.color, color);
 	// dimlights(scene.children[70].children[1].material[0].color, color);
 	// dimlights(scene.children[70].children[1].material[1].color, color);
-	dimlights(dimmerPhone1, color);
-	dimlights(dimmerPhone2, color);
 	for (let index = 0; index < objectstest.length; index++) {
 		colortween(index, color)
 

@@ -27,7 +27,9 @@
 		url('fonts/ploni-demibold-aaa.woff') format('woff');
 }
 
-
+.g{
+	font-feature-settings: 'salt';
+}
 body {
 	position: fixed;
 	orientation: portrait;
@@ -489,7 +491,7 @@ margin: auto;
 	transition: all 0.5s cubic-bezier(0.1, 0.7, 1.0);
 	overflow-x: none;
 	}
-	.inner-info2{
+	.inner-info2, .hebrew{
 		/* visibility: hidden; */
 		clip-path: circle(80%  at 50% 200%);
 	}
@@ -599,9 +601,6 @@ margin: auto;
 		order: 16;
 	} */
 
-	.hebrew{
-		clip-path: circle(0  at 105% -5%);
-	}
 	  /* .lang{
 		transform:initial;
 
@@ -781,6 +780,7 @@ margin: auto;
 	}
 	.mobile-link a:link , .mobile-link a:visited{
 		color: black;
+		font-size: 20px;
 	}
 
 
